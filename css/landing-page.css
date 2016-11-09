@@ -46,12 +46,37 @@ h6 {
     background: url(../img/Flint2.jpg) no-repeat center center;
     background-size: cover;
 }
+.intro-header-contact {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/contact.jpg) no-repeat center center;
+    background-size: cover;
+}
 .intro-header-idea-phase {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
     background: url(../img/ideaphase.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.intro-header-startup-phase {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/startupphase.jpg) no-repeat center center;
+    background-size: cover;
+}
+.intro-header-veteran-phase {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/veteranphase.jpg) no-repeat center center;
     background-size: cover;
 }
 
