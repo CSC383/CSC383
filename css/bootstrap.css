@@ -12,6 +12,22 @@ html {
 body {
   margin: 0;
 }
+
+ #accordion .glyphicon { margin-right:10px; }
+      .panel-collapse>.list-group .list-group-item:first-child {border-top-right-radius: 0;border-top-left-radius: 0;}
+      .panel-collapse>.list-group .list-group-item {border-width: 1px 0;}
+      .panel-collapse>.list-group {margin-bottom: 0;}
+      .panel-collapse .list-group-item {border-radius:0;}
+
+      .panel-collapse .list-group .list-group {margin: 0;margin-top: 10px;}
+      .panel-collapse .list-group-item li.list-group-item {margin: 0 -15px;border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item:last-child {padding-bottom: 0;}
+
+      .panel-collapse div.list-group div.list-group{margin: 0;}
+      .panel-collapse div.list-group .list-group a.list-group-item {border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item {border-top: 1px solid #DDD !important;}
+
+
 article,
 aside,
 details,
@@ -1436,6 +1452,7 @@ ol ol {
   display: inline-block;
   padding-right: 5px;
   padding-left: 5px;
+  list-style: none;
 }
 dl {
   margin-top: 0;
@@ -5241,9 +5258,14 @@ a.thumbnail.active {
   padding-left: 0;
   list-style: none;
 }
+
+.item-list UL LI {
+	list-style-type: none;
+}
 .list-group {
   padding-left: 0;
   margin-bottom: 20px;
+  list-style: none;
 }
 .list-group-item {
   position: relative;
@@ -5252,19 +5274,25 @@ a.thumbnail.active {
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd;
+  list-style: none;
 }
 .list-group-item:first-child {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+    list-style-type: none;
+
 }
 .list-group-item:last-child {
   margin-bottom: 0;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
+    list-style-type: none;
+
 }
 a.list-group-item,
 button.list-group-item {
   color: #555;
+  list-style-type:none
 }
 a.list-group-item .list-group-item-heading,
 button.list-group-item .list-group-item-heading {
