@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -57,7 +57,7 @@
                     <li>
                             <a href="contact.html">Contact</a>
                     </li>
-                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="signUp.html">Sign Up</a></li>
                   <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
                      <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
@@ -96,29 +96,10 @@
         <!-- /.container -->
     </nav>
     
-    <!-- Header -->
-    <a name="about"></a>
-    <div class="intro-header-contact">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message-2">
-                        <br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.intro-header -->
+ <br>
+ <br>
+ <br>
+ <br>
 
     <!-- Main Content -->
     <div class="container">
@@ -135,7 +116,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="form_name">Firstname *</label>
-                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname" required="required" data-error="Firstname is required.">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -144,7 +125,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="form_lastname">Lastname *</label>
-                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname" required="required" data-error="Lastname is required.">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -153,15 +134,25 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="form_email">Email *</label>
-                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email" required="required" data-error="Valid email is required.">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
+		</div>	
          <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="form_lastname">Password *</label>
-                    <input id="form_password" type="password" name="password" class="form-control" placeholder="Passowrd *" required="required" data-error="Password is required.">
+                    <label for="form_password">Password *</label>
+                    <input id="form_password" type="password" name="password" class="form-control" placeholder="Please enter a Passowrd" required="required" data-error="Password is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+		<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_password_confirmed">Password (Confirm) *</label>
+                    <input id="form_password" type="password_confirm" name="password_confirm" class="form-control" placeholder="Re-enter passowrd" required="required" data-error="Password is required.">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
