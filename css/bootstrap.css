@@ -6459,6 +6459,17 @@ button.close {
 .carousel-caption .btn {
   text-shadow: none;
 }
+
+.shadeText { 
+  background-color: black;
+  color: #fff; 
+  display: inline;
+  padding: 0.5rem;
+  
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 @media screen and (min-width: 768px) {
   .carousel-control .glyphicon-chevron-left,
   .carousel-control .glyphicon-chevron-right,
