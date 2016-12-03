@@ -6460,7 +6460,7 @@ button.close {
   text-shadow: none;
 }
 
-.shadeText { 
+#shadeText { 
   background-color: black;
   color: #fff; 
   display: inline;
