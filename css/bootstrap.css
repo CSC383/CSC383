@@ -6471,6 +6471,10 @@ button.close {
   box-decoration-break: clone;
 }
 
+#makeWhite { 
+  color: white;
+}
+
 @media screen and (min-width: 768px) {
   .carousel-control .glyphicon-chevron-left,
   .carousel-control .glyphicon-chevron-right,
