@@ -6462,7 +6462,6 @@ button.close {
 
 #shadeText { 
   background: rgba(255, 255, 255, 0.75);
-  background-color: black;
   color: #fff; 
   display: inline;
   padding: 0.5rem;
