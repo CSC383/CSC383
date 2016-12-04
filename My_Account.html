@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,19 +11,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>[In]cubator - About</title>
+    <title>[In]cubator</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
-
+	<link href="css/my-account.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-   
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -57,9 +58,8 @@
                     <li>
                             <a href="contact.html">Contact</a>
                     </li>
-		    <li>
-			    <a href="My_Account.html">My Account</a>
-		    </li>
+					<li><a href="accountinformation.html">My Account</a>
+					</li>
                     <li><a href="signUp.html">Sign Up</a></li>
                   <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
@@ -98,10 +98,7 @@
         </div>
         <!-- /.container -->
     </nav>
-    
-    <!-- Header -->
-    <a name="about"></a>
-    <div class="intro-header-about">
+  <div class="intro-header-contact">
         <div class="container">
 
             <div class="row">
@@ -120,33 +117,99 @@
         </div>
         <!-- /.container -->
 
+    </div>  
+    <div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">My account</h1>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="img/blank-user-medium.png" alt=" " class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload a different photo...</h6>
+        <input type="file" class="text-center center-block well well-sm">
+      </div>
     </div>
-    <!-- /.intro-header -->
-
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <h2 class="section-heading">About Us</h2>
-                <p class="lead">The Innovation Incubator is a program run by U of M Flint's University Outreach team to help local entrepreneurs develop their companies. Whether you're already in business or just have a great idea, we can help you.</p>
-                <p class="lead">We are both a co-working space and a business incubator dedicated to helping businesses and non-profits start up. The Innovation Incubator is the only incubator in Flint focused on (but not limited to) social entrepreneurship, innovation, and creative economy-based ventures. </p>
-	    </div>
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            	    <h2 class="section-heading">Services</h2>
-		    <ul>
-                        <li class="lead">Co-work and meeting space for up to 24 people</li>
-               	        <li class="lead">Free wi-fi access</li>
-                        <li class="lead">White boards, projector and projector screen available</li>
-                        <li class="lead">Business reference library and social enterprise periodicals</li>
-			<li class="lead">Business planning assistance</li>
-                        <li class="lead">Networking opportunities</li>
-                        <li class="lead">Free business development workshops</li>
-		    </ul>
-		</div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+     <!-- <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a> 
+        <i class="fa fa-coffee"></i>
+        This is an <strong>.alert</strong>. Use this to show important messages to the user.
+      </div> -->
+      <h3>Personal info</h3>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">First name:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" type="text">
+          </div>
         </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Last name:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value=" " type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Company:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Email:</label>
+          <div class="col-lg-8">
+            <input class="form-control" value=" " type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Time Zone:</label>
+          <div class="col-lg-8">
+            <div class="ui-select">
+              <select id="user_time_zone" class="form-control">
+                <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                <option value="Alaska">(GMT-09:00) Alaska</option>
+                <option value="Pacific Time (US & Canada)">(GMT-08:00) Pacific Time (US & Canada)</option>
+                <option value="Arizona">(GMT-07:00) Arizona</option>
+                <option value="Mountain Time (US & Canada)">(GMT-07:00) Mountain Time (US & Canada)</option>
+                <option value="Central Time (US & Canada)" selected="selected">(GMT-06:00) Central Time (US & Canada)</option>
+                <option value="Eastern Time (US & Canada)">(GMT-05:00) Eastern Time (US & Canada)</option>
+                <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Username:</label>
+          <div class="col-md-8">
+            <input class="form-control" value=" " type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Password:</label>
+          <div class="col-md-8">
+            <input class="form-control" type="password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Confirm password:</label>
+          <div class="col-md-8">
+            <input class="form-control" type="password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input style="height:35px; width:120px;float:left" class="btn btn-success btn-block" value="Save Changes" type="button">
+            <span></span>
+            <input style="height:35px; margin-left:10px"class="btn btn-default" value="Cancel" type="reset">
+          </div>
+        </div>
+      </form>
     </div>
-	<!--/.Main Content-->
-    <hr>
+  </div>
+</div>
+    <!-- /.content-section-a -->
 
 	<a  name="contact"></a>
     <div class="banner">
@@ -157,6 +220,7 @@
                 <div class="col-lg-3">
                     <h2></h2>
                 </div>
+		
             </div>
 
         </div>
@@ -196,7 +260,7 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/customscript.js"></script>
-    
+
 </body>
 
 </html>
