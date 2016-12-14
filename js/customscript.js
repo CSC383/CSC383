@@ -26,6 +26,16 @@ $(document).ready(function () {
   		marker.setMap(map);
 	};
 	
+	//Handles Firebase
+	var database = firebase.database();
+	
+	function submitSignUp(firstname, lastname, email) {
+  		firebase.database().ref('users/' + user2).set({
+    	first name: firstname,
+    	last name: lastname,
+    	email: email,
+  		});
+	}
 	
 	//Handles menu drop down
     $('#dropdown-menu').find('form').click(function (e) {

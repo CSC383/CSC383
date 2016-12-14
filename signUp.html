@@ -180,7 +180,7 @@
             </div>
         </div>
             <div class="col-md-12">
-                <input type="submit" class="btn btn-success btn-send" value="Sign-Up">
+                <input id="type="submit" class="btn btn-success btn-send" value="Sign-Up">
             </div>
         </div>
 
@@ -239,6 +239,20 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Firebase Connect -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+	<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCFb9UeRylH8Wqj6CBcQq_yt39WIjrWQM8",
+    authDomain: "csc383-4ef7b.firebaseapp.com",
+    databaseURL: "https://csc383-4ef7b.firebaseio.com",
+    storageBucket: "csc383-4ef7b.appspot.com",
+    messagingSenderId: "159052970618"
+  };
+  firebase.initializeApp(config);
+</script>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
