@@ -52,12 +52,17 @@
                 <ul class="nav navbar-nav navbar-right">
                 	<li>
                 		<a href="index.html">Home</a>
+					</li>
+					<li>
+						<a id="myAccount" class="hide" href="My_Account.html">MyAccount</a>
+					</li>
                     <li>
                         <a href="about.html">About</a>
                     </li>
                     <li>
                             <a href="contact.html">Contact</a>
-                    
+                    </li>
+		    
                     <li><a href="signUp.html">Sign Up</a></li>
                   <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
@@ -65,24 +70,24 @@
                         <li>
                            <div class="row">
                               <div class="col-md-12">
-                                 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
                                     <div class="form-group">
                                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                       <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                       <input type="email" class="form-control" id="txtEmail" placeholder="Email address">
                                     </div>
                                     <div class="form-group">
                                        <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                       <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                       <input type="password" class="form-control" id="txtPassword" placeholder="Password">
                                     </div>
-                                    <div class="checkbox">
-                                       <label>
-                                       <input type="checkbox"> Remember me
-                                       </label>
+                                   
+                                    <div class="form-group">
+                                       <button id="btnLogin" class="btn btn-success btn-block">Sign in</button>
                                     </div>
                                     <div class="form-group">
-                                       <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                                       <button id="btnSignUp" class="btn btn-success btn-block">Sign-Up</button>
                                     </div>
-                                 </form>
+									<div class="form-group">
+                                       <button id="btnLogout" class="btn btn-success btn-block hide">Log out</button>
+                                    </div>
                               </div>
                            </div>
                         </li>
@@ -251,6 +256,12 @@
         </div>
     </footer>
 
+	
+	 <!--Firebase JavaScript-->
+	<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+	
+	
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 

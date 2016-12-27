@@ -24,6 +24,7 @@ const txtPassword = document.getElementById('txtPassword');
 const btnLogin = document.getElementById('btnLogin');
 const btnSignUp = document.getElementById('btnSignUp');
 const btnLogout = document.getElementById('btnLogout');
+const acctPage = document.getElementById('myAccount');
 
 //Add login event
 btnLogin.addEventListener('click', e => {
@@ -59,9 +60,11 @@ auth.onAuthStateChanged(firebaseUser => {
 	if(firebaseUser) {
 		console.log(firebaseUser);
 		btnLogout.classList.remove('hide');
+		acctPage.classList.remove('hide');
 	} else {
 		console.log('not logged in');
 		btnLogout.classList.add('hide');
+		acctPage.classList.add('hide');
 	}
 	
 	
