@@ -15,57 +15,102 @@
 
 }());
 
-const auth = firebase.auth();
+var rootref = firebase.database().ref();
 
 
-//Get Elements
-const txtEmail = document.getElementById('txtEmail');
-const txtPassword = document.getElementById('txtPassword');
-const btnLogin = document.getElementById('btnLogin');
-const btnSignUp = document.getElementById('btnSignUp');
-const btnLogout = document.getElementById('btnLogout');
-const acctPage = document.getElementById('myAccount');
+//Add resources to database
+	var county = document.getElementById("county");
+	var nam = document.getElementById("name");
+	var contact = document.getElementById("contact");
+	var restriction = document.getElementById("restriction");
+	var notes = document.getElementById("notes");
+	var url = document.getElementById("url");
+	var service = document.getElementById("service");
+	var phase = document.getElementById("phase");
+	var addBtn = document.getElementById("addBtn");
 
-//Add login event
-btnLogin.addEventListener('click', e => {
-	//get email and pass
-	const email = txtEmail.value;
-	const pass = txtPassword.value;
 
-	//sign in
-	const promise = auth.signInWithEmailAndPassword(email, pass);
-	promise.catch(e => console.log(e.message));
-});
+function addResource () {
 
-//Add signup event
-btnSignUp.addEventListener('click', e => {
-	//get email and pass
-	const email = txtEmail.value;
-	const pass = txtPassword.value;
+		rootref.child("Resources").push().set({
+      county: ""+ county.value +"",
+      name: ""+ nam.value +"",
+      contact: ""+ contact.value + "",
+      restriction: ""+ restriction.value +"",
+      notes: ""+ notes.value +"",
+      url: ""+ url.value +"",
+      service: ""+ service.value +"",
+      phase: ""+ phase.value +""
 
-	//sign in
-	const promise = auth.createUserWithEmailAndPassword(email, pass);
-	promise.catch(e => console.log(e.message));
-});
-
-//Add logout event
-btnLogout.addEventListener('click', e => {
-	auth.signOut();
-	
-	
-});
-
-//Add a realtime listener
-auth.onAuthStateChanged(firebaseUser => {
-	if(firebaseUser) {
-		console.log(firebaseUser);
-		btnLogout.classList.remove('hide');
-		acctPage.classList.remove('hide');
-	} else {
-		console.log('not logged in');
-		btnLogout.classList.add('hide');
-		acctPage.classList.add('hide');
+    });
 	}
-	
-	
+
+
+
+//Add resources from database to tables
+
+
+
+rootref.child("Resources").on("child_added", snap => {
+
+	var county = snap.child("county").val();
+	var name = snap.child("name").val();
+	var contact = snap.child("contact").val();
+	var restriction = snap.child("restriction").val();
+	var notes = snap.child("notes").val();
+	var url = snap.child("url").val();
+	var service = snap.child("service").val();
+
+
+	if(service == "office space"){
+	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+	}
+	else if(service == "maker space"){
+	$("#table_body2").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+	}
+
+	else if(service == "kitchen/market"){
+	$("#table_body3").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+	}
+
+	else if(service == "workshop/competitions"){
+	$("#table_body4").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+	}
+
+	else if(service == "counseling"){
+	$("#table_body5").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+	}
+
+	else if(service == "funding"){
+	$("#table_body6").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+	}
+
+	else if(service == "professional services"){
+	$("#table_body7").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+	}
+
+	else if(service == "real estate assistance"){
+	$("#table_body8").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+	}
+
+
+
+
+
 });
