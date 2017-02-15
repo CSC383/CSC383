@@ -1,6 +1,6 @@
 
-#login-nav input { 
-margin-bottom: 15px; 
+#login-nav input {
+margin-bottom: 15px;
 }
 
 .stepwizard-step p {
@@ -41,4 +41,8 @@ margin-bottom: 15px;
     font-size: 12px;
     line-height: 1.428571429;
     border-radius: 15px;
+}
+
+.panel-body {
+  overflow-x: scroll;;
 }
