@@ -77,4 +77,4 @@
 	 {
 	  tableRef8.deleteRow(0);
 	 }
-	}
+ };
