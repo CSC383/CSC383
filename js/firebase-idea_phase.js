@@ -3,9 +3,58 @@
 
 function myFunction() {
 
-		var x = document.getElementById("mySelect").value;
 
 
+
+		var tableRef = document.getElementById('table_body');
+		while ( tableRef.rows.length > 0 )
+		{
+		 tableRef.deleteRow(0);
+		}
+
+		var tableRef2 = document.getElementById('table_body2');
+		while ( tableRef2.rows.length > 0 )
+		{
+		 tableRef2.deleteRow(0);
+		}
+
+		var tableRef3 = document.getElementById('table_body3');
+		while ( tableRef3.rows.length > 0 )
+		{
+		 tableRef3.deleteRow(0);
+		}
+
+		var tableRef4 = document.getElementById('table_body4');
+		while ( tableRef4.rows.length > 0 )
+		{
+		 tableRef4.deleteRow(0);
+		}
+
+		var tableRef5 = document.getElementById('table_body5');
+		while ( tableRef5.rows.length > 0 )
+		{
+		 tableRef5.deleteRow(0);
+		}
+
+		var tableRef6 = document.getElementById('table_body6');
+		while ( tableRef6.rows.length > 0 )
+		{
+		 tableRef6.deleteRow(0);
+		}
+
+		var tableRef7 = document.getElementById('table_body7');
+		while ( tableRef7.rows.length > 0 )
+		{
+		 tableRef7.deleteRow(0);
+		}
+
+		var tableRef8 = document.getElementById('table_body8');
+		while ( tableRef8.rows.length > 0 )
+		{
+		 tableRef8.deleteRow(0);
+		}
+
+var x = document.getElementById("mySelect").value;
 //add resources to idea phase tables
 rootref.child("Resources").on("child_added", snap => {
 

@@ -28,6 +28,7 @@
       }
   });
 
+  //unused function currently-Just keeping for further use later
 	function clearTable()
 	{
 	 var tableRef = document.getElementById('table_body');
