@@ -1,3 +1,11 @@
+
+
+
+function myFunction() {
+
+		var x = document.getElementById("mySelect").value;
+
+
 //add resources to idea phase tables
 rootref.child("Resources").on("child_added", snap => {
 
@@ -11,6 +19,7 @@ rootref.child("Resources").on("child_added", snap => {
   var phase = snap.child("phase").val();
 
 
+if(county == x) {
 	if(service == "office space" && phase == "startup" ){
 	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
 						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
@@ -57,9 +66,11 @@ rootref.child("Resources").on("child_added", snap => {
 						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
 						  "</a></td><td>" + notes + "</td></tr>");
 	}
+}
 
 
 
 
 
 });
+};
