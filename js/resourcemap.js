@@ -89,7 +89,7 @@ google.maps.event.addDomListener(window, 'load', init);
 function createMarkers(){
 
    // this variable sets the map bounds according to markers position
-   //var bounds = new google.maps.LatLngBounds();
+   var bounds = new google.maps.LatLngBounds();
    
    // for loop traverses markersData array calling createMarker function for each marker 
    for (var i = 0; i < markersData.length; i++){
@@ -103,7 +103,7 @@ function createMarkers(){
       createMarker(latlng, name, address1, address2, phone);
 
       // marker position is added to bounds variable
-      //bounds.extend(latlng);  
+      bounds.extend(latlng);  
    }
 
    // Finally the bounds variable is used to set the map bounds
