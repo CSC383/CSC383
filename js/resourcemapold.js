@@ -1,55 +1,61 @@
 var map;
 var addressBar;
-var geocoder;
-var i = 0;
+
 // markersData 
 var markersData = [
    {
-      arrAddress: "2712 Saginaw St# 106, Flint, MI 48505",
+      lat: 43.040906,
+      lng: -83.693678,
       name: "Oak Business Center",
       address1:"2712 Saginaw St# 106,",
       address2: "Flint, MI 48505",
       phone: "(810) 235-5555" 
    },
    {
-	  arrAddress: "300 E. First St. Flint, MI 48502",
+      lat: 43.016650,
+      lng: -83.687726,
       name: "Flint Foodworks",
       address1:"300 E. First St.",
       address2: "Flint, MI 48502",
       phone: "(810) 447-0714" 
    },
    {
-	  arrAddress:"1026 E Kearsley St, Flint, MI 48503", 
+      lat: 43.021609,
+      lng: -83.679291,
       name: "Flint Public Library",
       address1:"1026 E Kearsley St,",
       address2: "Flint, MI 48503",
       phone: "(810) 232-7111" 
    }, 
    {
-	  arrAddress: "501 S Averill Ave, Flint, MI 48506", 
+      lat: 43.020796,
+      lng: -83.641771,
       name: "Goodwill Industries flint",
       address1:"501 S Averill Ave,",
       address2: "Flint, MI 48506",
       phone: "(810) 762-9960" 
    },
    {
-	  arrAddress: "519 Saginaw St #200, Flint, MI 48502", 
+      lat: 43.015820,
+      lng: -83.690112,
       name: "Flint & Genesee Chamber of Commerce",
       address1:"519 Saginaw St #200,",
       address2: "Flint, MI 48502",
       phone: "(810) 600-1404" 
    },
    {
-	  arrAddress: "1700 University Ave, Flint, MI 48504", 
+      lat: 43.012367,
+      lng: -83.712643,
       name: "Small Business Development Center",
       address1:"1700 University Ave,",
       address2: "Flint, MI 48504",
       phone: "(810) 762-9660" 
    },
    {
-	  arrAddress: "124 W 1st St, Flint, MI 48502", 
+      lat: 43.015594,
+      lng: -83.691933,
       name: "Flint Steamworks",
-      address1: "124 W 1st St,",
+      address1:"124 W 1st St,",
       address2: "Flint, MI 48502",
       phone: "N/A" 
    }
@@ -57,7 +63,6 @@ var markersData = [
 
 
 function init() {
-   geocoder = new google.maps.Geocoder();
    var mapOptions = {
       center: new google.maps.LatLng(43.020054,-83.693008),
       zoom: 9,
@@ -75,60 +80,54 @@ function init() {
    });
 
    // function called to create markers
-   createMarkers(i);
+   createMarkers();
 }
 google.maps.event.addDomListener(window, 'load', init);
 
 
 
-function createMarkers(i){
+function createMarkers(){
 
-   //this variable sets the map bounds according to markers position
+   // this variable sets the map bounds according to markers position
    var bounds = new google.maps.LatLngBounds();
    
-   //for loop traverses markersData array calling createMarker function for each marker 
-   
-		
-		//var latlng = new google.maps.LatLng(markersData[i].lat, markersData[i].lng);
-		
+   // for loop traverses markersData array calling createMarker function for each marker 
+   for (var i = 0; i < markersData.length; i++){
 
-		codeAddress(i)
-		
-		// marker position is added to bounds variable
-		bounds.extend(latlng);  
-		
-		
+      var latlng = new google.maps.LatLng(markersData[i].lat, markersData[i].lng);
+      var name = markersData[i].name;
+      var address1 = markersData[i].address1;
+      var address2 = markersData[i].address2;
+      var phone = markersData[i].phone;
+
+      createMarker(latlng, name, address1, address2, phone);
+
+      // marker position is added to bounds variable
+      bounds.extend(latlng);  
+   }
 
    // Finally the bounds variable is used to set the map bounds
    // with fitBounds() function
    map.fitBounds(bounds);
-//}
-
+}
 
 // creates marker and set Info Window content
-function createMarker(latlng, i){
-   
-		
-		//var latlng = new google.maps.LatLng(markersData[i].lat, markersData[i].lng);
-		  
-		
-		
+function createMarker(latlng, name, address1, address2, phone){
    var marker = new google.maps.Marker({
-     map: map,
-     position: latlng,
-     title: markersData[i].name
+      map: map,
+      position: latlng,
+      title: name
    });
 
    //click on a marker
-   
    google.maps.event.addListener(marker, 'click', function() {
       
       //insert info to addressBar
       var iwContent = '<div id="iw_container">' +
-            '<div class="iw_title">' + markersData[i - 1].name + '</div>' +
-         '<div class="iw_content">' + markersData[i - 1].address1 + '<br />' +
-         markersData[i - 1].address2 + '<br />' +
-         markersData[i - 1].phone + '</div></div>';
+            '<div class="iw_title">' + name + '</div>' +
+         '<div class="iw_content">' + address1 + '<br />' +
+         address2 + '<br />' +
+         phone + '</div></div>';
       
       // including content to the Info Window.
       addressBar.setContent(iwContent);
@@ -136,28 +135,4 @@ function createMarker(latlng, i){
       // open the Info Window at the current marker location.
       addressBar.open(map, marker);
    });
-   
-   i = i + 1;
-   createMarkers(i);
 }
-
-function codeAddress(i){
-	
-	geocoder.geocode({address: markersData[i].arrAddress}, function geocodeResult(results, status) {
-         if (status == google.maps.GeocoderStatus.OK)
-    {
-        var latlng = results[0].geometry.location;
-		
-    } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-        alert("Bad destination address.");
-    } else {
-        alert("Error calling Google Geocode API.");
-    }
-	
-    createMarker(latlng, i);   
-          });
-	
-		
-	}
-	
-   }
