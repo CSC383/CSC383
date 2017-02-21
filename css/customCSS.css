@@ -46,3 +46,15 @@ margin-bottom: 15px;
 .panel-body {
   overflow-x: scroll;;
 }
+
+.intro-message-3 {
+  position: relative;
+  padding-top: 5%;
+  padding-bottom: 20%;
+}
+
+.intro-message-3 > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
