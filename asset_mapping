@@ -69,6 +69,38 @@
 		    <ul>
           <li class="lead">UM-Flint’s EDA University Center will house the I69 Thumb Region Comprehensive Economic Development Asset Mapping Initiative. We will identify regional assets, evaluate each asset’s impact, collect data, conduct an annual regional business climate survey, consolidate findings, and create and disseminate the asset map. UM-Flint student research assistants will assist at every stage. This asset mapping initiative addresses the Region’s distinct need and desire to develop a systematic data collection platform to better inform economic development planning and decision-making and evaluate the impact of economic development programs.</li>
 		    </ul>
+		    <br>
+		    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            	    <h2 class="section-heading">Data Dashboard</h2>
+		    <h3 class="section-heading">General Economic Performance</h3>
+		    <ul>
+               	        <li class="lead">Labor Force Size: ...</li>
+                        <li class="lead">Average Annual Wage: ...</li>
+                        <li class="lead">Gross Domestic Product: ...</li>
+		    </ul>
+		    <h3 class="section-heading">Regional Equity</h3>
+		    <ul>
+                        <li class="lead">Unemployment Rate: ...</li>
+			<li class="lead">Poverty Rate: ...</li>
+			<li class="lead">Closings: ...</li>
+		    </ul>
+		    <h3 class="section-heading">Quality of Life</h3>
+		    <ul>
+                        <li class="lead">Cost of Living: ...</li>
+			<li class="lead">New Housing Costs: ...</li>
+			<li class="lead">Average Commute Time: ...</li>
+			<li class="lead">Jobs-Employed Resident Ratio: ...</li>
+		    </ul>
+		    <h3 class="section-heading">Entrepreneurship and Innovation</h3>
+		    <ul>
+                        <li class="lead">New Business Starts: ...</li>
+                        <li class="lead">Stage II Establishments: ...</li>
+                        <li class="lead">SBIR Grants: ...</li>
+                        <li class="lead">STEM Employment: ...</li>
+                        <li class="lead">Broadband Access: ...</li>
+                        <li class="lead">Churn Rate: ...</li>
+		    </ul>
+		</div>
 		</div>
         </div>
     </div>
