@@ -5,17 +5,13 @@
 
 //Loads all resources on page load
 window.onload = allResources();
+
+//clears filters for new input
 function clearResources(){
 	document.getElementById('myCounty').value="";
 	document.getElementById('myPhase').value="";
 	document.getElementById('myService').value="";
-
-	//Clears table of resources
-	var tableRef = document.getElementById('table_body');
-	while ( tableRef.rows.length > 0 )
-	{
-	 tableRef.deleteRow(0);
-	}
+	allResources();
 };
 //Filters all resources
 function allResources() {
