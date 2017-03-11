@@ -5,7 +5,18 @@
 
 //Loads all resources on page load
 window.onload = allResources();
+function clearResources(){
+	document.getElementById('myCounty').value="";
+	document.getElementById('myPhase').value="";
+	document.getElementById('myService').value="";
 
+	//Clears table of resources
+	var tableRef = document.getElementById('table_body');
+	while ( tableRef.rows.length > 0 )
+	{
+	 tableRef.deleteRow(0);
+	}
+};
 //Filters all resources
 function allResources() {
 
@@ -63,13 +74,42 @@ rootref.child("Resources").on("child_added", snap => {
   var phase = snap.child("phase").val();
 
 //creates table based on user inputs
-if(county == countyVal && phase == phaseVal && service == serviceVal) {
+if(countyVal == county && phaseVal == phase && serviceVal == service) {
+	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+}
+else if (countyVal == county && phaseVal == false && serviceVal == false){
+	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+}
+else if (countyVal == county && phaseVal == phase && serviceVal == false){
+	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+}
+else if (countyVal == county && phaseVal == false && serviceVal == service){
+	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+}
+else if (countyVal == false && phaseVal == phase && serviceVal == false){
+	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+}
+else if (countyVal == false && phaseVal == phase && serviceVal == service){
 	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
 						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
 						  "</a></td><td>" + notes + "</td></tr>");
 }
 
-
+else if (countyVal == false && phaseVal == false && serviceVal == service){
+	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
+						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+						  "</a></td><td>" + notes + "</td></tr>");
+}
 
 
 
