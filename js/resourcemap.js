@@ -161,3 +161,27 @@ function codeAddress(i){
 	}
 	
    }
+// function addAdressesToMap(){
+  //var addresses = firebase.database().ref('Resources').orderByKey();
+  //addresses.once('value', snapshot){
+  	//var addressArray = new Array();
+  	//snapshot.forEach(function(childSnapshot){
+  	// var addr = childSnapshot.key;
+  	// var childData = key;
+  	//addressArray.push(childData);
+  //})
+    //createmap(addressArray);
+  //}
+//}
+
+//function createmap(aArray){
+  //for(q=0;q<aArray.length;q++){
+    //var ref = firebase.database().reference('Resources').child(aArray[q]);
+    // ref.once('value', function('snapshot'){
+      //var refval = ref.val();
+      //var address = refval.address;
+      //var name = refval.name;
+      //var phone = refval.phone
+    //})
+  //}
+//}
