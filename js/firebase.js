@@ -17,17 +17,7 @@
 
 
 var rootref = firebase.database().ref();
-firebase.auth().onAuthStateChanged((user) => {
-  var adminHeader = document.getElementById("admin");
-  if (user) {
-    console.log(user.email);
 
-    adminHeader.innerText = user.email
-  }
-  else {
-    adminHeader.innerText = ""
-  }
-});
 
 //Add resources to database
 	var county = document.getElementById("county");
@@ -68,6 +58,8 @@ const btnSignUp = document.getElementById('btnSignUp');
 const btnLogout = document.getElementById('btnLogout');
 const adminTools = document.getElementById('adminTools');
 const adminMsg = document.getElementById('adminMsg');
+const loginForm = document.getElementById('loginForm');
+  var adminHeader = document.getElementById("admin");
 
 
 //Add login event
@@ -96,11 +88,19 @@ auth.onAuthStateChanged(firebaseUser => {
 		btnLogout.classList.remove('hide');
     adminTools.classList.remove('hide');
     adminMsg.classList.add('hide');
+    loginForm.classList.add('hide');
+
+    console.log(firebaseUser.email);
+    adminHeader.innerText = firebaseUser.email
+
 	} else {
 		console.log('not logged in');
 		btnLogout.classList.add('hide');
     adminTools.classList.add('hide');
     adminMsg.classList.remove('hide');
+    loginForm.classList.remove('hide');
+
+    adminHeader.innerText = ""
 	}
 
 

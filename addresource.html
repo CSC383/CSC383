@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-	<script src="w3data.js"></script>
 <head>
 
     <meta charset="utf-8">
@@ -33,11 +32,32 @@
 
 <body>
 
-	<div w3-include-html="header.html"></div>
-	<script>w3IncludeHTML();</script>
+	<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+      <div class="container topnav">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand topnav" href="index.html">UM-Flint EDA University Center</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+								<li>
+									<a href="login.html">Admin</a>
+								</li>
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+  </nav>
 
     <!-- Header -->
-    <a name="about"></a>
     <div class="intro-header-contact">
         <div class="container">
 
@@ -67,100 +87,121 @@
         <h2 class="section-heading">Add Resources</h2>
 
 <!-- Contact Form -->
-<form id="contact-form">
-    <div class="messages"></div>
-    <div class="controls">
+						<form id="contact-form">
+						    <div class="controls">
+						        <div class="row">
+						            <div class="col-md-6">
+						                <div class="form-group">
+						                    <label for="form_name">County</label>
+						                    <select id="county" required="required">
+																	<option value="">
+																	<option value="Genesee">Genesee
+																	<option value="Lapeer">Lapeer
+																	<option value="Shiawassee">Shiawassee
+																	<option value="St. Clair">St. Clair
+																	<option value="Tuscola">Tuscola
+																	<option value="Sanilac">Sanilac
+																	<option value="Huron">Huron
+																</select>
+						                </div>
+						            </div>
+						         </div>
+										 <div class="row">
+												<div class="col-md-6">
+														<div class="form-group">
+																<label for="form_name">Phase</label>
+																<select id="phase" required="required">
+																 <option value="">
+																 <option value="idea">Idea
+																 <option value="startup">Startup
+																 <option value="veteran">Veteran
+															 </select>
+														</div>
+												</div>
+										 </div>
+										 <div class="row">
+												<div class="col-md-6">
+														<div class="form-group">
+																<label for="form_name">Service</label>
+																<select id="service" required="required">
+																 <option value="">
+																 <option value="office space">Office Space
+																 <option value="maker space">Maker Space
+																 <option value="kitchen/market">Kitchen/Market
+																 <option value="workshops/competitions">Counseling
+																 <option value="funding">Funding
+																 <option value="professional services">Professional Services
+																 <option value="real estate assistance">Real Estate Assistance
+															 </select>
+														</div>
+												</div>
+										 </div>
+						         <div class="row">
+						            <div class="col-md-6">
+						                <div class="form-group">
+						                    <label for="form_name">Name</label>
+						                    <input id="name" type="text" class="form-control" placeholder="Please enter name" >
+						                </div>
+						            </div>
+						         </div>
+						         <div class="row">
+						            <div class="col-md-6">
+						                <div class="form-group">
+						                    <label for="form_name">Contact</label>
+						                    <input id="contact" type="text" class="form-control" placeholder="Please enter contact" >
+						                </div>
+						            </div>
+						         </div>
+						         <div class="row">
+						            <div class="col-md-6">
+						                <div class="form-group">
+						                    <label for="form_name">Url</label>
+						                    <input id="url" type="text" class="form-control" placeholder="Please enter company url" >
+						                </div>
+						            </div>
+						         </div>
+										 <div class="row">
+												<div class="col-md-6">
+														<div class="form-group">
+																<label for="form_name">Restrictions</label>
+																<textarea id="restriction" row="5" class="form-control" placeholder="Please enter restriction" ></textarea>
+														</div>
+												</div>
+										 </div>
+						         <div class="row">
+						            <div class="col-md-6">
+						                <div class="form-group">
+						                    <label for="form_name">Notes</label>
+						                    <textarea id="notes" rows="5" class="form-control" placeholder="Please enter notes" ></textarea>
+						                </div>
+						            </div>
+						         </div>
+						        <div class="row">
+						            <div class="col-md-4">
+						                <input id="addBtn" onClick="addResource()" type="submit" class="btn btn-success btn-send" value="Add">
+						            </div>
+						        </div>
+							</div>
+						</form>
+						<span class="help-block">Once finished, return to admin screen to logout!</span>
+						<div class="row">
+						<div class="col-md-4">
+							<a href="admin.html"><button class="btn btn-success btn-send">Return to Admin</button></a>
+						</div>
+					</div>
+			</div>
+	</div>
+</div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_name">County</label>
-                    <input id="county" type="text" class="form-control" placeholder="Please enter county" >
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_name">Name</label>
-                    <input id="name" type="text" class="form-control" placeholder="Please enter name" >
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_name">Contact</label>
-                    <input id="contact" type="text" class="form-control" placeholder="Please enter contact" >
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_name">Restrictions</label>
-                    <input id="restriction" type="text" class="form-control" placeholder="Please enter restriction" >
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_name">Url</label>
-                    <input id="url" type="text" class="form-control" placeholder="Please enter company url" >
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_name">Notes</label>
-                    <input id="notes" type="text" class="form-control" placeholder="Please enter notes" >
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_name">Phase</label>
-                    <input id="phase" type="text" class="form-control" placeholder="Please enter phase" >
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_name">Service</label>
-                    <input id="service" type="text" class="form-control" placeholder="Please enter service" >
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <input id="addBtn" onClick="addResource()" type="submit" class="btn btn-success btn-send" value="Add">
-            </div>
-        </div>
-    </div>
-    </div>
-</form>
+
 <!--/.Contact Form -->
 
-</div>
-</div>
+
 
 
 <!--/.Main Content-->
     <hr>
 
-	<a  name="contact"></a>
     <div class="banner">
 
         <div class="container">
