@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-	<script src="w3data.js"></script>
 <head>
+    <script src="js/jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load("header.html"); 
+    });
+    </script>  
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,9 +40,7 @@
 </head>
 
 <body>
-	<div w3-include-html="header.html"></div>
-	<script>w3IncludeHTML();</script>
-    
+	<div id="includedContent"></div>
     <!-- Header -->
     <a name="about"></a>
     <div class="intro-header-google-map">
