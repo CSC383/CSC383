@@ -128,7 +128,7 @@ function createMarker(latlng, name, address1, address2, phone, type){
 			  map: map,
 			  position: latlng,
 			  title: name,
-			  icon: "img/GMM/blue_Marker.png"
+			  icon: "img/GMM/space.png"
 		   });
    }
 		else if (type ==="Business Consultation"){
@@ -136,7 +136,7 @@ function createMarker(latlng, name, address1, address2, phone, type){
 			  map: map,
 			  position: latlng,
 			  title: name,
-			  icon: "img/GMM/brown_Marker.png"
+			  icon: "img/GMM/Business Consultation.png"
 		   });
 		}
 		else if (type === "Business Resource"){
@@ -144,7 +144,7 @@ function createMarker(latlng, name, address1, address2, phone, type){
 				  map: map,
 				  position: latlng,
 				  title: name,
-				  icon: "img/GMM/darkgreen_Marker.png"
+				  icon: "img/GMM/financial.png"
 			   });
 		}
 		else if (type ==="Information Resource"){	   
@@ -152,7 +152,7 @@ function createMarker(latlng, name, address1, address2, phone, type){
 				  map: map,
 				  position: latlng,
 				  title: name,
-				  icon: "img/GMM/green_Marker.png"
+				  icon: "img/GMM/Information.png"
 			   });
 		}
 		else if (type === "Legal"){
@@ -160,7 +160,7 @@ function createMarker(latlng, name, address1, address2, phone, type){
 				  map: map,
 				  position: latlng,
 				  title: name,
-				  icon: "img/GMM/orange_Marker.png"
+				  icon: "img/GMM/legal.png"
 			   });
 		}
 		else{
@@ -168,7 +168,7 @@ function createMarker(latlng, name, address1, address2, phone, type){
 				  map: map,
 				  position: latlng,
 				  title: name,
-				  icon: "img/GMM/yellow_Marker.png"
+				  icon: "img/GMM/contract.png"
 			   });
    }		   
    //click on a marker
