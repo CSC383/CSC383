@@ -29,7 +29,8 @@ var rootref = firebase.database().ref();
 	var service = document.getElementById("service");
 	var phase = document.getElementById("phase");
 	var addBtn = document.getElementById("addBtn");
-
+	var address = document.getElementById("address");
+	var phone = document.getElementById("phone");
 
 
 function addResource () {
@@ -42,8 +43,9 @@ function addResource () {
       notes: ""+ notes.value +"",
       url: ""+ url.value +"",
       service: ""+ service.value +"",
-      phase: ""+ phase.value +""
-
+      phase: ""+ phase.value +"",
+      address: ""+ address.value +"",
+      phone: ""+ phone.value +""
     });
 	}
 
