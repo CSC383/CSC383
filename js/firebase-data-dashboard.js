@@ -19,9 +19,9 @@ window.onload = function(){
 		var churn_rate_ref = firebase.database().ref('data_dashboard').child('churn_rate');
 		churn_rate_ref.on('value', snap => churn_rate.innerText = snap.val());
 	
-		var closings = document.getElementById('churn_rate')
-		var churn_rate_ref = firebase.database().ref('data_dashboard').child('churn_rate');
-		churn_rate_ref.on('value', snap => churn_rate.innerText = snap.val());
+		var closings = document.getElementById('closings')
+		var closings_ref = firebase.database().ref('data_dashboard').child('closings');
+		closings_ref.on('value', snap => closings.innerText = snap.val());
 	
 		var cost_of_living = document.getElementById('cost_of_living')
 		var cost_of_living_ref = firebase.database().ref('data_dashboard').child('cost_of_living');
