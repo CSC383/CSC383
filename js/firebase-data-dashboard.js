@@ -31,9 +31,9 @@ window.onload = function(){
 		var gross_domestic_product_ref = firebase.database().ref('data_dashboard').child('gross_domestic_product');
 		gross_domestic_product_ref.on('value', snap => gross_domestic_product.innerText = snap.val());
 	
-		var jobs_employed_ratio = document.getElementById('jobs_employed_ratio')
-		var jobs_employed_ratio_ref = firebase.database().ref('data_dashboard').child('jobs_employed_ratio');
-		jobs_employed_ratio_ref.on('value', snap => jobs_employed_ratio.innerText = snap.val());
+		var jobs_employed_resident_ratio = document.getElementById('jobs_employed_resident_ratio')
+		var jobs_employed_resident_ratio_ref = firebase.database().ref('data_dashboard').child('jobs_employed_resident_ratio');
+		jobs_employed_resident_ratio_ref.on('value', snap => jobs_employed_resident_ratio.innerText = snap.val());
 	
 		var new_business_starts = document.getElementById('new_business_starts')
 		var new_business_starts_ref = firebase.database().ref('data_dashboard').child('new_business_starts');
