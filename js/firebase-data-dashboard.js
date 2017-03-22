@@ -1,6 +1,6 @@
 window.onload = function(){
 		var labor_force_size = document.getElementById('labor_force_size')
-		int labor_force_size_ref = firebase.database().ref('data_dashboard').child('labor_force_size');
+		var labor_force_size_ref = parseInt(firebase.database().ref('data_dashboard').child('labor_force_size'), 10);
 		labor_force_size_ref.on('value', snap => labor_force_size.innerText = snap.val());
 	
 		var average_annual_wage = document.getElementById('average_annual_wage')
@@ -70,7 +70,7 @@ window.onload = function(){
 			labels: ["Two", "Average Wage", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 			datasets: [{
 			    label: 'Test Bar Graph',
-			    data: [2, parseInt(average_annual_wage_ref), average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+			    data: [2, parseInt(average_annual_wage_ref, 10), average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
 				backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
