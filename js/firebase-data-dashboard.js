@@ -63,14 +63,17 @@ window.onload = function(){
 		var unemployment_rate_ref = firebase.database().ref('data_dashboard').child('unemployment_rate');
 		unemployment_rate_ref.on('value', snap => unemployment_rate.innerText = snap.val());
 	
+		var chart_variable = 0;
+		unemployment_rate_ref.on('value', snap => chart_variable = parseInt(snap.val()));
+	
 		var ctx = document.getElementById("myChart");
 		var myChart = new Chart(ctx, {
 		    type: 'bar',
 		    data: {
-			labels: ["Two", "Average Wage", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 			datasets: [{
 			    label: 'Test Bar Graph',
-			    data: [2, average_annual_wage_ref, average_annual_commute_time_ref, parseInt(labor_force_size.innerText), broadband_access_ref, churn_rate_ref],
+			    data: [2, chart_variable, average_annual_commute_time_ref, parseInt(labor_force_size.innerText), broadband_access_ref, churn_rate_ref],
 				backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
