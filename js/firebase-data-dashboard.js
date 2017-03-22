@@ -70,7 +70,7 @@ window.onload = function(){
 			labels: ["Two", "Average Wage", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 			datasets: [{
 			    label: 'Test Bar Graph',
-			    data: [2, average_annual_wage_ref, average_annual_commute_time_ref.child("value").val(), labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+			    data: [2, average_annual_wage_ref, average_annual_commute_time_ref, parseInt(labor_force_size.innerText), broadband_access_ref, churn_rate_ref],
 				backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
