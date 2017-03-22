@@ -69,8 +69,8 @@ window.onload = function(){
 		    data: {
 			labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
 			datasets: [{
-			    label: '# of Votes',
-			    data: [average_annual_wage_ref, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+			    label: 'Test Bar Graph',
+			    data: [2, average_annual_wage_ref, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
 				backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
