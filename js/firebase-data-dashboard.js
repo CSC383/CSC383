@@ -70,8 +70,8 @@ window.onload = function(){
 			labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
 			datasets: [{
 			    label: '# of Votes',
-			    data: [3, 3, labor_force_size_ref, 3, 3],
-			    backgroundColor: [
+			    data: [average_annual_wage_ref, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+				backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
 				'rgba(255, 206, 86, 0.2)',
