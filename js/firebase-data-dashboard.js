@@ -67,7 +67,7 @@ window.onload = function(){
 		var myChart = new Chart(ctx, {
 		    type: 'bar',
 		    data: {
-			labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+			labels: ["Two", "Average Wage", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 			datasets: [{
 			    label: 'Test Bar Graph',
 			    data: [2, average_annual_wage_ref, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
