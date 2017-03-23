@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+	<script src="w3data.js"></script>
 <head>
-    <script src="js/jquery.js"></script> 
-    <script> 
-    $(function(){
-      $("#header").load("header.html"); 
-    });
-    </script>
-	
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +32,8 @@
 </head>
 
 <body>
-    <div id="header"></div>
+	<div w3-include-html="header.html"></div>
+	<script>w3IncludeHTML();</script>
 
     <!-- Header -->
     <a name="about"></a>
@@ -67,26 +63,25 @@
 <div class="container">
   <div class="row">
 		<div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-1">
-            	    <h2 class="section-heading">Video Learning</h2>
+            	    <h2 class="section-heading">Video One</h2>
 		</div>
-	</div>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-4 col-lg-offset-4.5 col-md-8 col-md-offset-5">
-			<ul >
-                        <li>
-                            <a href="video_one.html">Video One</a>
-                        </li>
-                        
-                        <li>
-                            <a href="video_two.html">Video Two</a>
-                        </li>
-                        
-                        
-                 	</ul>
-		 </div>
-	 </div>
+	
+
+	
+		<div style="margin-left: 14%; margin-right: 13%; margin-bottom: 5%;"> 
+			<!--<div class="col-lg-5 col-lg-offset-1 col-md-0 col-md-offset-0">-->
+				<!--<div style = "float: left; margin-left: 5px; margin-right 5px;">-->
+					<iframe src="https://player.vimeo.com/video/12345" width="700" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				<!--</div>
+			<!--</div>-->
+			<!--<div class="col-lg-0 col-lg-offset-2 col-md-3 col-md-offset-0">-->
+				<div style = "float: right;">
+					<iframe  src="img/JetSkiUndertaking.pdf" width="700" height="500" frameborder="0"  ></iframe>	
+				
+				</div>
+			<!--</div>-->	
+		</div>
+	
 </div>
 	<!--/.Main Content-->
     <hr>
