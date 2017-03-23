@@ -15,7 +15,7 @@
 
 }());
 
-
+//reference to firebase database
 var rootref = firebase.database().ref();
 
 
@@ -29,8 +29,6 @@ var rootref = firebase.database().ref();
 	var service = document.getElementById("service");
 	var phase = document.getElementById("phase");
 	var addBtn = document.getElementById("addBtn");
-
-
 
 function addResource () {
 
