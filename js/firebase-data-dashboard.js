@@ -66,13 +66,165 @@ window.onload = function(){
 		var chart_variable = 0;
 		unemployment_rate_ref.on('value', snap => chart_variable = parseInt(snap.val()));
 	
-		var ctx = document.getElementById("myChart");
+		var ctx = document.getElementById("myChart1");
 		var myChart = new Chart(ctx, {
 		    type: 'bar',
 		    data: {
 			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 			datasets: [{
 			    label: 'Test Bar Graph',
+			    data: [2, chart_variable, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+				backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			    ],
+			    borderColor: [
+				'rgba(255,99,132,1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+			    ],
+			    borderWidth: 1
+			}]
+		    },
+		    options: {
+			scales: {
+			    yAxes: [{
+				ticks: {
+				    beginAtZero:true
+				}
+			    }]
+			}
+		    }
+		});
+	
+	var dtx = document.getElementById("myChart2");
+		var myChart = new Chart(dtx, {
+		    type: 'line',
+		    data: {
+			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+			datasets: [{
+			    label: 'Test line Graph',
+			    data: [2, chart_variable, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+				backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			    ],
+			    borderColor: [
+				'rgba(255,99,132,1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+			    ],
+			    borderWidth: 1
+			}]
+		    },
+		    options: {
+			scales: {
+			    yAxes: [{
+				ticks: {
+				    beginAtZero:true
+				}
+			    }]
+			}
+		    }
+		});
+	
+	var etx = document.getElementById("myChart3");
+		var myChart = new Chart(etx, {
+		    type: 'pie',
+		    data: {
+			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+			datasets: [{
+			    label: 'Test Pie Chart',
+			    data: [2, chart_variable, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+				backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			    ],
+			    borderColor: [
+				'rgba(255,99,132,1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+			    ],
+			    borderWidth: 1
+			}]
+		    },
+		    options: {
+			scales: {
+			    yAxes: [{
+				ticks: {
+				    beginAtZero:true
+				}
+			    }]
+			}
+		    }
+		});
+	
+	var ftx = document.getElementById("myChart4");
+		var myChart = new Chart(ftx, {
+		    type: 'scatter',
+		    data: {
+			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+			datasets: [{
+			    label: 'Test Scatter Chart',
+			    data: [2, chart_variable, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+				backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			    ],
+			    borderColor: [
+				'rgba(255,99,132,1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+			    ],
+			    borderWidth: 1
+			}]
+		    },
+		    options: {
+			scales: {
+			    yAxes: [{
+				ticks: {
+				    beginAtZero:true
+				}
+			    }]
+			}
+		    }
+		});
+	
+	var gtx = document.getElementById("myChart5");
+		var myChart = new Chart(gtx, {
+		    type: 'bubble',
+		    data: {
+			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+			datasets: [{
+			    label: 'Test Bubble Graph',
 			    data: [2, chart_variable, average_annual_commute_time_ref, parseInt(labor_force_size.innerText), broadband_access_ref, churn_rate_ref],
 				backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
