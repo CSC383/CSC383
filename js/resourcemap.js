@@ -87,14 +87,7 @@ function init() {
    google.maps.event.addListener(map, 'click', function() {
       addressBar.close();
    });
-	var config = {
-    apiKey: "AIzaSyCFb9UeRylH8Wqj6CBcQq_yt39WIjrWQM8",
-    authDomain: "csc383-4ef7b.firebaseapp.com",
-    databaseURL: "https://csc383-4ef7b.firebaseio.com",
-    storageBucket: "csc383-4ef7b.appspot.com",
-    messagingSenderId: "159052970618"
-  };
-  firebase.initializeApp(config);
+	
    
 	// function called to create markers
    createMarkers();
@@ -130,7 +123,7 @@ function createMarkers(){
    // with fitBounds() function
    map.fitBounds(bounds);
 }
-
+//STEVE
 function addAdressesToMap(latlng, name, address1, address2, phone, type, i){
 	var addresses = firebase.database().ref('Resources').orderByKey();
 	addresses.once('value', function(snapshot){
@@ -144,7 +137,11 @@ function addAdressesToMap(latlng, name, address1, address2, phone, type, i){
 })
   
 }
-
+//STEVE
+//currently testing using name1 all other values created here aren't used
+//instead just passing values from arry through
+//name1 being set to one to avoid errors from being null during testing
+//name1 will output on all markers on map for testing purposes
 function createmap(aArray, latlng, name, address1, address2, phone, type, i){
 	var name1 = 1;
 	  var ref1 = firebase.database().ref('Resources').child(aArray[i]);
