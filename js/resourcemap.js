@@ -87,8 +87,16 @@ function init() {
    google.maps.event.addListener(map, 'click', function() {
       addressBar.close();
    });
-	
-   // function called to create markers
+	var config = {
+    apiKey: "AIzaSyCFb9UeRylH8Wqj6CBcQq_yt39WIjrWQM8",
+    authDomain: "csc383-4ef7b.firebaseapp.com",
+    databaseURL: "https://csc383-4ef7b.firebaseio.com",
+    storageBucket: "csc383-4ef7b.appspot.com",
+    messagingSenderId: "159052970618"
+  };
+  firebase.initializeApp(config);
+   
+	// function called to create markers
    createMarkers();
 	
 }
