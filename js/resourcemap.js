@@ -213,7 +213,7 @@ function createMarker(latlng, name, address1, address2, phone, type, name1){
          '<div class="iw_content">' + address1 + '<br />' +
          address2 + '<br />' +
          phone + '<br />' +
-         name1 + '</div></div>';
+         latlng + '</div></div>';
       
       // including content to the Info Window.
       addressBar.setContent(iwContent);
