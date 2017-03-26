@@ -95,6 +95,7 @@ google.maps.event.addDomListener(window, 'load', init);
 
 
 
+
 function createMarkers(){
 
    // this variable sets the map bounds according to markers position
@@ -110,7 +111,7 @@ function createMarkers(){
       var phone = markersData[i].phone;
 	  var type = markersData[i].type;
 	
-      createMarker(latlng, name, address1, address2, phone, type);
+      addAdressesToMap(latlng, name, address1, address2, phone, type, i);
 
       // marker position is added to bounds variable
       bounds.extend(latlng);  
@@ -121,8 +122,34 @@ function createMarkers(){
    map.fitBounds(bounds);
 }
 
+function addAdressesToMap(latlng, name, address1, address2, phone, type, i){
+	var addresses = firebase.database().ref('Resources').orderByKey();
+	addresses.once('value', function(snapshot){
+  	var addressArray = new Array();
+  	snapshot.forEach(function(childSnapshot){
+  	var addr = childSnapshot.key;
+  	var childData = addr;
+  	addressArray.push(childData);
+  })
+  createmap(addressArray, latlng, name, address1, address2, phone, type, i);  
+})
+  
+}
+
+function createmap(aArray, latlng, name, address1, address2, phone, type, i){
+	var name1 = 1;
+	  var ref1 = firebase.database().ref('Resources').child(aArray[i]);
+	  ref1.once('value', function(snapshot){
+      var refval = snapshot.val();
+      var addressA = refval.address;
+      name1 = refval.name;
+      var phone1 = refval.phone;
+    })
+  createMarker(latlng, name, address1, address2, phone, type, name1)
+}
+
 // creates marker and set Info Window content
-function createMarker(latlng, name, address1, address2, phone, type){
+function createMarker(latlng, name, address1, address2, phone, type, name1){
    if (type ==="Office Space"){
 		   var marker = new google.maps.Marker({
 			  map: map,
@@ -179,7 +206,8 @@ function createMarker(latlng, name, address1, address2, phone, type){
             '<div class="iw_title">' + name + '</div>' +
          '<div class="iw_content">' + address1 + '<br />' +
          address2 + '<br />' +
-         phone + '</div></div>';
+         phone + '<br />' +
+         name1 + '</div></div>';
       
       // including content to the Info Window.
       addressBar.setContent(iwContent);
