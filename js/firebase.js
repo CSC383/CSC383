@@ -29,12 +29,11 @@ var rootref = firebase.database().ref();
 	var service = document.getElementById("service");
 	var phase = document.getElementById("phase");
 	var addBtn = document.getElementById("addBtn");
-<<<<<<< HEAD
-=======
+
 	var address = document.getElementById("address");
 	var phone = document.getElementById("phone");
 
->>>>>>> 0e80343901ca48cceb004266efea509427312986
+
 
 function addResource () {
 
