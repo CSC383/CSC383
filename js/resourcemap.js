@@ -88,7 +88,8 @@ function init() {
       addressBar.close();
    });
 	
-   // function called to create markers
+   
+	// function called to create markers
    createMarkers();
 	
 }
@@ -112,7 +113,7 @@ function createMarkers(){
       var phone = markersData[i].phone;
 	  var type = markersData[i].type;
 	
-      addAdressesToMap(latlng, name, address1, address2, phone, type, i);
+      addAdressesToMap(i);
 
       // marker position is added to bounds variable
       bounds.extend(latlng);  
@@ -122,8 +123,8 @@ function createMarkers(){
    // with fitBounds() function
    map.fitBounds(bounds);
 }
-
-function addAdressesToMap(latlng, name, address1, address2, phone, type, i){
+//STEVE
+function addAdressesToMap(i){
 	var addresses = firebase.database().ref('Resources').orderByKey();
 	addresses.once('value', function(snapshot){
   	var addressArray = new Array();
@@ -132,25 +133,35 @@ function addAdressesToMap(latlng, name, address1, address2, phone, type, i){
   	var childData = addr;
   	addressArray.push(childData);
   })
-  createmap(addressArray, latlng, name, address1, address2, phone, type, i);  
+  createmap(addressArray, i);  
 })
   
 }
-
-function createmap(aArray, latlng, name, address1, address2, phone, type, i){
-	var name1 = 1;
+//STEVE
+//currently testing using name1 all other values created here aren't used
+//instead just passing values from arry through
+//name1 being set to one to avoid errors from being null during testing
+//name1 will output on all markers on map for testing purposes
+function createmap(aArray, i){
+	
 	  var ref1 = firebase.database().ref('Resources').child(aArray[i]);
 	  ref1.once('value', function(snapshot){
       var refval = snapshot.val();
-      var addressA = refval.address;
-      name1 = refval.name;
-      var phone1 = refval.phone;
+      var address = refval.address;
+	  //var latlng = refval.latlng;
+	  var lat = refval.lat;
+	  var lng = refval.lng;
+      var name = refval.name;
+      var phone = refval.phone;
+	  var type = refval.type;
+	  var latlng = new google.maps.LatLng(lat, lng);
+	  createMarker(latlng, name, address, phone, type)
     })
-  createMarker(latlng, name, address1, address2, phone, type, name1)
+  
 }
 
 // creates marker and set Info Window content
-function createMarker(latlng, name, address1, address2, phone, type, name1){
+function createMarker(latlng, name, address, phone, type){
    if (type ==="Office Space"){
 		   var marker = new google.maps.Marker({
 			  map: map,
@@ -205,10 +216,8 @@ function createMarker(latlng, name, address1, address2, phone, type, name1){
       //insert info to addressBar
       var iwContent = '<div id="iw_container">' +
             '<div class="iw_title">' + name + '</div>' +
-         '<div class="iw_content">' + address1 + '<br />' +
-         address2 + '<br />' +
-         phone + '<br />' +
-         name1 + '</div></div>';
+         '<div class="iw_content">' + address + '<br />' +
+         phone + '</div></div>';
       
       // including content to the Info Window.
       addressBar.setContent(iwContent);
