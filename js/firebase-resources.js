@@ -26,6 +26,7 @@ function allResources() {
 	//Pull resources from Firebase database
 	rootref.child("Resources").on("child_added", snap => {
 
+		var id = snap.key;
 		var county = snap.child("county").val();
 		var name = snap.child("name").val();
 		var contact = snap.child("contact").val();

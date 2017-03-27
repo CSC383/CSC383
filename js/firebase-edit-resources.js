@@ -6,6 +6,13 @@
 //Loads all resources on page load
 window.onload = allResources();
 
+
+function deleteResource(id) {
+	rootref.child("Resources").child("Kf2G7HJyd3GZTJowYq2").remove();
+
+	allResources();
+};
+
 //clears filters for new input
 function clearResources(){
 	document.getElementById('myCounty').value="";
@@ -24,8 +31,9 @@ function allResources() {
 	}
 
 	//Pull resources from Firebase database
-	rootref.child("Resources").on("child_added", snap => {
+	rootref.child("Resources").on("child_added", function(snap) {
 
+		var id = snap.key;
 		var county = snap.child("county").val();
 		var name = snap.child("name").val();
 		var contact = snap.child("contact").val();
@@ -39,7 +47,8 @@ function allResources() {
 		//Creates table with resources pulled from firebase
 		$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
 							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td></tr>");
+							  "</a></td><td>" + notes + "</td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource("+ id +")'></td></tr>");
+								console.log(id);
 		});
 };
 
@@ -58,7 +67,7 @@ var phaseVal = document .getElementById("myPhase").value;
 var countyVal = document.getElementById("myCounty").value;
 
 //Pull resources from Firebase database
-rootref.child("Resources").on("child_added", snap => {
+rootref.child("Resources").on("child_added", function(snap) {
 
 	var county = snap.child("county").val();
 	var name = snap.child("name").val();
