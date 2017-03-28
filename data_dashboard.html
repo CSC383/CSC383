@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="js/jquery.js"></script> 
+    <!-- <script src="js/jquery.js"></script> -->
     <script> 
     $(function(){
       $("#header").load("header.html"); 
@@ -37,6 +37,29 @@
 </head>
 
 <body>
+	<div id="collapseOne" class="panel-collapse collapse">
+		<ul class="list-group">
+			<li class="list-group-item"><span class="glyphicon glyphicon-file"></span><a data-toggle="collapse" data-parent="#accordian" href="#collapseOne1">City of Flint Oak Business Center</a>
+				<div id="collapseOne1" class="collapse">
+					<ul class="list-group">
+						<li class="List-group-item">
+							<div class="panel-body">
+								<table class="table">
+									<tr><th><h3>City of Flint Oak Business Center</h3></th></tr>
+									<tr>
+										<td>
+											<p class="lead">810-235-5555</p>
+											<a href="https://www.cityofflint.com/OakBC/oakBC.html">www.cityofflint.com/OakBC/oakBC.html</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
     <div id="header"></div>
 	
     <!-- Header -->
@@ -69,14 +92,14 @@
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 		    <br>
             	    <h2 class="section-heading">Data Dashboard</h2>
-		<canvas id="myChart1" width="200" height="200"></canvas>
-		<canvas id="myChart2" width="200" height="200"></canvas>
-		<canvas id="myChart3" width="200" height="200"></canvas>
+		<canvas id="myChart1"></canvas>
+		<canvas id="myChart2"></canvas>
+		<!-- <canvas id="myChart3" width="200" height="200"></canvas>
 		<canvas id="myChart4" width="200" height="200"></canvas>
-		<canvas id="myChart5" width="200" height="200"></canvas>
+		<canvas id="myChart5" width="200" height="200"></canvas> -->
 		<table style="width:60%">
 			<tr>
-		    		<th class="section-heading">General Economic Performance</th>
+				<th class="section-heading"><h3>General Economic Performance</h3></th>
 			</tr>
 			<tr>
 				<td class="lead">Labor Force Size:</td>
@@ -91,7 +114,7 @@
 				<td id="gross_domestic_product" class="lead"></td>
 			</tr>
 			<tr>
-		    		<th class="section-heading">Regional Equity</th>
+		    		<th class="section-heading"><h3>Regional Equity</h3></th>
 			</tr>
 			<tr>
                         	<td class="lead">Unemployment Rate:</td>
@@ -106,7 +129,7 @@
 				<td id="closings" class="lead"></td>
 			</tr>
 			<tr>
-		    		<th class="section-heading">Quality of Life</th>
+		    		<th class="section-heading"><h3>Quality of Life</h3></th>
 			</tr>
 			<tr>
                         	<td class="lead">Cost of Living:</td>
@@ -125,7 +148,7 @@
                         	<td id="jobs_employed_resident_ratio" class="lead"></td>
 			</tr>
 			<tr>
-		    		<th class="section-heading">Entrepreneurship and Innovation</th>
+		    		<th class="section-heading"><h3>Entrepreneurship and Innovation</h3></th>
 			</tr>
 			<tr>
                         	<td class="lead">New Business Starts:</td>
@@ -212,6 +235,7 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/Chart.min.js"></script>
+	<script src="js/Chart.js"></script>
     <script src="js/customscript.js"></script>
     
 </body>

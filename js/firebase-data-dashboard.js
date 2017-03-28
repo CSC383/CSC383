@@ -73,7 +73,7 @@ window.onload = function(){
 			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 			datasets: [{
 			    label: 'Test Bar Graph',
-			    data: [2, chart_variable, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+			    data: [2, 3, 1, 4, 5, 3.5],
 				backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
@@ -93,6 +93,8 @@ window.onload = function(){
 			    borderWidth: 1
 			}]
 		    },
+		height: 150,
+		width: 150,
 		    options: {
 			scales: {
 			    yAxes: [{
@@ -108,10 +110,10 @@ window.onload = function(){
 		var myChart = new Chart(dtx, {
 		    type: 'line',
 		    data: {
-			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+			labels: ["Variable", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 			datasets: [{
 			    label: 'Test line Graph',
-			    data: [2, chart_variable, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+			    data: [2, 3, 5, 3, 3.5, 2],
 				backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
@@ -131,6 +133,8 @@ window.onload = function(){
 			    borderWidth: 1
 			}]
 		    },
+		height: 100,
+		width: 100,
 		    options: {
 			scales: {
 			    yAxes: [{
@@ -149,7 +153,7 @@ window.onload = function(){
 			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 			datasets: [{
 			    label: 'Test Pie Chart',
-			    data: [2, chart_variable, average_annual_commute_time_ref, labor_force_size_ref, broadband_access_ref, churn_rate_ref],
+			    data: [2, 3, 5, 3, 3.5, 2],
 				backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
@@ -169,6 +173,8 @@ window.onload = function(){
 			    borderWidth: 1
 			}]
 		    },
+		height: 75,
+		width: 75,
 		    options: {
 			scales: {
 			    yAxes: [{
