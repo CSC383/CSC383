@@ -133,8 +133,8 @@ window.onload = function(){
 			    borderWidth: 1
 			}]
 		    },
-		height: 150,
-		width: 150,
+		height: 100,
+		width: 100,
 		    options: {
 			scales: {
 			    yAxes: [{
@@ -173,8 +173,8 @@ window.onload = function(){
 			    borderWidth: 1
 			}]
 		    },
-		height: 150,
-		width: 150,
+		height: 75,
+		width: 75,
 		    options: {
 			scales: {
 			    yAxes: [{
