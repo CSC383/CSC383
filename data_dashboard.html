@@ -64,17 +64,16 @@
     <!-- /.intro-header -->
 
     <!-- Main Content -->
-	<div class="container">
-      <div class="row">
+    <div class="container">
+	    <div class="row">
     	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           <div class="panel-group" id="accordion">
             <div class="panel panel-default">
 
               <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                <h4 class="panel-title">
-                  <span class="glyphicon glyphicon-folder-close">
-                    </span><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Space</a>
-                </h4>
+                <h3 class="panel-title">
+			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">General Economic Performance</a>
+                </h3>
               </div>
               <div id="collapseOne" class="panel-collapse collapse">
                 <ul class="list-group">
@@ -85,16 +84,23 @@
                       			<div class="panel-body">
                             	<table class="table">
                                 <tr>
-                                	<th>
-                                	<h3>City of Flint Oak Business Center</h3>
-                                	</th>
-                                </tr>
-                                <tr>
-                                	<td>
-                                		<p class="lead">810-235-5555</p>
-						<a href="https://www.cityofflint.com/OakBC/oakBC.html">www.cityofflint.com/OakBC/oakBC.html</a>
-                                	</td>
-                                </tr>
+				<th class="section-heading"><h3>General Economic Performance</h3></th>
+			</tr>
+			<tr>
+				<td class="lead">Labor Force Size:</td>
+				<td id="labor_force_size" class="lead"></td>
+			</tr>
+			<tr>
+                        	<td class="lead">Average Annual Wage:</td>
+                        	<td id="average_annual_wage" class="lead"></td>
+			</tr>
+			<tr>
+                        	<td class="lead">Gross Domestic Product:</td>
+				<td id="gross_domestic_product" class="lead"></td>
+			</tr>
+			<tr>
+				<td><canvas id="myChart1"></canvas></td>
+			</tr>
                                 </table>
                       			</div>
                       		</li>
@@ -107,8 +113,6 @@
         </div>
     	</div>
 	</div>
-</div>
-    <div class="container">
         <div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 		    <br>
