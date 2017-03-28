@@ -70,7 +70,7 @@ window.onload = function(){
 		var myChart = new Chart(ctx, {
 		    type: 'bar',
 		    data: {
-			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+			labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 			datasets: [{
 			    label: 'Test Bar Graph',
 			    data: [2, 3, 1, 4, 5, 3.5],
@@ -93,8 +93,6 @@ window.onload = function(){
 			    borderWidth: 1
 			}]
 		    },
-		height: 150,
-		width: 150,
 		    options: {
 			scales: {
 			    yAxes: [{
@@ -110,7 +108,7 @@ window.onload = function(){
 		var myChart = new Chart(dtx, {
 		    type: 'line',
 		    data: {
-			labels: ["Variable", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+			labels: ["2015", "2013", "2014", "2015", "2016", "2017"],
 			datasets: [{
 			    label: 'Test line Graph',
 			    data: [2, 3, 5, 3, 3.5, 2],
@@ -133,8 +131,6 @@ window.onload = function(){
 			    borderWidth: 1
 			}]
 		    },
-		height: 100,
-		width: 100,
 		    options: {
 			scales: {
 			    yAxes: [{
@@ -173,8 +169,6 @@ window.onload = function(){
 			    borderWidth: 1
 			}]
 		    },
-		height: 75,
-		width: 75,
 		    options: {
 			scales: {
 			    yAxes: [{
