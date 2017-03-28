@@ -5,11 +5,12 @@
 
 //Loads all resources on page load
 window.onload = allResources();
-
+var resourceRef = firebase.database();
 
 function deleteResource(id) {
-	rootref.child("Resources").child("Kf2G7HJyd3GZTJowYq2").remove();
-
+	var resourceID = "-" + id;
+	resourceRef.ref("Resources").child(""+resourceID+"").remove();
+	console.log(resourceID);
 	allResources();
 };
 
@@ -34,6 +35,7 @@ function allResources() {
 	rootref.child("Resources").on("child_added", function(snap) {
 
 		var id = snap.key;
+		var stringID = id.toString();
 		var county = snap.child("county").val();
 		var name = snap.child("name").val();
 		var contact = snap.child("contact").val();
@@ -47,8 +49,9 @@ function allResources() {
 		//Creates table with resources pulled from firebase
 		$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
 							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource("+ id +")'></td></tr>");
+							  "</a></td><td>" + notes + "</td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource("+ stringID +")'></input></td></tr>");
 								console.log(id);
+								console.log(stringID);
 		});
 };
 
