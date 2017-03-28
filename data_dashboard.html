@@ -66,14 +66,10 @@
     <!-- Main Content -->
     <div class="container">
         <div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 		    <br>
             	    <h2 class="section-heading">Data Dashboard</h2>
-			<!--<div class="row">
-    	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <div class="panel-group" id="accordion">-->
             <div class="panel panel-default">
-
               <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                 <h3 class="panel-title">
 			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">General Economic Performance</a>
@@ -99,11 +95,101 @@
                       </table>
                     </div>
                   </div>
-                </div>
+
+	
+	<div class="panel panel-default">
+              <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <h3 class="panel-title">
+			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Regional Equity</a>
+                </h3>
               </div>
-    	    </div>
-	  </div>
-		<table style="width:75%">
+              <div id="collapseOne" class="panel-collapse collapse">
+		      <table class="table">
+			<tr>
+                        	<td class="lead">Unemployment Rate:</td>
+				<td id="unemployment_rate" class="lead"></td>
+			</tr>
+			<tr>
+				<td class="lead">Poverty Rate:</td>
+				<td id="poverty_rate" class="lead"></td>
+			</tr>
+			<tr>
+				<td class="lead">Closings:</td>
+				<td id="closings" class="lead"></td>
+			</tr>
+			<tr>
+				<td><canvas id="myChart2"></canvas></td>
+			</tr>
+                      </table>
+                    </div>
+                  </div>
+
+
+<div class="panel panel-default">
+              <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <h3 class="panel-title">
+			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Quality of Life</a>
+                </h3>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse">
+		      <table class="table">
+			<tr>
+                        	<td class="lead">Cost of Living:</td>
+                        	<td id="cost_of_living" class="lead"></td>
+			</tr>
+			<tr>
+				<td class="lead">New Housing Costs:</td>
+                        	<td id="new_housing_costs" class="lead"></td>
+			</tr>
+			<tr>
+				<td class="lead">Average Annual Commute Time:</td>
+                        	<td id="average_annual_commute_time" class="lead"></td>
+			</tr>
+			<tr>
+				<td class="lead">Jobs-Employed Resident Ratio:</td>
+                        	<td id="jobs_employed_resident_ratio" class="lead"></td>
+			</tr>
+                      </table>
+                    </div>
+                  </div>
+		
+		<div class="panel panel-default">
+              <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <h3 class="panel-title">
+			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Entrepreneurship and Innovation</a>
+                </h3>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse">
+		      <table class="table">
+			<tr>
+                        	<td class="lead">New Business Starts:</td>
+                        	<td id="new_business_starts" class="lead"></td>
+			</tr>
+			<tr>
+                        	<td class="lead">Stage II Establishments:</td>
+                        	<td id="stage_ii_establishments" class="lead"></td>
+			</tr>
+			<tr>
+                        	<td class="lead">SBIR Grants:</td>
+                        	<td id="sbir_grants" class="lead"></td>
+			</tr>
+			<tr>
+                        	<td class="lead">STEM Employment:</td>
+                        	<td id="stem_employment" class="lead"></td>
+			</tr>
+			<tr>
+                        	<td class="lead">Broadband Access:</td>
+                        	<td id="broadband_access" class="lead"></td>
+			</tr>
+			<tr>
+                        	<td class="lead">Churn Rate:</td>
+                        	<td id="churn_rate" class="lead"></td>
+			</tr>
+                      </table>
+                    </div>
+                  </div>
+		
+		<!--<table style="width:75%">
 			<tr>
 				<th class="section-heading"><h3>General Economic Performance</h3></th>
 			</tr>
@@ -186,7 +272,7 @@
                         	<td class="lead">Churn Rate:</td>
                         	<td id="churn_rate" class="lead"></td>
 			</tr>
-		</table>
+		</table> -->
 		</div>
         </div>
     </div>
