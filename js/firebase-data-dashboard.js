@@ -167,7 +167,11 @@ window.onload = function(){
 	var myPieChart = new Chart(etx,{
     		type: 'pie',
     		data: pie_data,
-    		options: options
+    		options: {
+        		animation:{
+            			animateScale:true
+        		}
+    		}
 	});
 	
 	var ftx = document.getElementById("myChart4");
