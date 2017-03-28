@@ -196,14 +196,14 @@ window.onload = function(){
 			label: 'Second Dataset',
 			data: [
 				{
-					x: 50,
+					x: 5,
 					y: 25,
 					r: 30
 				},
 				{
-					x: 5,
-					y: 30,
-					r: 30
+					x: 15,
+					y: 15,
+					r: 20
 				}
 			],
 			backgroundColor:"#36A2EB",
