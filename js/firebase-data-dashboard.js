@@ -142,43 +142,33 @@ window.onload = function(){
 		    }
 		});
 	
+	var pie_data = {
+    		labels: [
+        	"Variable One",
+        	"Variable Two",
+        	"Variable Three"
+    		],
+    		datasets: [
+        	{
+            	data: [300, 50, 100],
+            	backgroundColor: [
+                	"#FF6384",
+                	"#36A2EB",
+                	"#FFCE56"
+            	],
+           	 hoverBackgroundColor: [
+                	"#FF6384",
+                	"#36A2EB",
+                	"#FFCE56"
+            	]
+        	}]
+	};
 	var etx = document.getElementById("myChart3");
-		var myChart = new Chart(etx, {
-		    type: 'pie',
-		    data: {
-			labels: ["Two", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
-			datasets: [{
-			    label: 'Test Pie Chart',
-			    data: [2, 3, 5, 3, 3.5, 2],
-				backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-			    ],
-			    borderColor: [
-				'rgba(255,99,132,1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-			    ],
-			    borderWidth: 1
-			}]
-		    },
-		    options: {
-			scales: {
-			    yAxes: [{
-				ticks: {
-				    beginAtZero:true
-				}
-			    }]
-			}
-		    }
-		});
+	var myPieChart = new Chart(etx,{
+    		type: 'pie',
+    		data: pie_data,
+    		options: options
+	});
 	
 	var ftx = document.getElementById("myChart4");
 		var myChart = new Chart(ftx, {
