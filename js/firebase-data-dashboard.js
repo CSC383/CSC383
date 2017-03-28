@@ -191,6 +191,23 @@ window.onload = function(){
 			],
 			backgroundColor:"#FF6384",
 			hoverBackgroundColor: "#FF6384",
+		}],
+		[{
+			label: 'Second Dataset',
+			data: [
+				{
+					x: 50,
+					y: 25,
+					r: 30
+				},
+				{
+					x: 5,
+					y: 30,
+					r: 30
+				}
+			],
+			backgroundColor:"#FF6384",
+			hoverBackgroundColor: "#FF6384",
 		}]
 	};
 	
