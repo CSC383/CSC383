@@ -62,15 +62,18 @@ window.onload = function(){
 		var unemployment_rate = document.getElementById('unemployment_rate')
 		var unemployment_rate_ref = firebase.database().ref('data_dashboard').child('unemployment_rate');
 		unemployment_rate_ref.on('value', snap => unemployment_rate.innerText = snap.val());
-
-		var ctx = document.getElementById("myChart1");
+	
+	
+		firebase.database().child("data_dashboard").child("unemployment_rate").on("value", snap => {	
+			var variable_one = snap.val();
+			var ctx = document.getElementById("myChart1");
 		var myChart = new Chart(ctx, {
 		    	type: 'bar',
 		    	data: {
 				labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 				datasets: [{
 			    		label: 'Test Bar Graph',
-			    		data: [2, 3, 1, 1, 5, 3],
+			    		data: [variable_one, 3, 1, 1, 5, 3],
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
 						'rgba(54, 162, 235, 0.2)',
@@ -100,6 +103,9 @@ window.onload = function(){
 				}
 		    	}
 		});
+		});
+		    
+		
 			
 	
 	var dtx = document.getElementById("myChart2");
