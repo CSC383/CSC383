@@ -62,10 +62,7 @@ window.onload = function(){
 		var unemployment_rate = document.getElementById('unemployment_rate')
 		var unemployment_rate_ref = firebase.database().ref('data_dashboard').child('unemployment_rate');
 		unemployment_rate_ref.on('value', snap => unemployment_rate.innerText = snap.val());
-	
-		var chart_variable = 0;
-		unemployment_rate_ref.on('value', snap => chart_variable = parseInt(snap.val()));
-	
+
 		var ctx = document.getElementById("myChart1");
 		var myChart = new Chart(ctx, {
 		    	type: 'bar',
@@ -103,8 +100,7 @@ window.onload = function(){
 				}
 		    	}
 		});
-	
-		
+			
 	
 	var dtx = document.getElementById("myChart2");
 		var myChart = new Chart(dtx, {
