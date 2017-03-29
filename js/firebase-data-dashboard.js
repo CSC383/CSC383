@@ -66,43 +66,57 @@ window.onload = function(){
 		var chart_variable = 0;
 		unemployment_rate_ref.on('value', snap => chart_variable = parseInt(snap.val()));
 	
-		var ctx = document.getElementById("myChart1");
-		var myChart = new Chart(ctx, {
-		    type: 'bar',
-		    data: {
-			labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
-			datasets: [{
-			    label: 'Test Bar Graph',
-			    data: [2, 3, 1, 4, 5, 3.5],
-				backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-			    ],
-			    borderColor: [
-				'rgba(255,99,132,1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-			    ],
-			    borderWidth: 1
-			}]
-		    },
-		    options: {
-			scales: {
-			    yAxes: [{
-				ticks: {
-				    beginAtZero:true
-				}
-			    }]
-			}
-		    }
+		firebase.database().child("data_dashboard").on("value", snap => {
+			var variable_one = snap.key;
+			var variable_two = snap.child("labor_force_size").val();
+			var variable_three = snap.child("average_annual_wage").val();
+			var variable_four= snap.child("unemployment_rate").val();
+			var variable_five = snap.child("stem_employment").val();
+			var variable_six = snap.child("stage_ii_establishments").val();
+			var variable_seven = snap.child("sbir_grants").val();
+			var variable_eight = snap.child("poverty_rate").val();
+	  		var variable_nine = snap.child("jobs_employed_resident_ratio").val();
+
+			var ctx = document.getElementById("myChart1");
+			var myChart = new Chart(ctx, {
+		    		type: 'bar',
+		    		data: {
+					labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+					datasets: [{
+			    			label: 'Test Bar Graph',
+			    			data: [variable_one, 3, 1, variable_three, 5, variable_five],
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(255, 159, 64, 0.2)'
+			    			],
+			    			borderColor: [
+							'rgba(255,99,132,1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(255, 159, 64, 1)'
+			    			],
+			    			borderWidth: 1
+					}]
+		    		},
+		    		options: {
+					scales: {
+			    			yAxes: [{
+							ticks: {
+				    				beginAtZero:true
+							}
+			    			}]
+					}
+		    		}
+			});
 		});
+	
+		
 	
 	var dtx = document.getElementById("myChart2");
 		var myChart = new Chart(dtx, {
