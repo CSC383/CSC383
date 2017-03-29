@@ -66,6 +66,7 @@ window.onload = function(){
 	
 		firebase.database().child("data_dashboard").child("unemployment_rate").on("value", snap => {	
 			var variable_one = snap.val();
+			console.log(variable_one);
 			var ctx = document.getElementById("myChart1");
 		var myChart = new Chart(ctx, {
 		    	type: 'bar',
