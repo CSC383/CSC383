@@ -70,7 +70,7 @@ window.onload = function(){
 				labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
 				datasets: [{
 			    		label: 'Test Bar Graph',
-			    		data: [2, 3, 1, 1 5, 3],
+			    		data: [2, 3, 1, 1, 5, 3],
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
 						'rgba(54, 162, 235, 0.2)',
