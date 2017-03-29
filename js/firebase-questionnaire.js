@@ -158,15 +158,15 @@ such as a professional downtown mailing address.`
 		option2: "Revenue/Sales",
 		option3: "Profits",
 		option4: "Losses",
-		help: `Gross revenue is
-Profit and loss can be determined by`
+		help: `Gross revenue is the amount the company gets paid for selling its products or services.
+Profit and loss can be determined by taking the Gross Revenue and subtracting costs to produce the product or service.`
 
 	};
 
 	var question11 = {
 		question: "How will your business or organization serve the community?",
 		option1: "manual",
-		help: "This question relates to whether or not you"
+		help: "This question relates to whether or not your company is able to identify and fill community needs with its product or services. "
 
 	};
 
@@ -223,9 +223,10 @@ own books, list whether you use Quickbooks or other software to help you?`
 
 	var question16 = {
 		question: "Which of the following does your business have?",
-		option1: "Commercial Banking account",
-		option2: "Doing Business as",
-		option3: "Employer identification number",
+		option1: "multiple choice",
+		option2: "Commercial Banking account",
+		option3: "Doing Business as",
+		option4: "Employer identification number",
 		help: `Commercial banking account is a specific business account that is separate from
 your personal banking account and is only used for business funds.
 
@@ -239,16 +240,17 @@ Businesses need to file for an EIN after they establish the company.`
 
 	var question17 = {
 		question: "Which Innovation Incubator services are of interest to you?",
-		option1: "Other",
-		option2: "Networking",
-		option3: "Information",
-		option4: "Web Access",
-		option5: "Mentoring",
-		option6: "Co-working Space",
-		option7: "Meeting Space",
-		option8: "Office Space",
-		option9: "Mailing Address",
-		option10: "Help on a business plan  or model",
+		option1: "multiple choice with input",
+		option2: "Other",
+		option3: "Networking",
+		option4: "Information",
+		option5: "Web Access",
+		option6: "Mentoring",
+		option7: "Co-working Space",
+		option8: "Meeting Space",
+		option9: "Office Space",
+		option10: "Mailing Address",
+		option11: "Help on a business plan  or model",
 		help: `Web Access is available through free WiFi access at the EDA University
 Center’s downtown Flint location. There are no computers available so
 clients must bring their own laptops and internet friendly dvices to
@@ -365,13 +367,14 @@ University Center’s downtown location.`
 //function that creates the html elements
 //for each question
 function createquestion(key){
-	var q = 0;
 	for (q = 0; q < key.length; q++){
 		//sets variable to the database location which scales with q
 		var dataref = firebase.database().ref('questions').child(key[q]);
 
 		//fires a function of the value of dataref
 		dataref.once('value', function(snapshot){
+
+			var something = snapshot.val();
 
 			var id = 'question' + (q+1) + ' ' + 'optional';
 			//sets the value of dataref to q_val
@@ -404,14 +407,25 @@ function createquestion(key){
 			new_check.style.cssFloat = "right";
 			new_div.appendChild(new_check);
 			new_check.onclick = function helpwindow(){
-					var openPrint = window.open('popup.html','Help Window','height=500,width=650');
+					var openPrint = window.open('popup.html','location=0,toolbar=0,menubar=0,Help Window');
 			    openPrint.onload = function() {
 			        var doc = openPrint.document;
 
 			        var newpre = document.createElement("pre");
 			        var newtext = document.createTextNode(q_val.help);
+							newpre.style.fontstyle = "Times New Roman"
 			        newpre.appendChild(newtext)
 			        doc.body.appendChild(newpre);
+
+							var close = document.createElement("button");
+							var text = document.createTextNode("Close");
+							close.appendChild(text);
+							close.style.width = "50px";
+							close.style.height = "25px";
+							close.onclick = function(){
+								openPrint.close();
+							}
+							newpre.after(close);
 			    };
 			}
 			//Creates the h2 element for the question to go into
@@ -426,7 +440,7 @@ function createquestion(key){
 			//creates a variable qual to the h2's innerText
 			//than makes variable which will show the question text and answer:
 			var h2 = qhead.innerText;
-			var name = h2 + " " + "Answer: ";
+			var name = h2;
 
 			//creates a new select element
 			//assigns it a class and name
@@ -518,22 +532,75 @@ function createquestion(key){
 								}
 
 						}
+							//code for multiple
+							else if(o_val == 'multiple choice'){
+								new_select.remove();
+								for(i=1;i<options.length;i++){
+									var newref = firebase.database().ref('questions').child(key[q]).child(options[i]);
+									newref.once('value',function(snapshot){
+										newval = snapshot.val();
+
+										var new_div = document.createElement('div');
+										new_div.setAttribute('id', 'container');
+										new_div.style.display = "table";
+										qhead.after(new_div);
+										var new_check = document.createElement('input');
+										new_check.setAttribute('type', 'checkbox');
+										new_check.setAttribute('name', name);
+										new_check.setAttribute('value', newval);
+										new_div.appendChild(new_check);
+										var new_label = document.createElement('LABEL');
+										new_check.after(new_label);
+										var text = document.createTextNode(newval);
+										new_label.appendChild(text);
+									})
+								}
+								for(i=0;i<options.length;i++){
+									var newref = firebase.database().ref('questions').child(key[q]).child(options[i]);
+									newref.once('value',function(snapshot){
+										newval = snapshot.val();
+										if((newval == "Other")||(newval == "other")){
+											otherchoice(name, new_div, id);
+										}
+									})
+
+								}
+							}
 							// if option1 equals other we know that the list of drop downs has an option
 							//saying other which means they should input their own option
 							else if(o_val =='Other'){
+								new_select.remove();
 								//create a for loop to create all option elements
 								for(i=0;i<options.length;i++){
-								var newref = firebase.database().ref('questions').child(key[q]).child(options[i]);
-								newref.once('value',function(snapshot){
-									newval = snapshot.val();
-									var new_option = document.createElement('option');
-									var text = document.createTextNode(newval);
-									new_option.appendChild(text);
-									new_select.appendChild(new_option);
+									var newref = firebase.database().ref('questions').child(key[q]).child(options[i]);
+									newref.once('value',function(snapshot){
+										newval = snapshot.val();
+
+										var new_div = document.createElement('div');
+										new_div.setAttribute('id', 'container');
+										new_div.style.display = "table";
+										qhead.after(new_div);
+										var new_check = document.createElement('input');
+										new_check.setAttribute('type', 'radio');
+										new_check.setAttribute('name', name);
+										new_check.setAttribute('value', newval);
+										new_div.appendChild(new_check);
+										var new_label = document.createElement('LABEL');
+										new_check.after(new_label);
+										var text = document.createTextNode(newval);
+										new_label.appendChild(text);
 								})
 								}
-							//invokes othercoice function to create the user input box
-							otherchoice(name, new_select, id);
+							//invokes other choice function to create the user input box
+								for(i=0;i<options.length;i++){
+									var newref = firebase.database().ref('questions').child(key[q]).child(options[i]);
+									newref.once('value',function(snapshot){
+										newval = snapshot.val();
+										if((newval == "Other")||(newval == "other")){
+											otherchoice(name, new_div, id);
+										}
+									})
+								}
 							}
 							//if option1 is none of those values we know there is nothing special about it
 							//so it will only create the options for the newly created select
@@ -577,7 +644,7 @@ function otherchoice(name, new_select, id){
 	var text = document.createTextNode("Enter your choice: ");
 	new_div.appendChild(text);
 	new_div.style.display = "inline-block";
-	new_select.after(new_div);
+	new_select.appendChild(new_div);
 
 	//creates input box
 	var manual = document.createElement('input');
