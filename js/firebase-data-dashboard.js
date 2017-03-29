@@ -66,18 +66,6 @@ window.onload = function(){
 		var chart_variable = 0;
 		unemployment_rate_ref.on('value', snap => chart_variable = parseInt(snap.val()));
 	
-		firebase.database().child("data_dashboard").on("value", snap => {
-			var variable_one = snap.key;
-			var variable_two = snap.child("labor_force_size").val();
-			var variable_three = snap.child("average_annual_wage").val();
-			var variable_four= snap.child("unemployment_rate").val();
-			var variable_five = snap.child("stem_employment").val();
-			var variable_six = snap.child("stage_ii_establishments").val();
-			var variable_seven = snap.child("sbir_grants").val();
-			var variable_eight = snap.child("poverty_rate").val();
-	  		var variable_nine = snap.child("jobs_employed_resident_ratio").val();
-		});
-	
 		var ctx = document.getElementById("myChart1");
 		var myChart = new Chart(ctx, {
 		    	type: 'bar',
