@@ -63,46 +63,51 @@ window.onload = function(){
 		var unemployment_rate_ref = firebase.database().ref('data_dashboard').child('unemployment_rate');
 		unemployment_rate_ref.on('value', snap => unemployment_rate.innerText = snap.val());
 	
-		var chart_variable = 0;
-		unemployment_rate_ref.on('value', snap => chart_variable = parseInt(snap.val()));
 	
-		var ctx = document.getElementById("myChart1");
+		firebase.database().ref("data_dashboard").child("unemployment_rate").on("value", snap => {	
+			var variable_one = snap.val();
+			console.log(variable_one);
+			var ctx = document.getElementById("myChart1");
 		var myChart = new Chart(ctx, {
-		    type: 'bar',
-		    data: {
-			labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
-			datasets: [{
-			    label: 'Test Bar Graph',
-			    data: [2, 3, 1, 4, 5, 3.5],
-				backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-			    ],
-			    borderColor: [
-				'rgba(255,99,132,1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-			    ],
-			    borderWidth: 1
-			}]
-		    },
-		    options: {
-			scales: {
-			    yAxes: [{
-				ticks: {
-				    beginAtZero:true
+		    	type: 'bar',
+		    	data: {
+				labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+				datasets: [{
+			    		label: 'Test Bar Graph',
+			    		data: [variable_one, 3, 1, 1, 5, 3],
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+			    		],
+			    		borderColor: [
+						'rgba(255,99,132,1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+			    		],
+			    		borderWidth: 1
+				}]
+		    	},
+		    	options: {
+				scales: {
+			    		yAxes: [{
+						ticks: {
+				    			beginAtZero:true
+						}
+			    		}]
 				}
-			    }]
-			}
-		    }
+		    	}
 		});
+		});
+		    
+		
+			
 	
 	var dtx = document.getElementById("myChart2");
 		var myChart = new Chart(dtx, {
