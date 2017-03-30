@@ -1,6 +1,7 @@
 var map;
 var addressBar;
 
+
 function init() {
    var mapOptions = {
       center: new google.maps.LatLng(43.020054,-83.693008),
