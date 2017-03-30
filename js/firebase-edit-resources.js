@@ -7,10 +7,35 @@
 window.onload = allResources();
 var resourceRef = firebase.database();
 
-function deleteResource(id) {
-	var resourceID = "-" + id;
-	console.log(resourceID);
-	resourceRef.ref("Resources").child(""+resourceID+"").remove();
+function updateResource(resourceID) {
+	var id = resourceID;
+	var county = id + "county";
+	var name = id + "name";
+	var contact = id + "contact";
+	var restriction = id + "restriction";
+	var notes = id + "notes";
+	var url = id + "url";
+
+	var countyUpdate = document.getElementById(county);
+	var nameUpdate = document.getElementById(name);
+	var contactUpdate = document.getElementById(contact);
+	var restrictionUpdate = document.getElementById(restriction);
+	var notesUpdate = document.getElementById(notes);
+	var urlUpdate = document.getElementById(url);
+
+	resourceRef.ref("Resources").child(id).update({
+		county: ""+ countyUpdate.value +"",
+		name: ""+ nameUpdate.value +"",
+		contact: ""+ contactUpdate.value + "",
+		restriction: ""+ restrictionUpdate.value +"",
+		notes: ""+ notesUpdate.value +"",
+		url: ""+ urlUpdate.value +""
+	});
+};
+
+function deleteResource(resourceID) {
+	var id = resourceID;
+	resourceRef.ref("Resources").child(""+id+"").remove();
 
 	allResources();
 };
@@ -35,6 +60,7 @@ function allResources() {
 	//Pull resources from Firebase database
 	rootref.child("Resources").on("child_added", function(snap) {
 
+		//store data from firebase to be used in table
 		var id = snap.key;
 		var stringID = id.toString();
 		var county = snap.child("county").val();
@@ -46,12 +72,9 @@ function allResources() {
 		var service = snap.child("service").val();
 	  var phase = snap.child("phase").val();
 
-
 		//Creates table with resources pulled from firebase
-		$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
-							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource("+ stringID +")'></input></td></tr>");
-
+		$("#table_body").append("<tr><td><input id='"+id+"county' type='text' class='form-control' value=\""+county+"\" ></input></td><td><input id='"+id+"name' type='text'  value=\""+name+"\" ></input></td><td><input id='"+id+"contact' type='text'  value=\""+contact+"\" ></input></td><td><input id='"+id+"restriction' type='text'  value=\""+restriction+"\" ></input></td><td><input id='"+id+"url' type='text'  value=\""+url+"\" ></input></td><td><input id='"+id+"notes' type='text'  value=\""+notes+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+		);
 		});
 };
 
@@ -72,6 +95,8 @@ var countyVal = document.getElementById("myCounty").value;
 //Pull resources from Firebase database
 rootref.child("Resources").on("child_added", function(snap) {
 
+	var id = snap.key;
+	var stringID = id.toString();
 	var county = snap.child("county").val();
 	var name = snap.child("name").val();
 	var contact = snap.child("contact").val();
@@ -83,40 +108,33 @@ rootref.child("Resources").on("child_added", function(snap) {
 
 //creates table based on user inputs
 if(countyVal == county && phaseVal == phase && serviceVal == service) {
-	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
-						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-						  "</a></td><td>" + notes + "</td></tr>");
+	$("#table_body").append("<tr><td><input id='"+id+"county' type='text' class='form-control' value=\""+county+"\" ></input></td><td><input id='"+id+"name' type='text'  value=\""+name+"\" ></input></td><td><input id='"+id+"contact' type='text'  value=\""+contact+"\" ></input></td><td><input id='"+id+"restriction' type='text'  value=\""+restriction+"\" ></input></td><td><input id='"+id+"url' type='text'  value=\""+url+"\" ></input></td><td><input id='"+id+"notes' type='text'  value=\""+notes+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+	);
 }
 else if (countyVal == county && phaseVal == false && serviceVal == false){
-	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
-						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-						  "</a></td><td>" + notes + "</td></tr>");
+	$("#table_body").append("<tr><td><input id='"+id+"county' type='text' class='form-control' value=\""+county+"\" ></input></td><td><input id='"+id+"name' type='text'  value=\""+name+"\" ></input></td><td><input id='"+id+"contact' type='text'  value=\""+contact+"\" ></input></td><td><input id='"+id+"restriction' type='text'  value=\""+restriction+"\" ></input></td><td><input id='"+id+"url' type='text'  value=\""+url+"\" ></input></td><td><input id='"+id+"notes' type='text'  value=\""+notes+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+	);
 }
 else if (countyVal == county && phaseVal == phase && serviceVal == false){
-	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
-						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-						  "</a></td><td>" + notes + "</td></tr>");
+	$("#table_body").append("<tr><td><input id='"+id+"county' type='text' class='form-control' value=\""+county+"\" ></input></td><td><input id='"+id+"name' type='text'  value=\""+name+"\" ></input></td><td><input id='"+id+"contact' type='text'  value=\""+contact+"\" ></input></td><td><input id='"+id+"restriction' type='text'  value=\""+restriction+"\" ></input></td><td><input id='"+id+"url' type='text'  value=\""+url+"\" ></input></td><td><input id='"+id+"notes' type='text'  value=\""+notes+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+	);
 }
 else if (countyVal == county && phaseVal == false && serviceVal == service){
-	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
-						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-						  "</a></td><td>" + notes + "</td></tr>");
+	$("#table_body").append("<tr><td><input id='"+id+"county' type='text' class='form-control' value=\""+county+"\" ></input></td><td><input id='"+id+"name' type='text'  value=\""+name+"\" ></input></td><td><input id='"+id+"contact' type='text'  value=\""+contact+"\" ></input></td><td><input id='"+id+"restriction' type='text'  value=\""+restriction+"\" ></input></td><td><input id='"+id+"url' type='text'  value=\""+url+"\" ></input></td><td><input id='"+id+"notes' type='text'  value=\""+notes+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+	);
 }
 else if (countyVal == false && phaseVal == phase && serviceVal == false){
-	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
-						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-						  "</a></td><td>" + notes + "</td></tr>");
+	$("#table_body").append("<tr><td><input id='"+id+"county' type='text' class='form-control' value=\""+county+"\" ></input></td><td><input id='"+id+"name' type='text'  value=\""+name+"\" ></input></td><td><input id='"+id+"contact' type='text'  value=\""+contact+"\" ></input></td><td><input id='"+id+"restriction' type='text'  value=\""+restriction+"\" ></input></td><td><input id='"+id+"url' type='text'  value=\""+url+"\" ></input></td><td><input id='"+id+"notes' type='text'  value=\""+notes+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+	);
 }
 else if (countyVal == false && phaseVal == phase && serviceVal == service){
-	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
-						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-						  "</a></td><td>" + notes + "</td></tr>");
+	$("#table_body").append("<tr><td><input id='"+id+"county' type='text' class='form-control' value=\""+county+"\" ></input></td><td><input id='"+id+"name' type='text'  value=\""+name+"\" ></input></td><td><input id='"+id+"contact' type='text'  value=\""+contact+"\" ></input></td><td><input id='"+id+"restriction' type='text'  value=\""+restriction+"\" ></input></td><td><input id='"+id+"url' type='text'  value=\""+url+"\" ></input></td><td><input id='"+id+"notes' type='text'  value=\""+notes+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+	);
 }
 
 else if (countyVal == false && phaseVal == false && serviceVal == service){
-	$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
-						  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-						  "</a></td><td>" + notes + "</td></tr>");
+	$("#table_body").append("<tr><td><input id='"+id+"county' type='text' class='form-control' value=\""+county+"\" ></input></td><td><input id='"+id+"name' type='text'  value=\""+name+"\" ></input></td><td><input id='"+id+"contact' type='text'  value=\""+contact+"\" ></input></td><td><input id='"+id+"restriction' type='text'  value=\""+restriction+"\" ></input></td><td><input id='"+id+"url' type='text'  value=\""+url+"\" ></input></td><td><input id='"+id+"notes' type='text'  value=\""+notes+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+	);
 }
 
 
