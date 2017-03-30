@@ -9,8 +9,9 @@ var resourceRef = firebase.database();
 
 function deleteResource(id) {
 	var resourceID = "-" + id;
-	resourceRef.ref("Resources").child(""+resourceID+"").remove();
 	console.log(resourceID);
+	resourceRef.ref("Resources").child(""+resourceID+"").remove();
+
 	allResources();
 };
 
@@ -50,8 +51,7 @@ function allResources() {
 		$("#table_body").append("<tr><td>" + county + "</td><td>" + name + "</td><td>" + contact +
 							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
 							  "</a></td><td>" + notes + "</td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource("+ stringID +")'></input></td></tr>");
-								console.log(id);
-								console.log(stringID);
+
 		});
 };
 
