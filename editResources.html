@@ -201,7 +201,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <h5>County</h5>
-                    <select id="myCounty" required="required">
+                    <select id="myCounty" required="required" onchange="filterResources()">
                       <option value="">
                       <option value="Genesee">Genesee
                       <option value="Lapeer">Lapeer
@@ -216,7 +216,7 @@
             <div class="col-md-6 col-md-pull-4">
                 <div class="form-group">
                     <h5>Phase</h5>
-                    <select id="myPhase" required="required">
+                    <select id="myPhase" required="required" onchange="filterResources()">
                      <option value="">
                      <option value="idea">Idea
                      <option value="startup">Startup
@@ -227,7 +227,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <h5>Service</h5>
-                    <select id="myService" required="required">
+                    <select id="myService" required="required" onchange="filterResources()">
                      <option value="">
                      <option value="office space">Office Space
                      <option value="maker space">Maker Space
@@ -241,9 +241,6 @@
                 </div>
             </div>
          </div>
-
-
-  					<input type="submit" class="btn btn-success btn-send" value="Filter" onclick="filterResources()">
 
   					<input type="submit" class="btn btn-success btn-send" value="All Resources" onclick="allResources()">
 

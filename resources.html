@@ -80,7 +80,7 @@
 			<ul class="list-inline">
 				<li>
 					<h3>County:</h3>
-					<select id="myCounty" required>
+					<select id="myCounty" onchange="filterResources()">
 							<option value="">
 							<option value="Genesee">Genesee
 							<option value="Lapeer">Lapeer
@@ -93,7 +93,7 @@
 				</li>
 				<li>
 					<h3>Phase:</h3>
-					<select id="myPhase" required>
+					<select id="myPhase"  onchange="filterResources()">
 							<option value="">
 							<option value="idea">Idea
 							<option value="startup">Startup
@@ -102,7 +102,7 @@
 				</li>
 				<li>
 					<h3>Service:</h3>
-					<select id="myService" required>
+					<select id="myService"  onchange="filterResources()">
 							<option value="">
 							<option value="office space">Office Space
 							<option value="maker space">Maker Space
@@ -113,9 +113,6 @@
 							<option value="real estate assistance">Real Estate Assistance
               <option value="other">Other
 					</select>
-				</li>
-				<li>
-					<input type="submit" class="btn btn-success btn-send" value="Filter" onclick="filterResources()">
 				</li>
 				<li>
 					<input type="submit" class="btn btn-success btn-send" value="All Resources" onclick="allResources()">
