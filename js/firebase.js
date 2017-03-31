@@ -32,6 +32,8 @@ var rootref = firebase.database().ref();
 
 	var address = document.getElementById("address");
 	var phone = document.getElementById("phone");
+  var latitude = document.getElementById("latitude");
+  var longitude = document.getElementById("longitude");
 
 
 
@@ -47,39 +49,18 @@ function addResource () {
       service: ""+ service.value +"",
       phase: ""+ phase.value +"",
       address: ""+ address.value +"",
-      phone: ""+ phone.value +""
+      phone: ""+ phone.value +"",
+      lat: ""+ latitude.value +"",
+      lng: ""+ longitude.value +""
     });
 	}
 
-  const auth = firebase.auth();
 
 
 
 
-//Add a realtime listener
-auth.onAuthStateChanged(firebaseUser => {
-	if(firebaseUser) {
-		console.log(firebaseUser);
-		btnLogout.classList.remove('hide');
-    adminTools.classList.remove('hide');
-    adminMsg.classList.add('hide');
-    loginForm.classList.add('hide');
-
-    console.log(firebaseUser.email);
-    adminHeader.innerText = firebaseUser.email
-
-	} else {
-		console.log('not logged in');
-		btnLogout.classList.add('hide');
-    adminTools.classList.add('hide');
-    adminMsg.classList.remove('hide');
-    loginForm.classList.remove('hide');
-
-    adminHeader.innerText = ""
-	}
 
 
-});
 
 
 

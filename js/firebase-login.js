@@ -1,4 +1,4 @@
-//login 
+//login
 
 
 
@@ -30,6 +30,32 @@ btnLogin.addEventListener('click', e => {
 //Add logout event
 btnLogout.addEventListener('click', e => {
 	auth.signOut();
+
+});
+
+const auth = firebase.auth();
+
+//Add a realtime listener
+auth.onAuthStateChanged(function(firebaseUser) {
+	if(firebaseUser) {
+		console.log(firebaseUser);
+		btnLogout.classList.remove('hide');
+    adminTools.classList.remove('hide');
+    adminMsg.classList.add('hide');
+    loginForm.classList.add('hide');
+
+    console.log(firebaseUser.email);
+    adminHeader.innerText = firebaseUser.email
+
+	} else {
+		console.log('not logged in');
+		btnLogout.classList.add('hide');
+    adminTools.classList.add('hide');
+    adminMsg.classList.remove('hide');
+    loginForm.classList.remove('hide');
+
+    adminHeader.innerText = ""
+	}
 
 
 });
