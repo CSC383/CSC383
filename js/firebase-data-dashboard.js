@@ -64,46 +64,52 @@ window.onload = function(){
 		unemployment_rate_ref.on('value', snap => unemployment_rate.innerText = snap.val());
 	
 	
-		firebase.database().ref("data_dashboard").child("unemployment_rate").on("value", snap => {	
-			var variable_one = snap.val();
-			console.log(variable_one);
+		firebase.database().ref("data_dashboard").on("value", snap => {	
+			
+			var business_starts = snap.child("new_business_starts").val();
+			var unemployment = snap.child("unemployment_rate").val();
+			var average_commute = snap.child("average_annual_commute_time").val();
+			var labor_force = snap.child("labor_force_size").val();
+			var broadband = snap.child("broadband_access").val();
+			var churn_rate = snap.child("churn_rate").val();
+			
 			var ctx = document.getElementById("myChart1");
-		var myChart = new Chart(ctx, {
-		    	type: 'bar',
-		    	data: {
-				labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
-				datasets: [{
-			    		label: 'Test Bar Graph',
-			    		data: [variable_one, 3, 1, 1, 5, 3],
-					backgroundColor: [
-						'rgba(255, 99, 132, 0.2)',
-						'rgba(54, 162, 235, 0.2)',
-						'rgba(255, 206, 86, 0.2)',
-						'rgba(75, 192, 192, 0.2)',
-						'rgba(153, 102, 255, 0.2)',
-						'rgba(255, 159, 64, 0.2)'
-			    		],
-			    		borderColor: [
-						'rgba(255,99,132,1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(255, 159, 64, 1)'
-			    		],
-			    		borderWidth: 1
-				}]
-		    	},
-		    	options: {
-				scales: {
-			    		yAxes: [{
-						ticks: {
+			var myChart = new Chart(ctx, {
+		    		type: 'bar',
+		    		data: {
+					labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+					datasets: [{
+			    			label: 'General Economic Performance',
+			    			data: [business_starts, unemployment, average_commute, labor_force, broadband, churn_rate],
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(255, 159, 64, 0.2)'
+			    			],
+			    			borderColor: [
+							'rgba(255,99,132,1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(255, 159, 64, 1)'
+			    			],
+			    			borderWidth: 1
+					}]
+		    		},
+		    		options: {
+					scales: {
+			    			yAxes: [{
+							ticks: {
 				    			beginAtZero:true
-						}
-			    		}]
-				}
-		    	}
-		});
+							}
+			    			}]
+					}
+		    		}
+			});
 		});
 		    
 		
