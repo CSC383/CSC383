@@ -1,3 +1,31 @@
+
+
+const btnLogout = document.getElementById('btnLogout');
+
+//Add logout event
+btnLogout.addEventListener('click', e => {
+	auth.signOut();
+
+});
+
+const auth = firebase.auth();
+
+//Add a realtime listener
+auth.onAuthStateChanged(function(firebaseUser) {
+	if(firebaseUser) {
+		console.log(firebaseUser);
+		btnLogout.classList.remove('hide');
+
+    console.log(firebaseUser.email);
+
+	} else {
+		console.log('not logged in');
+		btnLogout.classList.add('hide');
+	}
+
+
+});
+
 (function editquestionnaire(){
   //sets spot in database where to look for keys
   var keyref = firebase.database().ref('questions');
