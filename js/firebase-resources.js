@@ -71,6 +71,8 @@ rootref.child("Resources").on("child_added", function(snap) {
 	var restriction = snap.child("restriction").val();
 	var notes = snap.child("notes").val();
 	var url = snap.child("url").val();
+	var phase = snap.child("phase").val();
+	var service = snap.child("service").val();
 
 //creates table based on user inputs
 if(countyVal == county && phaseVal == phase && serviceVal == service) {
