@@ -30,14 +30,22 @@ var rootref = firebase.database().ref();
 	var phase = document.getElementById("phase");
 	var addBtn = document.getElementById("addBtn");
 
+
+
+
 	var address = document.getElementById("address");
-	var phone = document.getElementById("phone");
   var latitude = document.getElementById("latitude");
   var longitude = document.getElementById("longitude");
 
 
 
 function addResource () {
+
+  var prim1 = document.getElementById("prim1");
+  var prim2 = document.getElementById("prim2");
+  var prim3 = document.getElementById("prim3");
+
+  var phone = prim1.value + prim2.value + prim3.value
 
 		rootref.child("Resources").push().set({
       county: ""+ county.value +"",
@@ -49,7 +57,7 @@ function addResource () {
       service: ""+ service.value +"",
       phase: ""+ phase.value +"",
       address: ""+ address.value +"",
-      phone: ""+ phone.value +"",
+      phone: ""+ phone +"",
       lat: ""+ latitude.value +"",
       lng: ""+ longitude.value +""
     });

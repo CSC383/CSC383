@@ -1,6 +1,17 @@
 //This page handles all resources page content
 
 
+//jquery for phone fields
+$(".required").keyup(function () {
+    if (this.value.length == this.maxLength) {
+      var $next = $(this).next('.required');
+      if ($next.length)
+          $(this).next('.required').focus();
+      else
+          $(this).blur();
+    }
+});
+
 const btnLogout = document.getElementById('btnLogout');
 
 //Add logout event
