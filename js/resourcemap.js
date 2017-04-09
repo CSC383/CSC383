@@ -125,7 +125,8 @@ function createMarker(latlng, name, address, phone, service){
       var iwContent = '<div id="iw_container">' +
             '<div class="iw_title">' + name + '</div>' +
          '<div class="iw_content">' + address + '<br />' +
-         phone + '</div></div>';
+         phone + '<br />' +
+         service +'</div></div>';
       
       // including content to the Info Window.
       addressBar.setContent(iwContent);
