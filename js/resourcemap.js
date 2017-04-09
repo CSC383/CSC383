@@ -83,6 +83,22 @@ function createMarker(latlng, name, address, phone, service){
 			  map: map,
 			  position: latlng,
 			  title: name,
+			  icon: "img/GMM/real estate.png"
+		   });
+		}
+		else if (service ==="kitchen/market"){
+			var marker = new google.maps.Marker({
+			  map: map,
+			  position: latlng,
+			  title: name,
+			  icon: "img/GMM/kitchen.png"
+		   });
+		}
+		else if (service ==="maker space"){
+			var marker = new google.maps.Marker({
+			  map: map,
+			  position: latlng,
+			  title: name,
 			  icon: "img/GMM/Business Consultation.png"
 		   });
 		}
