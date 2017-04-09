@@ -99,7 +99,7 @@ function createMarker(latlng, name, address, phone, service){
 			  map: map,
 			  position: latlng,
 			  title: name,
-			  icon: "img/GMM/Business Consultation.png"
+			  icon: "img/GMM/maker space.png"
 		   });
 		}
 		else if (service === "funding"){
