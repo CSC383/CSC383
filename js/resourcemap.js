@@ -57,7 +57,7 @@ function createmap(aArray){
       		var name = refval.name;
       		var phone = refval.phone;
 		var service = refval.service;
-	  	if (lat != "" && lng != ""){
+	  	if !(lat === "" && lng === ""){
 			var latlng = new google.maps.LatLng(lat, lng); 
 	  
 			bounds.extend(latlng);
