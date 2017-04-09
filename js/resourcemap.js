@@ -115,7 +115,7 @@ function createMarker(latlng, name, address, phone, service){
 				  map: map,
 				  position: latlng,
 				  title: name,
-				  icon: "img/GMM/Information.png"
+				  icon: "img/GMM/pro service.png"
 			   });
 		}
 		else if (service === "workshops/competitions"){
