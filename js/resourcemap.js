@@ -56,10 +56,10 @@ function createmap(aArray){
 	  var lng = refval.lng;
       var name = refval.name;
       var phone = refval.phone;
-	  var type = refval.type;
+	  var service = refval.service;
 	  var latlng = new google.maps.LatLng(lat, lng); 
 	  bounds.extend(latlng);
-	  createMarker(latlng, name, address, phone, type)
+	  createMarker(latlng, name, address, phone, service)
 	  map.fitBounds(bounds);
 	  })
 	  }
@@ -69,8 +69,8 @@ function createmap(aArray){
 }
 
 // creates marker and set Info Window content
-function createMarker(latlng, name, address, phone, type){
-   if (type ==="office space"){
+function createMarker(latlng, name, address, phone, service){
+   if (service ==="office space"){
 		   var marker = new google.maps.Marker({
 			  map: map,
 			  position: latlng,
@@ -78,7 +78,7 @@ function createMarker(latlng, name, address, phone, type){
 			  icon: "img/GMM/space.png"
 		   });
    }
-		else if (type ==="real estate assistance"){
+		else if (service ==="real estate assistance"){
 			var marker = new google.maps.Marker({
 			  map: map,
 			  position: latlng,
@@ -86,7 +86,7 @@ function createMarker(latlng, name, address, phone, type){
 			  icon: "img/GMM/Business Consultation.png"
 		   });
 		}
-		else if (type === "funding"){
+		else if (service === "funding"){
 			var marker = new google.maps.Marker({
 				  map: map,
 				  position: latlng,
@@ -94,7 +94,7 @@ function createMarker(latlng, name, address, phone, type){
 				  icon: "img/GMM/financial.png"
 			   });
 		}
-		else if (type ==="professional services"){	   
+		else if (service ==="professional services"){	   
 			var marker = new google.maps.Marker({
 				  map: map,
 				  position: latlng,
@@ -102,7 +102,7 @@ function createMarker(latlng, name, address, phone, type){
 				  icon: "img/GMM/Information.png"
 			   });
 		}
-		else if (type === "workshops/competitions"){
+		else if (service === "workshops/competitions"){
 			var marker = new google.maps.Marker({
 				  map: map,
 				  position: latlng,
