@@ -74,7 +74,7 @@ function createmap(aArray){
 
 // creates marker and set Info Window content
 function createMarker(latlng, name, address, phone, service){
-    if (latlng ==="(0, 0)"){
+   
 	if (service ==="office space"){
 		   var marker = new google.maps.Marker({
 			  map: map,
@@ -139,7 +139,7 @@ function createMarker(latlng, name, address, phone, service){
 				  icon: "img/GMM/contract.png"
 			   });
                 }
-   }		   
+   		   
    //click on a marker
       google.maps.event.addListener(marker, 'click', function() {
       
