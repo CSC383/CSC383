@@ -123,7 +123,7 @@ function createMarker(latlng, name, address, phone, service){
 				  map: map,
 				  position: latlng,
 				  title: name,
-				  icon: "img/GMM/legal.png"
+				  icon: "img/GMM/workshop.png"
 			   });
 		}
 		else{
