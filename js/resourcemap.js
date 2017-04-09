@@ -70,14 +70,15 @@ function createmap(aArray){
 
 // creates marker and set Info Window content
 function createMarker(latlng, name, address, phone, service){
-   if (service ==="office space"){
+    if (latlng ==="")
+	if (service ==="office space"){
 		   var marker = new google.maps.Marker({
 			  map: map,
 			  position: latlng,
 			  title: name,
 			  icon: "img/GMM/office space.png"
 		   });
-   }
+   	}
 		else if (service ==="real estate assistance"){
 			var marker = new google.maps.Marker({
 			  map: map,
@@ -133,6 +134,7 @@ function createMarker(latlng, name, address, phone, service){
 				  title: name,
 				  icon: "img/GMM/contract.png"
 			   });
+	}
    }		   
    //click on a marker
    google.maps.event.addListener(marker, 'click', function() {
