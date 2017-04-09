@@ -47,12 +47,12 @@ function geocodeAddress() {
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
-		 addResource () 
+		 addResource (latlng) 
         });
 		 
       }
 
-function addResource () {
+function addResource (latlng) {
 
   var prim1 = document.getElementById("prim1");
   var prim2 = document.getElementById("prim2");
@@ -72,7 +72,8 @@ function addResource () {
       address: ""+ address.value +"",
       phone: ""+ phone +"",
       lat: ""+ latitude.value +"",
-      lng: ""+ longitude.value +""
+      lng: ""+ longitude.value +"",
+	latlng: ""+ latlng +""		
     });
 	}
 
