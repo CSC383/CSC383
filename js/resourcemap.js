@@ -47,21 +47,25 @@ function addAdressesToMap(){
 function createmap(aArray){
 	var bounds = new google.maps.LatLngBounds();
 	for (var i = 0; i < aArray.length; i++){
-	  var ref1 = firebase.database().ref('Resources').child(aArray[i]);
-	  ref1.once('value', function(snapshot){
-      var refval = snapshot.val();
-      var address = refval.address;
+	  	var ref1 = firebase.database().ref('Resources').child(aArray[i]);
+	  	ref1.once('value', function(snapshot){
+      		var refval = snapshot.val();
+      		var address = refval.address;
 	  
-	  var lat = refval.lat;
-	  var lng = refval.lng;
-      var name = refval.name;
-      var phone = refval.phone;
-	  var service = refval.service;
-	  var latlng = new google.maps.LatLng(lat, lng); 
-	  bounds.extend(latlng);
-	  createMarker(latlng, name, address, phone, service)
-	  map.fitBounds(bounds);
+		var lat = refval.lat;
+		var lng = refval.lng;
+      		var name = refval.name;
+      		var phone = refval.phone;
+		var service = refval.service;
+	  	if (lat != "") && (lng != ""){
+			var latlng = new google.maps.LatLng(lat, lng); 
+	  
+			bounds.extend(latlng);
+	  		createMarker(latlng, name, address, phone, service)
+	  		map.fitBounds(bounds);
+		}
 	  })
+		
 	  }
 	  
     
