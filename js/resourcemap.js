@@ -75,7 +75,7 @@ function createMarker(latlng, name, address, phone, service){
 			  map: map,
 			  position: latlng,
 			  title: name,
-			  icon: "img/GMM/space.png"
+			  icon: "img/GMM/office space.png"
 		   });
    }
 		else if (service ==="real estate assistance"){
