@@ -107,7 +107,7 @@ function createMarker(latlng, name, address, phone, service){
 				  map: map,
 				  position: latlng,
 				  title: name,
-				  icon: "img/GMM/financial.png"
+				  icon: "img/GMM/funding.png"
 			   });
 		}
 		else if (service ==="professional services"){	   
