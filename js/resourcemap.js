@@ -78,7 +78,7 @@ function createMarker(latlng, name, address, phone, service){
 			  title: name,
 			  icon: "img/GMM/office space.png"
 		   });
-   	}
+   		}
 		else if (service ==="real estate assistance"){
 			var marker = new google.maps.Marker({
 			  map: map,
@@ -137,14 +137,14 @@ function createMarker(latlng, name, address, phone, service){
                 }
    //}		   
    //click on a marker
-   google.maps.event.addListener(marker, 'click', function() {
+      google.maps.event.addListener(marker, 'click', function() {
       
       //insert info to addressBar
       var iwContent = '<div id="iw_container">' +
             '<div class="iw_title">' + name + '</div>' +
          '<div class="iw_content">' + address + '<br />' +
-         phone + '<br />' + '<br />' +
-         latlng +
+         phone + '<br />' +  
+         latlng + '<br />' +
          service +'</div></div>';
       
       // including content to the Info Window.
