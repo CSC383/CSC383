@@ -1,6 +1,3 @@
-
-
-
 (function() {
 
  // Initialize Firebase
@@ -29,24 +26,15 @@ var rootref = firebase.database().ref();
 	var service = document.getElementById("service");
 	var phase = document.getElementById("phase");
 	var addBtn = document.getElementById("addBtn");
-	var address = document.getElementById("address");
-	var latitude = document.getElementById("latitude");
-	var longitude = document.getElementById("longitude");
 
-//function geocodeAddress() {
-	  //var geocoder = new google.maps.Geocoder();
-        //var address = document.getElementById('address').value;
-        //geocoder.geocode({'address': address}, function(results, status) {
-          //if (status === 'OK') {
-            //var latlng = results[0].geometry.location;
-            
-          //} else {
-            //alert('Geocode was not successful for the following reason: ' + status);
-          //}
-		 //addResource (latlng) 
-        //});
-		 
-      //}
+
+
+
+	var address = document.getElementById("address");
+  var latitude = document.getElementById("latitude");
+  var longitude = document.getElementById("longitude");
+
+
 
 function addResource () {
 
@@ -69,7 +57,6 @@ function addResource () {
       phone: ""+ phone +"",
       lat: ""+ latitude.value +"",
       lng: ""+ longitude.value +""
-	//latlng: ""+ latlng +""		
     });
 	}
 
