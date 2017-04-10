@@ -49,7 +49,7 @@ function updateStatistics(statisticID) {
 	var valueUpdate = document.getElementById(statValue);
 
 	statRef.ref("data_dashboard").update({
-  		"" + id + "": valueUpdate
+  		 id: valueUpdate
 	});
 };
 
