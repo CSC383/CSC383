@@ -1,7 +1,7 @@
 window.onload = function(){
-		var labor_force_size = document.getElementById('labor_force_size')
-		var labor_force_size_ref = firebase.database().ref('data_dashboard').child('labor_force_size');
-		labor_force_size_ref.on('value', snap => labor_force_size.innerText = snap.val());
+		// var labor_force_size = document.getElementById('labor_force_size')
+		// var labor_force_size_ref = firebase.database().ref('data_dashboard').child('labor_force_size');
+		// labor_force_size_ref.on('value', snap => labor_force_size.innerText = snap.val());
 	
 		var average_annual_wage = document.getElementById('average_annual_wage')
 		var average_annual_wage_ref = firebase.database().ref('data_dashboard').child('average_annual_wage');
@@ -66,9 +66,12 @@ window.onload = function(){
 	
 		firebase.database().ref("data_dashboard").on("value", snap => {	
 			
-			var labor_force_size = snap.child("labor_force_size").val();
+			var labor_force_size_value = snap.child("labor_force_size").val();
 			var average_annual_wage = snap.child("average_annual_wage").val();
 			var gross_domestic_product = snap.child("gross_domestic_product").val();
+			
+			var labor_force_size_element = document.getElementById('labor_force_size')
+			labor_force_size_element.innerText = labor_force_size_value
 			
 			var ctx = document.getElementById("myChart1");
 			var myChart = new Chart(ctx, {
@@ -77,7 +80,7 @@ window.onload = function(){
 					labels: ["Labor Force Size", "Average Annual Wage", "Gross Domestic Product"],
 					datasets: [{
 			    			label: 'General Economic Performance',
-			    			data: [labor_force_size, average_annual_wage, gross_domestic_product],
+			    			data: [labor_force_size_value, average_annual_wage, gross_domestic_product],
 						backgroundColor: [
 							'rgba(255, 99, 132, 0.2)',
 							'rgba(54, 162, 235, 0.2)',
