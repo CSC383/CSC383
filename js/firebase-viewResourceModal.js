@@ -1,9 +1,10 @@
-function getCurrent(key)
+function printReviews(input)
 {
   var resourceRef = rootref.child("Resources");
+  var inputClean = decodeURIComponent(input); 
 
 
-  resourceRef.orderByChild("name").equalTo(input).on("child_added", function(snap)
+  resourceRef.orderByChild("name").equalTo(inputClean).on("child_added", function(snap)
   {
     snap.child("reviews").forEach(function(shot)
     {     
@@ -25,8 +26,9 @@ function makeReivew(input)
   var rBody = document.getElementById("rMaker");
   var score = document.getElementById("rater");
   var userID = document.getElementById("username");
+  var inputClean = decodeURIComponent(input);
 
-  rootref.child("Resources").orderByChild("name").equalTo(input).on("child_added", function(snap)
+  rootref.child("Resources").orderByChild("name").equalTo(inputClean).on("child_added", function(snap)
   {
     var pushRef = snap.child("reviews").push().set(
       {
