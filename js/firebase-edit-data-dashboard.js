@@ -38,9 +38,9 @@ auth.onAuthStateChanged(function(firebaseUser) {
 
 });
 
-//Loads all resources on page load
+//Loads all statistics on page load
 window.onload = allStatistics();
-var resourceRef = firebase.database();
+var statRef = firebase.database();
 
 function updateStatistics(statisticID) {
 	var id = statisticID;
@@ -48,29 +48,29 @@ function updateStatistics(statisticID) {
 
 	var valueUpdate = document.getElementById(statValue);
 
-	resourceRef.ref("data_dashboard").child(id).update({
+	statRef.ref("data_dashboard").child(id).update({
 		value: ""+ valueUpdate.value +"",
 	});
 };
 
-function deleteResource(statisticID) {
+function deleteStatistic(statisticID) {
 	var id = statisticID;
-	resourceRef.ref("data_dashboard").child(""+id+"").remove();
+	statRef.ref("data_dashboard").child(""+id+"").remove();
 
 	allStatistics();
 };
 
-//Filters all resources
+//Filters all statistics
 function allStatistics() {
 
-	//Clears table of resources
+	//Clears table of statistics
 	var tableRef = document.getElementById('table_body');
 	while ( tableRef.rows.length > 0 )
 	{
 	 tableRef.deleteRow(0);
 	}
 
-	//Pull resources from Firebase database
+	//Pull statistics from Firebase database
 	rootref.child("data_dashboard").on("child_added", function(snap) {
 
 		//store data from firebase to be used in table
@@ -78,8 +78,8 @@ function allStatistics() {
 		var stringID = id.toString();
 		var statValue = snap.val();
 
-		//Creates table with resources pulled from firebase
-		$("#table_body").append("<tr><td><input id='"+id+"Statistic' type='text' value=\""+stringID+"\" ></input></td><td><input id='"+id+"Value' type='text'  value=\""+statValue+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+		//Creates table with statistics pulled from firebase
+		$("#table_body").append("<tr><td><input id='"+id+"Statistic' type='text' value=\""+stringID+"\" ></input></td><td><input id='"+id+"Value' type='text'  value=\""+statValue+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteStatistic(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateStatistic(\""+ stringID + "\")''></input></td></tr>"
 		);
 		});
 };
