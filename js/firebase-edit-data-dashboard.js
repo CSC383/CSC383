@@ -109,21 +109,10 @@ function allStatistics() {
 		//store data from firebase to be used in table
 		var id = snap.key;
 		var stringID = id.toString();
-		var county = snap.child("county").val();
-		var address = snap.child("address").val();
-		var name = snap.child("name").val();
-		var phone = snap.child("phone").val();
-		var contact = snap.child("contact").val();
-		var restriction = snap.child("restriction").val();
-		var notes = snap.child("notes").val();
-		var url = snap.child("url").val();
-		var service = snap.child("service").val();
-	  	var phase = snap.child("phase").val();
-		var lat	= snap.child("lat").val();
-		var lng = snap.child("lng").val();
+		var statValue = snap.val();
 
 		//Creates table with resources pulled from firebase
-		$("#table_body").append("<tr><td><input id='"+id+"county' type='text' value=\""+county+"\" ></input></td><td><input id='"+id+"phase' type='text'  value=\""+phase+"\" ></input></td><td><input id='"+id+"service' type='text' value=\""+service+"\" ></input></td><td><input id='"+id+"name' type='text'  value=\""+name+"\" ></input></td><td><input id='"+id+"address' type='text'  value=\""+address+"\" ></input></td><td><input id='"+id+"phone' type='text'  value=\""+phone+"\" ></input></td><td><input id='"+id+"contact' type='text'  value=\""+contact+"\" ></input></td><td><input id='"+id+"restriction' type='text'  value=\""+restriction+"\" ></input></td><td><input id='"+id+"url' type='text'  value=\""+url+"\" ></input></td><td><input id='"+id+"notes' type='text'  value=\""+notes+"\" ></input></td><td><input id='"+id+"lat' type='text'  value=\""+lat+"\" ></input></td><td><input id='"+id+"lng' type='text'  value=\""+lng+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+		$("#table_body").append("<tr><td><input id='"+id+"Statistic' type='text' value=\""+stringID+"\" ></input></td><td><input id='"+id+"Value' type='text'  value=\""+statValue+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
 		);
 		});
 };
