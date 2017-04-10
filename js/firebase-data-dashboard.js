@@ -1,11 +1,4 @@
 window.onload = function(){
-		// var labor_force_size = document.getElementById('labor_force_size')
-		// var labor_force_size_ref = firebase.database().ref('data_dashboard').child('labor_force_size');
-		// labor_force_size_ref.on('value', snap => labor_force_size.innerText = snap.val());
-	
-		var average_annual_wage = document.getElementById('average_annual_wage')
-		var average_annual_wage_ref = firebase.database().ref('data_dashboard').child('average_annual_wage');
-		average_annual_wage_ref.on('value', snap => average_annual_wage.innerText = snap.val());
 	
 		var average_annual_commute_time = document.getElementById('average_annual_commute_time')
 		var average_annual_commute_time_ref = firebase.database().ref('data_dashboard').child('average_annual_commute_time');
@@ -26,10 +19,6 @@ window.onload = function(){
 		var cost_of_living = document.getElementById('cost_of_living')
 		var cost_of_living_ref = firebase.database().ref('data_dashboard').child('cost_of_living');
 		cost_of_living_ref.on('value', snap => cost_of_living.innerText = snap.val());
-	
-		var gross_domestic_product = document.getElementById('gross_domestic_product')
-		var gross_domestic_product_ref = firebase.database().ref('data_dashboard').child('gross_domestic_product');
-		gross_domestic_product_ref.on('value', snap => gross_domestic_product.innerText = snap.val());
 	
 		var jobs_employed_resident_ratio = document.getElementById('jobs_employed_resident_ratio')
 		var jobs_employed_resident_ratio_ref = firebase.database().ref('data_dashboard').child('jobs_employed_resident_ratio');
@@ -67,11 +56,15 @@ window.onload = function(){
 		firebase.database().ref("data_dashboard").on("value", snap => {	
 			
 			var labor_force_size_value = snap.child("labor_force_size").val();
-			var average_annual_wage = snap.child("average_annual_wage").val();
-			var gross_domestic_product = snap.child("gross_domestic_product").val();
+			var average_annual_wage_value = snap.child("average_annual_wage").val();
+			var gross_domestic_product_value = snap.child("gross_domestic_product").val();
 			
 			var labor_force_size_element = document.getElementById('labor_force_size')
 			labor_force_size_element.innerText = labor_force_size_value
+			var average_annual_wage_element = document.getElementById('average_annual_wage')
+			average_annual_wage_element.innerText = average_annual_wage_value
+			var gross_domestic_product_element = document.getElementById('gross_domestic_product')
+			gross_domestic_product_element.innerText = gross_domestic_product_value
 			
 			var ctx = document.getElementById("myChart1");
 			var myChart = new Chart(ctx, {
@@ -80,7 +73,7 @@ window.onload = function(){
 					labels: ["Labor Force Size", "Average Annual Wage", "Gross Domestic Product"],
 					datasets: [{
 			    			label: 'General Economic Performance',
-			    			data: [labor_force_size_value, average_annual_wage, gross_domestic_product],
+			    			data: [labor_force_size_value, average_annual_wage_value, gross_domestic_product_value],
 						backgroundColor: [
 							'rgba(255, 99, 132, 0.2)',
 							'rgba(54, 162, 235, 0.2)',
@@ -112,9 +105,9 @@ window.onload = function(){
 			});
 		    
 					
-			var unemployment_rate = snap.child("unemployment_rate").val();
-			var poverty_rate = snap.child("poverty_rate").val();
-			var closings = snap.child("closings").val();
+			var unemployment_rate_value = snap.child("unemployment_rate").val();
+			var poverty_rate_value = snap.child("poverty_rate").val();
+			var closings_value = snap.child("closings").val();
 	
 			var dtx = document.getElementById("myChart2");
 			var myChart = new Chart(dtx, {
@@ -123,7 +116,7 @@ window.onload = function(){
 					labels: ["Unemployment Rate", "Poverty Rate", "Closings"],
 					datasets: [{
 			    		label: 'Test line Graph',
-			    		data: [unemployment_rate, poverty_rate, closings],
+			    		data: [unemployment_rate_value, poverty_rate_value, closings_value],
 						backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
 						'rgba(54, 162, 235, 0.2)',
@@ -154,10 +147,10 @@ window.onload = function(){
 		    		}
 			});
 	
-			var cost_of_living = snap.child("cost_of_living").val();
-			var new_housing_costs = snap.child("new_housing_costs").val();
-			var average_annual_commute_time = snap.child("average_annual_commute_time").val();
-			var jobs_employed_resident_ratio = snap.child("jobs_employed_resident_ratio").val();
+			var cost_of_living_value = snap.child("cost_of_living").val();
+			var new_housing_costs_value = snap.child("new_housing_costs").val();
+			var average_annual_commute_time_value = snap.child("average_annual_commute_time").val();
+			var jobs_employed_resident_ratio_value = snap.child("jobs_employed_resident_ratio").val();
 	
 			var pie_data = {
     				labels: [
@@ -168,7 +161,7 @@ window.onload = function(){
     				],
     				datasets: [
         			{
-            			data: [cost_of_living, new_housing_costs, average_annual_commute_time, jobs_employed_resident_ratio],
+            			data: [cost_of_living_value, new_housing_costs_value, average_annual_commute_time_value, jobs_employed_resident_ratio_value],
             			backgroundColor: [
                 			"#FF6384",
                 			"#36A2EB",
@@ -192,20 +185,20 @@ window.onload = function(){
     				}
 			});
 	
-			var new_business_starts = snap.child("new_business_starts").val();
-			var stage_ii_establishments = snap.child("stage_ii_establishments").val();
-			var sbir_grants = snap.child("sbir_grants").val();
-			var stem_employment = snap.child("stem_employment").val();
-			var broadband_access = snap.child("broadband_access").val();
-			var churn_rate = snap.child("churn_rate").val();
+			var new_business_starts_value = snap.child("new_business_starts").val();
+			var stage_ii_establishments_value = snap.child("stage_ii_establishments").val();
+			var sbir_grants_value = snap.child("sbir_grants").val();
+			var stem_employment_value = snap.child("stem_employment").val();
+			var broadband_access_value = snap.child("broadband_access").val();
+			var churn_rate_value = snap.child("churn_rate").val();
 	
 			var bubble_data = {
 				datasets: [{
 					label: 'First Dataset',
 					data: [
 						{
-							x: new_business_starts,
-							y: stage_ii_establishments,
+							x: new_business_starts_value,
+							y: stage_ii_establishments_value,
 							r: 5
 						}
 					],
@@ -216,8 +209,8 @@ window.onload = function(){
 					label: 'Second Dataset',
 					data: [
 						{
-							x: sbir_grants,
-							y: stem_employment,
+							x: sbir_grants_value,
+							y: stem_employment_value,
 							r: 5
 						}
 					],
@@ -228,8 +221,8 @@ window.onload = function(){
 					label: 'Third Dataset',
 					data: [
 						{
-							x: broadband_access,
-							y: churn_rate,
+							x: broadband_access_value,
+							y: churn_rate_value,
 							r: 5
 						}
 					],
