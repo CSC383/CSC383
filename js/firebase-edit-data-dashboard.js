@@ -47,18 +47,7 @@ function updateStatistics(statisticID) {
 	var statValue = id + "Value";
 
 	var valueUpdate = document.getElementById(statValue);
-
-	statRef.ref("data_dashboard").update({
-  		 id: valueUpdate
-	});
-};
-
-
-function deleteStatistic(statisticID) {
-	var id = statisticID;
-	statRef.ref("data_dashboard").child(""+id+"").remove();
-
-	allStatistics();
+	statRef.ref("data_dashboard").child(statisticID).update(valueUpdate);
 };
 
 //Filters all statistics
@@ -80,7 +69,7 @@ function allStatistics() {
 		var statValue = snap.val();
 
 		//Creates table with statistics pulled from firebase
-		$("#table_body").append("<tr><td><input id='"+id+"Statistic' type='text' value=\""+stringID+"\" ></input></td><td><input id='"+id+"Value' type='text'  value=\""+statValue+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteStatistic(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateStatistic(\""+ stringID + "\")''></input></td></tr>"
+		$("#table_body").append("<tr><td><input id='"+id+"Statistic' type='text' value=\""+stringID+"\" ></input></td><td><input id='"+id+"Value' type='text'  value=\""+statValue+"\" ></input></td><td></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateStatistic(\""+ stringID + "\")''></input></td></tr>"
 		);
 		});
 };
