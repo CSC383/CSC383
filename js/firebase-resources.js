@@ -6,6 +6,14 @@
 //Loads all resources on page load
 window.onload = allResources();
 
+function makeModal(name){
+	var nameClean = decodeURIComponent(name);
+	$('#modalHeading').html("");
+	$('#myModal').modal('toggle');
+	$('#modalHeading').append("<h4 class='modal-title'>"+ nameClean +"</h4>");
+	nameClean = "";
+};
+
 //clears filters for new input
 function clearResources(){
 	document.getElementById('myCounty').value="";
@@ -36,9 +44,10 @@ function allResources() {
 		var restriction = snap.child("restriction").val();
 		var notes = snap.child("notes").val();
 		var url = snap.child("url").val();
+		var nameCoded = encodeURIComponent(name);
 
 		//Creates table with resources pulled from firebase
-		$("#table_body").append("<tr><td>"+ county +"</td><td>" + name + "</td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+		$("#table_body").append("<tr><td>"+ county +"</td><td><a onClick='makeModal(\""+ nameCoded +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
 							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
 							  "</a></td><td>" + notes + "</td></tr>");
 		});
