@@ -1,5 +1,26 @@
 //This page handles all resources page content
 
+//encodes any apostrophes in a string into a "&apos"
+function encodeApos (input)
+{
+  
+  var scrub = input;
+  var len = scrub.replace(/[^']/g, "").length;
+  var scrub = input.split("'");
+  for(var i = 1; i < len; i++)
+  {
+    scrub[i] = scrub[i+1].split("'");
+  }
+
+  var encoded = scrub[0];
+  for(var j = 1; j < len; j++)
+  {
+    encoded = "&apos" + scrub[j];
+  }
+
+  return encoded;
+}
+
 //defines and appends the submit button for the resource modal
 function makeModal(input)
 {
