@@ -3,36 +3,35 @@
 //encodes any apostrophes in a string into an escape character
 function encodeApos (input)
 {
-
+  
   var encoded = input.replace(/'/g, "/'");
-
   return encoded;
 }
 
 //decodes any apostrophe escapes back into apostrophes
 function decodeApos(input)
 {
-  var decoded= input.replace(//'/g, "'");
+  var decoded= input.replace(/\\'/g, "'");
   return decoded;
 }
 
 //defines and appends the submit button for the resource modal
 function makeModal(input)
 {
-	var inputClean = decodeURIComponent(input);
+
 	$('#modalHeading').html("");
 	$('#myModal').modal('toggle');
-	$('#modalHeading').append("<h4 class='modal-title'>"+ inputClean +"</h4>");
+	$('#modalHeading').append("<h4 class='modal-title'>"+ input +"</h4>");
 
-
+  var inputClean = decodeURIComponent(input);
   rootref.child("resources").orderByChild("name").equalTo(inputClean).on("child_added", function(snap)
   {
     var nameOf = snap.child("name").val();
 
-    $("#modalSubmit").append("<input onclick='makeReview(\""+ nameOF +"\")' type='submit' class='btn btn-success btn-send' value='Submit'")
-  });
+    $("#modalSubmit").append("<input onclick='makeReview(\""+ input +"\")' type='submit' class='btn btn-success btn-send' value='Submit'")
+  }
     return true;
-};
+}
 
 
 //Loads all resources on page load
@@ -69,7 +68,7 @@ function allResources() {
 		var restriction = snap.child("restriction").val();
 		var notes = snap.child("notes").val();
 		var url = snap.child("url").val();
-		var nameCoded = encodeApos(name);
+		var nameCoded = encodeURIComponent(name);
 
 		//Creates table with resources pulled from firebase
 		$("#table_body").append("<tr><td>"+ county +"</td><td><a onClick='makeModal(\""+ nameCoded +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
