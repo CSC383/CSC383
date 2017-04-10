@@ -206,7 +206,7 @@ window.onload = function(){
 						{
 							x: new_business_starts,
 							y: stage_ii_establishments,
-							r: 2
+							r: 5
 						}
 					],
 					backgroundColor:"#FF6384",
@@ -218,7 +218,7 @@ window.onload = function(){
 						{
 							x: sbir_grants,
 							y: stem_employment,
-							r: 2
+							r: 5
 						}
 					],
 					backgroundColor:"#36A2EB",
@@ -230,11 +230,11 @@ window.onload = function(){
 						{
 							x: broadband_access,
 							y: churn_rate,
-							r: 2
+							r: 5
 						}
 					],
-					backgroundColor:"#36A2EB",
-					hoverBackgroundColor: "#36A2EB",
+					backgroundColor:"#FFCE56",
+					hoverBackgroundColor: "#FFCE56",
 				}]
 			};
 	
