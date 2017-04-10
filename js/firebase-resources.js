@@ -1,24 +1,19 @@
 //This page handles all resources page content
 
-//encodes any apostrophes in a string into a "&apos"
+//encodes any apostrophes in a string into an escape character
 function encodeApos (input)
 {
 
-  var scrub = input;
-  var len = scrub.replace(/[^']/g, "").length;
-  var scrub = input.split("'");
-  for(var i = 1; i < len; i++)
-  {
-    scrub[i] = scrub[i+1].split("'");
-  }
-
-  var encoded = scrub[0];
-  for(var j = 1; j < len; j++)
-  {
-    encoded = "&apos" + scrub[j];
-  }
+  var encoded = input.replace(/'/g, "/'");
 
   return encoded;
+}
+
+//decodes any apostrophe escapes back into apostrophes
+function decodeApos(input)
+{
+  var decoded= input.replace(//'/g, "'");
+  return decoded;
 }
 
 //defines and appends the submit button for the resource modal
