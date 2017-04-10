@@ -3,12 +3,14 @@
 //defines and appends the submit button for the resource modal
 function makeModal(input)
 {
-  rootref.child("resources").orderByChild("name").equalTo(input).on("child_added", function(snap)
+  var inputClean = decodeURIComponent(input);
+  rootref.child("resources").orderByChild("name").equalTo(inputClean).on("child_added", function(snap)
   {
     var nameOf = snap.child("name").val();
     
     $("#modalSubmit").append("<input onclick='makeReview(\""+ input +"\")' type='submit' class='btn btn-success btn-send' value='Submit'")
   }
+    return true;								    
 }
 
 
