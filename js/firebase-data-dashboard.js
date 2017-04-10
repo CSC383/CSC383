@@ -107,7 +107,6 @@ window.onload = function(){
 					}
 		    		}
 			});
-			});
 		    
 					
 			var unemployment_rate = snap.child("unemployment_rate").val();
@@ -249,4 +248,6 @@ window.onload = function(){
         				}
     				}
 			});
+			
+		});
 };
