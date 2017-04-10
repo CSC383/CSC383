@@ -66,21 +66,18 @@ window.onload = function(){
 	
 		firebase.database().ref("data_dashboard").on("value", snap => {	
 			
-			var business_starts = snap.child("new_business_starts").val();
-			var unemployment = snap.child("unemployment_rate").val();
-			var average_commute = snap.child("average_annual_commute_time").val();
-			var labor_force = snap.child("labor_force_size").val();
-			var broadband = snap.child("broadband_access").val();
-			var churn_rate = snap.child("churn_rate").val();
+			var labor_force_size = snap.child("labor_force_size").val();
+			var average_annual_wage = snap.child("average_annual_wage").val();
+			var gross_domestic_product = snap.child("gross_domestic_product").val();
 			
 			var ctx = document.getElementById("myChart1");
 			var myChart = new Chart(ctx, {
 		    		type: 'bar',
 		    		data: {
-					labels: ["Business Startups", "Unemployment", "Average Commute", "Labor Force", "Broadband", "Churn Rate"],
+					labels: ["Labor Force Size", "Average Annual Wage", "Gross Domestic Product"],
 					datasets: [{
 			    			label: 'General Economic Performance',
-			    			data: [business_starts, unemployment, average_commute, labor_force, broadband, churn_rate],
+			    			data: [labor_force_size, average_annual_wage, gross_domestic_product],
 						backgroundColor: [
 							'rgba(255, 99, 132, 0.2)',
 							'rgba(54, 162, 235, 0.2)',
@@ -110,129 +107,146 @@ window.onload = function(){
 					}
 		    		}
 			});
-		});
+			});
 		    
-		
-			
+					
+			var unemployment_rate = snap.child("unemployment_rate").val();
+			var poverty_rate = snap.child("poverty_rate").val();
+			var closings = snap.child("closings").val();
 	
-	var dtx = document.getElementById("myChart2");
-		var myChart = new Chart(dtx, {
-		    type: 'line',
-		    data: {
-			labels: ["2015", "2013", "2014", "2015", "2016", "2017"],
-			datasets: [{
-			    label: 'Test line Graph',
-			    data: [2, 3, 5, 3, 3.5, 2],
-				backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-			    ],
-			    borderColor: [
-				'rgba(255,99,132,1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-			    ],
-			    borderWidth: 1
-			}]
-		    },
-		    options: {
-			scales: {
-			    yAxes: [{
-				ticks: {
-				    beginAtZero:true
-				}
-			    }]
-			}
-		    }
-		});
+			var dtx = document.getElementById("myChart2");
+			var myChart = new Chart(dtx, {
+		    		type: 'line',
+		    		data: {
+					labels: ["Unemployment Rate", "Poverty Rate", "Closings"],
+					datasets: [{
+			    		label: 'Test line Graph',
+			    		data: [unemployment_rate, poverty_rate, closings],
+						backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+			    		],
+			    		borderColor: [
+						'rgba(255,99,132,1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+			    		],
+			    		borderWidth: 1
+					}]
+		    		},
+		    		options: {
+					scales: {
+			    		yAxes: [{
+						ticks: {
+				    		beginAtZero:true
+						}
+			    		}]
+					}
+		    		}
+			});
 	
-	var pie_data = {
-    		labels: [
-        	"Variable One",
-        	"Variable Two",
-        	"Variable Three"
-    		],
-    		datasets: [
-        	{
-            	data: [300, 50, 100],
-            	backgroundColor: [
-                	"#FF6384",
-                	"#36A2EB",
-                	"#FFCE56"
-            	],
-           	 hoverBackgroundColor: [
-                	"#FF6384",
-                	"#36A2EB",
-                	"#FFCE56"
-            	]
-        	}]
-	};
-	var etx = document.getElementById("myChart3");
-	var myPieChart = new Chart(etx,{
-    		type: 'pie',
-    		data: pie_data,
-    		options: {
-        		animation:{
-            			animateScale:true
-        		}
-    		}
-	});
+			var cost_of_living = snap.child("cost_of_living").val();
+			var new_housing_costs = snap.child("new_housing_costs").val();
+			var average_annual_commute_time = snap.child("average_annual_commute_time").val();
+			var jobs_employed_resident_ratio = snap.child("jobs_employed_resident_ratio").val();
 	
-	var bubble_data = {
-		datasets: [{
-			label: 'First Dataset',
-			data: [
-				{
-					x: 20,
-					y: 30,
-					r: 15
+			var pie_data = {
+    				labels: [
+        			"Cost of Living",
+        			"New Housing Costs",
+        			"Average Annual Commute Time",
+        			"Jobs Employed Resident Ratio"
+    				],
+    				datasets: [
+        			{
+            			data: [cost_of_living, new_housing_costs, average_annual_commute_time, jobs_employed_resident_ratio],
+            			backgroundColor: [
+                			"#FF6384",
+                			"#36A2EB",
+                			"#FFCE56"
+            			],
+           	 		hoverBackgroundColor: [
+                			"#FF6384",
+                			"#36A2EB",
+                			"#FFCE56"
+            			]
+        			}]
+			};
+			var etx = document.getElementById("myChart3");
+			var myPieChart = new Chart(etx,{
+    				type: 'pie',
+    				data: pie_data,
+    				options: {
+        				animation:{
+            					animateScale:true
+        				}
+    				}
+			});
+	
+			var new_business_starts = snap.child("new_business_starts").val();
+			var stage_ii_establishments = snap.child("stage_ii_establishments").val();
+			var sbir_grants = snap.child("sbir_grants").val();
+			var stem_employment = snap.child("stem_employment").val();
+			var broadband_access = snap.child("broadband_access").val();
+			var churn_rate = snap.child("churn_rate").val();
+	
+			var bubble_data = {
+				datasets: [{
+					label: 'First Dataset',
+					data: [
+						{
+							x: new_business_starts,
+							y: stage_ii_establishments,
+							r: 2
+						}
+					],
+					backgroundColor:"#FF6384",
+					hoverBackgroundColor: "#FF6384",
 				},
 				{
-					x: 40,
-					y: 10,
-					r: 10
-				}
-			],
-			backgroundColor:"#FF6384",
-			hoverBackgroundColor: "#FF6384",
-		},
-		{
-			label: 'Second Dataset',
-			data: [
-				{
-					x: 5,
-					y: 25,
-					r: 30
+					label: 'Second Dataset',
+					data: [
+						{
+							x: sbir_grants,
+							y: stem_employment,
+							r: 2
+						}
+					],
+					backgroundColor:"#36A2EB",
+					hoverBackgroundColor: "#36A2EB",
 				},
 				{
-					x: 15,
-					y: 15,
-					r: 20
-				}
-			],
-			backgroundColor:"#36A2EB",
-			hoverBackgroundColor: "#36A2EB",
-		}]
-	};
+					label: 'Third Dataset',
+					data: [
+						{
+							x: broadband_access,
+							y: churn_rate,
+							r: 2
+						}
+					],
+					backgroundColor:"#36A2EB",
+					hoverBackgroundColor: "#36A2EB",
+				}]
+			};
 	
-	var ftx = document.getElementById("myChart4");
-	var myBubbleChart = new Chart(ftx,{
-    		type: 'bubble',
-    		data: bubble_data,
-    		options: {
-        		elements: {
-           			 points: {
-                			borderWidth: 1,
-                			borderColor: 'rgb(0, 0, 0)'
-            			}
-        		}
-    		}
-	});
+			var ftx = document.getElementById("myChart4");
+			var myBubbleChart = new Chart(ftx,{
+    				type: 'bubble',
+    				data: bubble_data,
+    				options: {
+        				elements: {
+           					 points: {
+                					borderWidth: 1,
+                					borderColor: 'rgb(0, 0, 0)'
+            					}
+        				}
+    				}
+			});
 };
