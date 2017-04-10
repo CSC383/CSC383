@@ -38,72 +38,40 @@ auth.onAuthStateChanged(function(firebaseUser) {
 
 });
 
-//Loads all resources on page load
+//Loads all statistics on page load
 window.onload = allStatistics();
-var resourceRef = firebase.database();
+var statRef = firebase.database();
 
 function updateStatistics(statisticID) {
 	var id = statisticID;
-	var service = id + "service";
-	var phase = id + "phase";
-	var county = id + "county";
-	var name = id + "name";
-	var address = id + "address";
-	var phone = id + "phone";
-	var lat = id + "lat";
-	var lng = id + "lng";
-	var contact = id + "contact";
-	var restriction = id + "restriction";
-	var notes = id + "notes";
-	var url = id + "url";
+	var statValue = id + "Value";
 
-	var serviceUpdate = document.getElementById(service);
-	var phaseUpdate = document.getElementById(phase);
-	var countyUpdate = document.getElementById(county);
-	var nameUpdate = document.getElementById(name);
-	var addressUpdate = document.getElementById(address);
-	var phoneUpdate = document.getElementById(phone);
-	var latUpdate = document.getElementById(lat);
-	var lngUpdate = document.getElementById(lng);
-	var contactUpdate = document.getElementById(contact);
-	var restrictionUpdate = document.getElementById(restriction);
-	var notesUpdate = document.getElementById(notes);
-	var urlUpdate = document.getElementById(url);
+	var valueUpdate = document.getElementById(statValue);
 
-	resourceRef.ref("Resources").child(id).update({
-		service: ""+ serviceUpdate.value +"",
-		phase: ""+ phaseUpdate.value +"",
-		county: ""+ countyUpdate.value +"",
-		name: ""+ nameUpdate.value +"",
-		address: ""+ addressUpdate.value +"",
-		phone: ""+ phoneUpdate.value +"",
-		contact: ""+ contactUpdate.value + "",
-		restriction: ""+ restrictionUpdate.value +"",
-		notes: ""+ notesUpdate.value +"",
-		url: ""+ urlUpdate.value +"",
-		lat: ""+ latUpdate.value +"",
-		lng: ""+ lngUpdate.value +""
+	statRef.ref("data_dashboard").update({
+  		 id: valueUpdate
 	});
 };
 
-function deleteResource(statisticID) {
+
+function deleteStatistic(statisticID) {
 	var id = statisticID;
-	resourceRef.ref("data_dashboard").child(""+id+"").remove();
+	statRef.ref("data_dashboard").child(""+id+"").remove();
 
 	allStatistics();
 };
 
-//Filters all resources
+//Filters all statistics
 function allStatistics() {
 
-	//Clears table of resources
+	//Clears table of statistics
 	var tableRef = document.getElementById('table_body');
 	while ( tableRef.rows.length > 0 )
 	{
 	 tableRef.deleteRow(0);
 	}
 
-	//Pull resources from Firebase database
+	//Pull statistics from Firebase database
 	rootref.child("data_dashboard").on("child_added", function(snap) {
 
 		//store data from firebase to be used in table
@@ -111,10 +79,8 @@ function allStatistics() {
 		var stringID = id.toString();
 		var statValue = snap.val();
 
-		//Creates table with resources pulled from firebase
-		$("#table_body").append("<tr><td><input id='"+id+"Statistic' type='text' value=\""+stringID+"\" ></input></td><td><input id='"+id+"Value' type='text'  value=\""+statValue+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteResource(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateResource(\""+ stringID + "\")''></input></td></tr>"
+		//Creates table with statistics pulled from firebase
+		$("#table_body").append("<tr><td><input id='"+id+"Statistic' type='text' value=\""+stringID+"\" ></input></td><td><input id='"+id+"Value' type='text'  value=\""+statValue+"\" ></input></td><td><input type='submit' class='btn btn-success btn-send' value='Delete' onclick='deleteStatistic(\""+ stringID + "\")'></input></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateStatistic(\""+ stringID + "\")''></input></td></tr>"
 		);
 		});
-};
-
 };
