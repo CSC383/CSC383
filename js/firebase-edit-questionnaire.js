@@ -1,31 +1,3 @@
-
-
-const btnLogout = document.getElementById('btnLogout');
-
-//Add logout event
-btnLogout.addEventListener('click', e => {
-	auth.signOut();
-
-});
-
-const auth = firebase.auth();
-
-//Add a realtime listener
-auth.onAuthStateChanged(function(firebaseUser) {
-	if(firebaseUser) {
-		console.log(firebaseUser);
-		btnLogout.classList.remove('hide');
-
-    console.log(firebaseUser.email);
-
-	} else {
-		console.log('not logged in');
-		btnLogout.classList.add('hide');
-	}
-
-
-});
-
 (function editquestionnaire(){
   //sets spot in database where to look for keys
   var keyref = firebase.database().ref('questions');
@@ -165,7 +137,7 @@ function createDocument(keysArray){
                               radio3label.appendChild(text);
 
                               var optionInput = document.createElement('h5');
-                              var optionText = document.createTextNode("Please press the button to add a selection");
+                              var optionText = document.createTextNode("Please press the button to add a option");
                               checkboxForm.appendChild(optionInput);
                               optionInput.appendChild(optionText);
 
@@ -338,9 +310,18 @@ function createDocument(keysArray){
                                         var editQuestion = selection.value;
                                         editQuestion = editQuestion.replace('question','');
                                         editQuestion = parseInt(editQuestion) - 1;
+
                                         var removeOption = document.getElementById('questionData');
                                         var removeElement = removeOption.getElementsByClassName("removable");
                                         while (removeElement[0]){removeElement[0].parentNode.removeChild(removeElement[0]);}
+
+                                        var removeElement = removeOption.getElementsByClassName("btn btn-success btn");
+                                        while (removeElement[0]){removeElement[0].parentNode.removeChild(removeElement[0]);}
+
+
+
+
+
                                         dbref = firebase.database().ref('questions').child(keysArray[editQuestion]);
                                         dbref.once('value', function fillForm(snapshot){
                                           var keyData = snapshot.val();
@@ -391,7 +372,8 @@ function createDocument(keysArray){
                                             newDataOption.value = dataArray[i];
 
                                             var deleteOption = document.createElement('input');
-                                            deleteOption.setAttribute('class', "btn btn-success btn-send");
+                                            deleteOption.setAttribute('class', "btn btn-success btn");
+                                            deleteOption.setAttribute('name', "removable");
                                             deleteOption.setAttribute('type',"submit");
                                             deleteOption.setAttribute('value', "delete option");
                                             deleteOption.style.display = "inline-block";
@@ -403,7 +385,7 @@ function createDocument(keysArray){
                                               this.previousSibling.remove();
                                               this.remove();
                                             }
-                                            newDataOption.after(deleteOption);
+                                            NewquestionCreatorForm.appendChild(deleteOption);
                                           }
 
 
@@ -489,7 +471,7 @@ function createDocument(keysArray){
                                             Newradio3label.appendChild(text);
 
                                             var NewoptionInput = document.createElement('h5');
-                                            var NewoptionText = document.createTextNode("Please press the button to add a selection");
+                                            var NewoptionText = document.createTextNode("Please press the button to add a option");
                                             NewcheckboxForm.appendChild(NewoptionInput);
                                             NewoptionInput.appendChild(NewoptionText);
 
@@ -500,6 +482,7 @@ function createDocument(keysArray){
                                             NewoptionButton.onclick = function createOption(){
                                               var NewoptionBox = document.createElement('input');
                                               NewoptionBox.setAttribute('type', "text");
+                                              NewoptionBox.setAttribute('class',"removable");
                                               NewoptionBox.style.marginBottom = "2px";
                                               NewoptionBox.style.marginTop = "1px";
                                               NewoptionBox.style.marginRight = "3px";
@@ -509,6 +492,7 @@ function createDocument(keysArray){
                                               var deleteOption = document.createElement('input');
                                               deleteOption.setAttribute('class', "btn btn-success btn-send");
                                               deleteOption.setAttribute('type',"submit");
+                                              deleteOption.setAttribute('name', "removable");
                                               deleteOption.setAttribute('value', "delete option");
                                               deleteOption.style.display = "inline-block";
                                               deleteOption.onclick = function deleteOption(){
@@ -538,6 +522,7 @@ function createDocument(keysArray){
                                         deleteQuestionBox.setAttribute('class', "btn btn-success btn-send");
                                         deleteQuestionBox.setAttribute('type',"button");
                                         deleteQuestionBox.setAttribute('value',"Delete Question");
+                                        deleteQuestionBox.style.marginBottom = "1px";
                                         NewcheckboxForm.appendChild(deleteQuestionBox);
                                         deleteQuestionBox.onclick = function removeQuestion(){
 

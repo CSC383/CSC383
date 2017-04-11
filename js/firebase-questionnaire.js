@@ -21,8 +21,9 @@ Visit http://i-69thumbregion.org for more information on the region.`
 
 	var question2 = {
 		question: "Are you an alumni of the University of Michigan Flint?",
-		option1: "Yes",
-		option2: "No",
+		option1: "single choice",
+		option2: "Yes",
+		option3: "No",
 		help: `If you graduated from UM-Flint within the last year, you are eligible for
 additional assistance such as potential shared office space or School of
 Management professor mentorship.`
@@ -51,10 +52,11 @@ for more information on these requirements.`
 
 	var question4 = {
 		question: "What stage is your business in?",
-		option1: "Idea",
-		option2: "Startup",
-		option3: "Established",
-		option4: "Not sure",
+		option1: "single choice",
+		option2: "Idea",
+		option3: "Startup",
+		option4: "Established",
+		option5: "Not sure",
 		help: `Idea stage means the business is not yet in operation but you have
 a good sense of what your product or service is and how you
 imagine the business will run.
@@ -71,10 +73,11 @@ Not Sure? That’s okay too! We are here to help.`
 	};
 	var question5 = {
 		question: "What type of business do you have?",
-		option1: "Not for profit",
-		option2: "For profit",
-		option3: "Hybrid",
-		option4: "Not sure",
+		option1: "single choice",
+		option2: "Not for profit",
+		option3: "For profit",
+		option4: "Hybrid",
+		option5: "Not sure",
 		help: `Not For Profit means
 For Profit means the business has been
 Hybrid means the business
@@ -85,13 +88,14 @@ Not Sure? That’s okay too! We are here to help.`
 
 	var question6 = {
 		question: "What is the legal entity of your business?",
-		option1: "Other",
-		option2: "Sole Prorietorship",
-		option3: "S-Corporation",
-		option4: "Corporation",
-		option5: "L3C",
-		option6: "LLC",
-		option7: "Partnership",
+		option1: "single choice",
+		option2: "Other",
+		option3: "Sole Prorietorship",
+		option4: "S-Corporation",
+		option5: "Corporation",
+		option6: "L3C",
+		option7: "LLC",
+		option8: "Partnership",
 		help: `Sole Proprietorship: A sole proprietorship is the most
 basic type of business to establish. You alone own the company and
 are responsible for its assets and liabilities. Learn more about the sole
@@ -136,8 +140,9 @@ and can list the date your sold your first product or service.`
 
 	var question8 = {
 		question: "Do you conduct your business online?",
-		option1: "Yes",
-		option2: "No",
+		option1: "single choice",
+		option2: "Yes",
+		option3: "No",
 		help: `Do you conduct sales, marketing, consultations or other services through a main
 website or social media channel?`
 
@@ -145,8 +150,9 @@ website or social media channel?`
 
 	var question9 = {
 		question: "Are you a home based business?",
-		option1: "Yes",
-		option2: "No",
+		option1: "single choice",
+		option2: "Yes",
+		option3: "No",
 		help: `Based on need, availability, and eligibility, clients may be offered additional services
 such as a professional downtown mailing address.`
 
@@ -193,17 +199,18 @@ interested in your products or services.`
 
 	var question14 = {
 		question: "How will you make profit or fund your work?",
-		option1: "Donation",
-		option2: "Personal Assets",
-		option3: "Volunteer",
-		option4: "Employment",
-		option5: "Fundraising",
-		option6: "Grant",
-		option7: "Investor",
-		option8: "Loan",
-		option9: "Sales",
-		option10: "Sponsorship",
-		option11: "Partner",
+		option1: "single choice",
+		option2: "Donation",
+		option3: "Personal Assets",
+		option4: "Volunteer",
+		option5: "Employment",
+		option6: "Fundraising",
+		option7: "Grant",
+		option8: "Investor",
+		option9: "Loan",
+		option10: "Sales",
+		option11: "Sponsorship",
+		option12: "Partner",
 		help: `Except in rare cases, grants are seldom available to For-Profit businesses.
 
 Most investors are only interested in extremely profitable or scalable businesses, if
@@ -240,7 +247,7 @@ Businesses need to file for an EIN after they establish the company.`
 
 	var question17 = {
 		question: "Which Innovation Incubator services are of interest to you?",
-		option1: "multiple choice with input",
+		option1: "multiple choice",
 		option2: "Other",
 		option3: "Networking",
 		option4: "Information",
@@ -402,32 +409,38 @@ function createquestion(key){
 			var new_check = document.createElement('input');
 			new_check.setAttribute('type', 'button');
 			new_check.setAttribute('id', 'help');
-			new_check.setAttribute('class', 'btn btn-success btn-send');
+			new_check.setAttribute('class', 'btn btn-info btn-lg');
 			new_check.setAttribute('value', 'Help');
+			new_check.setAttribute('data-toggle', "modal");
+			new_check.setAttribute('data-target', "#myModal")
 			new_check.style.cssFloat = "right";
 			new_div.appendChild(new_check);
 			new_check.onclick = function helpwindow(){
-					var openPrint = window.open('popup.html','location=0,toolbar=0,menubar=0,Help Window');
-			    openPrint.onload = function() {
-			        var doc = openPrint.document;
-
-			        var newpre = document.createElement("pre");
-			        var newtext = document.createTextNode(q_val.help);
-							newpre.style.fontstyle = "Times New Roman"
-			        newpre.appendChild(newtext)
-			        doc.body.appendChild(newpre);
-
-							var close = document.createElement("button");
-							var text = document.createTextNode("Close");
-							close.appendChild(text);
-							close.style.width = "50px";
-							close.style.height = "25px";
-							close.onclick = function(){
-								openPrint.close();
-							}
-							newpre.after(close);
-			    };
+				var q_help = document.getElementById('q_help');
+				q_help.innerText = q_val.help;
 			}
+					//var openPrint = window.open('popup.html','location=0,toolbar=0,menubar=0,Help Window');
+			    //openPrint.onload = function() {
+			        //var doc = openPrint.document;
+
+			        //var newpre = document.createElement("pre");
+			        //var newtext = document.createTextNode(q_val.help);
+							//newpre.style.fontstyle = "Times New Roman"
+			        //newpre.appendChild(newtext)
+			        //doc.body.appendChild(newpre);
+
+						//	var close = document.createElement("button");
+					  //  var text = document.createTextNode("Close");
+						//	close.appendChild(text);
+						//	close.style.width = "50px";
+						//	close.style.height = "25px";
+						//	close.onclick = function(){
+							//	openPrint.close();
+						//	}
+					//		newpre.after(close);
+			  //  };
+			//}
+
 			//Creates the h2 element for the question to go into
 			//sets h2's class to section-heading
 			//places it inside the just created div
@@ -568,10 +581,10 @@ function createquestion(key){
 							}
 							// if option1 equals other we know that the list of drop downs has an option
 							//saying other which means they should input their own option
-							else if(o_val =='Other'){
+							else if(o_val =='single choice'){
 								new_select.remove();
 								//create a for loop to create all option elements
-								for(i=0;i<options.length;i++){
+								for(i=1;i<options.length;i++){
 									var newref = firebase.database().ref('questions').child(key[q]).child(options[i]);
 									newref.once('value',function(snapshot){
 										newval = snapshot.val();
@@ -600,21 +613,6 @@ function createquestion(key){
 											otherchoice(name, new_div, id);
 										}
 									})
-								}
-							}
-							//if option1 is none of those values we know there is nothing special about it
-							//so it will only create the options for the newly created select
-							else {
-								//for loop which starts the creation of all the options
-								for(i=0;i<options.length;i++){
-									var newref = firebase.database().ref('questions').child(key[q]).child(options[i]);
-									newref.once('value',function(snapshot){
-									newval = snapshot.val();
-									var new_option = document.createElement('option');
-									var text = document.createTextNode(newval);
-									new_option.appendChild(text);
-									new_select.appendChild(new_option);
-								})
 								}
 							}
 
