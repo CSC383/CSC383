@@ -26,7 +26,7 @@ function makeReivew(input)
   var rBody = document.getElementById("rMaker");
   var score = document.getElementById("rater");
   var userID = document.getElementById("username");
-  var inputClean = decodeURIComponent(input);
+  var inputClean = decodeApos(input);
 
   rootref.child("Resources").orderByChild("name").equalTo(inputClean).on("child_added", function(snap)
   {
