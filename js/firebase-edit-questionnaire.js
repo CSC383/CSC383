@@ -1,4 +1,5 @@
 
+const auth = firebase.auth();
 const btnLogout = document.getElementById('btnLogout');
 
 //Add logout event
@@ -7,23 +8,27 @@ btnLogout.addEventListener('click', function(e) {
   console.log(e.message);
 });
 
-const auth = firebase.auth();
-
 //Add a realtime listener
 auth.onAuthStateChanged(function(firebaseUser) {
 	if(firebaseUser) {
 		console.log(firebaseUser);
 		btnLogout.classList.remove('hide');
-
     console.log(firebaseUser.email);
-
+    closeModal();
 	} else {
 		console.log('not logged in');
+    showModal();
 		btnLogout.classList.add('hide');
 	}
-
-
 });
+
+function closeModal() {
+  $('#myModal').modal('close');
+};
+
+function showModal(){
+  $('#myModal').modal('show');
+};
 
 
 (function editquestionnaire(){
