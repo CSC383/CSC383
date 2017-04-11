@@ -16,7 +16,7 @@ const loginForm = document.getElementById('loginForm');
 
 
 //Add login event
-btnLogin.addEventListener('click', e => {
+btnLogin.addEventListener('click', function(e) {
 	//get email and pass
 	const email = txtEmail.value;
 	const pass = txtPassword.value;
@@ -28,7 +28,7 @@ btnLogin.addEventListener('click', e => {
 
 
 //Add logout event
-btnLogout.addEventListener('click', e => {
+btnLogout.addEventListener('click', function(e) {
 	auth.signOut();
 
 });
