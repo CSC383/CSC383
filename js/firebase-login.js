@@ -23,14 +23,16 @@ btnLogin.addEventListener('click', function(e) {
 
 	//sign in
 	const promise = auth.signInWithEmailAndPassword(email, pass);
-	promise.catch(e => console.log(e.message));
+	promise.catch(function(e) {
+    console.log(e.message)
+  });
 });
 
 
 //Add logout event
 btnLogout.addEventListener('click', function(e) {
 	auth.signOut();
-
+  console.log(e.message);
 });
 
 const auth = firebase.auth();

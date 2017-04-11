@@ -1,3 +1,31 @@
+
+const btnLogout = document.getElementById('btnLogout');
+
+//Add logout event
+btnLogout.addEventListener('click', function(e) {
+	auth.signOut();
+  console.log(e.message);
+});
+
+const auth = firebase.auth();
+
+//Add a realtime listener
+auth.onAuthStateChanged(function(firebaseUser) {
+	if(firebaseUser) {
+		console.log(firebaseUser);
+		btnLogout.classList.remove('hide');
+
+    console.log(firebaseUser.email);
+
+	} else {
+		console.log('not logged in');
+		btnLogout.classList.add('hide');
+	}
+
+
+});
+
+
 (function editquestionnaire(){
   //sets spot in database where to look for keys
   var keyref = firebase.database().ref('questions');
@@ -525,8 +553,8 @@ function createDocument(keysArray){
                                         deleteQuestionBox.style.marginBottom = "1px";
                                         NewcheckboxForm.appendChild(deleteQuestionBox);
                                         deleteQuestionBox.onclick = function removeQuestion(){
-                                          
-                                        
+
+
 
 
                                           var inputs = document.getElementById('data').querySelectorAll("input[type=text]");
@@ -537,7 +565,7 @@ function createDocument(keysArray){
                                           inputs = inputs - inputs[0];
                                           for(i=0;i<inputs.length;i++){
                                             inputs[i].remove();
-                                          
+
                                           var removeOption = document.getElementById('questionData');
                                           var removeElement = removeOption.getElementsByClassName("removable");
                                           while (removeElement[0]){removeElement[0].parentNode.removeChild(removeElement[0]);}

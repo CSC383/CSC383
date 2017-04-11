@@ -15,9 +15,9 @@ $(".required").keyup(function () {
 const btnLogout = document.getElementById('btnLogout');
 
 //Add logout event
-btnLogout.addEventListener('click', e => {
+btnLogout.addEventListener('click', function(e) {
 	auth.signOut();
-
+  console.log(e.message);
 });
 
 const auth = firebase.auth();
