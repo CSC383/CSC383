@@ -525,7 +525,8 @@ function createDocument(keysArray){
                                         deleteQuestionBox.style.marginBottom = "1px";
                                         NewcheckboxForm.appendChild(deleteQuestionBox);
                                         deleteQuestionBox.onclick = function removeQuestion(){
-
+                                          
+                                        
 
 
                                           var inputs = document.getElementById('data').querySelectorAll("input[type=text]");
@@ -536,6 +537,13 @@ function createDocument(keysArray){
                                           inputs = inputs - inputs[0];
                                           for(i=0;i<inputs.length;i++){
                                             inputs[i].remove();
+                                          
+                                          var removeOption = document.getElementById('questionData');
+                                          var removeElement = removeOption.getElementsByClassName("removable");
+                                          while (removeElement[0]){removeElement[0].parentNode.removeChild(removeElement[0]);}
+
+                                          var removeElement = removeOption.getElementsByClassName("btn btn-success btn");
+                                          while (removeElement[0]){removeElement[0].parentNode.removeChild(removeElement[0]);}
 
                                           }
 
