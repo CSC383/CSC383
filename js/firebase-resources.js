@@ -209,8 +209,14 @@ function calcAggregateRating(input)
 
     });
   });
-
-  var rating = j/i;
+  if (i <= 1) 
+  {
+    return 0;
+  }
+  else
+  {
+    var aggRating = j/(i-1);
+  }
 
 
 }
