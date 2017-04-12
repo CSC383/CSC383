@@ -34,20 +34,20 @@ var rootref = firebase.database().ref();
   var latitude = document.getElementById("latitude");
   var longitude = document.getElementById("longitude");
 var address = document.getElementById("address");
-function codeAddress(){
-var geocode;	
+//function codeAddress(){
+//var geocode;	
 
-    var address = document.getElementById("address");
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == 'OK') {
-        var latlng = results[0].geometry.location
+   // var address = document.getElementById("address");
+    //geocoder.geocode( { 'address': address}, function(results, status) {
+      //if (status == 'OK') {
+       // var latlng = results[0].geometry.location
         
         
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+      //} else {
+       // alert('Geocode was not successful for the following reason: ' + status);
       }
-    });
-  }
+   // });
+ // }
  	
     
 
