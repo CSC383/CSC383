@@ -63,3 +63,13 @@ margin-bottom: 15px;
 .black {
   color: #333;
 }
+
+.starRating {
+    height: 16px;
+    width: 16px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-image: url("CSC383/img/ratingStar.png");
+
+}
+
