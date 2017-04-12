@@ -47,7 +47,7 @@ function showModal(){
 window.onload = allStatistics();
 var statRef = firebase.database();
 
-function updateStatistics(statisticID) {
+function updateStatistic(statisticID) {
 	var id = statisticID;
 	var statValue = id + "Value";
 
