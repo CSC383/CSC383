@@ -53,7 +53,7 @@ function updateStatistic(statisticID) {
 
 	var valueUpdate = document.getElementById(statValue);
 	statRef.ref("data_dashboard").update({
-		""+ id +"": ""+ valueUpdate.value +""
+		id: ""+ valueUpdate.value +""
 	});
 };
 
