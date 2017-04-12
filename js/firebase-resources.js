@@ -90,7 +90,7 @@ function allResources() {
 		var nameCoded = encodeApos(name);
 		
 		var aggRate = calcAggregateRating(nameCoded);
-		console.log(name + " " + aggRate + "");
+		console.log("" + nameCoded + " " + aggRate + "");
 		
 
 		//Creates table with resources pulled from firebase
