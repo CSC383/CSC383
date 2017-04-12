@@ -52,7 +52,9 @@ function updateStatistic(statisticID) {
 	var statValue = id + "Value";
 
 	var valueUpdate = document.getElementById(statValue);
-	statRef.ref("data_dashboard").child(statisticID).update(valueUpdate);
+	statRef.ref("data_dashboard").child(id).update({
+		value: ""+ valueUpdate.value +""
+	});
 };
 
 //Filters all statistics
