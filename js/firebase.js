@@ -30,29 +30,26 @@ var rootref = firebase.database().ref();
 
 
 
-	var address = document.getElementById("address");
+	
   var latitude = document.getElementById("latitude");
   var longitude = document.getElementById("longitude");
 
 function codeAddress(){
 var geocode;	
-geocoder.geocode({'address':address}, function geocodeResult(results, status) {
-     if (status == google.maps.GeocoderStatus.OK){
-         var latlng = results[0].geometry.location;
- 		
-     } 
-		else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-         alert("Bad destination address.");
-     	} 
-		else {
-         alert("Error calling Google Geocode API.");
-     	}
- 	
-        addResource();
-           });
- 	
- 		
-}
+function codeAddress() {
+    var address = document.getElementById("address");
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
  	
     
 
