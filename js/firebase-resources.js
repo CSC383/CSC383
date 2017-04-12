@@ -90,7 +90,7 @@ function allResources() {
 		var nameCoded = encodeApos(name);
 		
 		var aggRate = calcAggregateRating(nameCoded);
-		console.log("" + nameCoded + " " + aggRate + "");
+		//console.log("" + nameCoded + " " + aggRate + "");
 		
 
 		//Creates table with resources pulled from firebase
@@ -235,7 +235,7 @@ function calcAggregateRating(input)
     });
   });
 	
-  //console.log(inputClean + " " + i + " " + j + "") 
+  console.log(inputClean + " " + i + " " + j + "") 
   if (i <= 1) 
   {
     return 0;
