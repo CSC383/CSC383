@@ -225,13 +225,16 @@ function calcAggregateRating(input)
   var i = 0;
   var j = 0;
   var inputClean = decodeApos(input);
+  var temp = 0;
   rootref.child("Resources").orderByChild("name").equalTo(inputClean).once("child_added", function(snap)
   {
     snap.child("reviews").forEach(function(shot)
     {
-      j = j + shot.child("rating").val();
+      temp = shot.child("rating").val();
+      temp = parseInt(temp);
+      j = j + temp;
       i = i+1;
-      console.log(inputClean + " " + i + " " + j + " v0.01");
+      console.log(inputClean + " " + i + " " + j + " v0.03");
 
     });
   });
