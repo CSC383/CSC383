@@ -231,7 +231,7 @@ function calcAggregateRating(input)
     {
       j = j + shot.child("rating").val();
       i = i+1;
-      console.log(inputClean + " " + i + " " + j + "");
+      console.log(inputClean + " " + i + " " + j + " v0.01");
 
     });
   });
