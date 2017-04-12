@@ -14,7 +14,7 @@
 
 //reference to firebase database
 var rootref = firebase.database().ref();
-var geocode;
+
 
 //Add resources to database
 	var county = document.getElementById("county");
@@ -35,7 +35,8 @@ var geocode;
   var longitude = document.getElementById("longitude");
 
 function codeAddress(){
-geocoder.geocode({address:address}, function geocodeResult(results, status) {
+var geocode;	
+geocoder.geocode({'address':address}, function geocodeResult(results, status) {
      if (status == google.maps.GeocoderStatus.OK){
          var latlng = results[0].geometry.location;
  		
@@ -51,7 +52,7 @@ geocoder.geocode({address:address}, function geocodeResult(results, status) {
            });
  	
  		
- 	}
+}
  	
     
 
