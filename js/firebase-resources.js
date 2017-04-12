@@ -161,11 +161,14 @@ function printReviews(input)
   {
     snap.child("reviews").forEach(function(shot)
     {
+      
       var user = shot.child("user").val();
       var rating = shot.child("rating").val();
       var rBody = shot.child("text").val();
-
-      $("#modal_body").append("<tr><td>" + user + "</td><td>" + rating + "</td></tr><tr><td>" + rBody+ "</td></tr>");
+      if (rating != 0)
+      {
+	$("#modal_body").append("<tr><td>" + user + "</td><td>" + rating + "</td></tr><tr><td>" + rBody+ "</td></tr>");
+      }
     });
   },
   function(error)
