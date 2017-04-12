@@ -1,5 +1,10 @@
 //This page handles all resources page content
 
+function closeWindow(){
+  auth.signOut();
+  window.location.reload();
+};
+
 //encodes any apostrophes in a string into an escape character
 function encodeApos (input)
 {
@@ -88,10 +93,10 @@ function allResources() {
 		var notes = snap.child("notes").val();
 		var url = snap.child("url").val();
 		var nameCoded = encodeApos(name);
-		
+
 		var aggRate = calcAggregateRating(nameCoded);
 		console.log(aggRate);
-		
+
 
 		//Creates table with resources pulled from firebase
 		$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
@@ -234,7 +239,7 @@ function calcAggregateRating(input)
 
     });
   });
-  if (i <= 1) 
+  if (i <= 1)
   {
     return 0;
   }
