@@ -230,7 +230,7 @@ function calcAggregateRating(input)
     snap.child("reviews").forEach(function(shot)
     {
       j = j + shot.child("rating").val();
-      i++;
+      i = i+1;
       console.log(inputClean + " " + i + " " + j + "");
 
     });
