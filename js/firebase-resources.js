@@ -193,7 +193,7 @@ function makeReview(input)
 		window.location.reload()
 };
 
-function getAggregateRating(input)
+function calcAggregateRating(input)
 {
   var i = 0;
   var j = 0;
