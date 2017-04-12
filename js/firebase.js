@@ -47,7 +47,7 @@ function codeAddress(){
  -        alert("Error calling Google Geocode API.");
  -    }
  -	
- -       
+ -       addResource ();
  -          });
  -	
  -		
