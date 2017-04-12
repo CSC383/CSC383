@@ -33,7 +33,7 @@ var rootref = firebase.database().ref();
 	
   var latitude = document.getElementById("latitude");
   var longitude = document.getElementById("longitude");
-
+var address = document.getElementById("address");
 function codeAddress(){
 var geocode;	
 function codeAddress() {
