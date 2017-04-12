@@ -231,11 +231,11 @@ function calcAggregateRating(input)
     {
       j = j + shot.child("rating").val();
       i++;
+      console.log(inputClean + " " + i + " " + j + "");
 
     });
   });
-	
-  console.log(inputClean + " " + i + " " + j + "") 
+	 
   if (i <= 1) 
   {
     return 0;
