@@ -15,10 +15,24 @@ function decodeApos(input)
   return decoded;
 }
 
+const auth = firebase.auth();
+
+//authentication state change
+auth.onAuthStateChanged(function(firebaseUser) {
+	if(firebaseUser) {
+		console.log(firebaseUser);
+	} else {
+		console.log('not logged in');
+	}
+});
+
 //defines and appends the submit button for the resource modal
 function makeModal(input, id)
 {
-
+  firebase.auth().signInAnonymously()
+ .catch(function(error) {
+  console.log(error)
+ });
 var inputClean = decodeApos(input);
 
 	$('#modalHeading').html("");
@@ -35,8 +49,13 @@ var inputClean = decodeApos(input);
 
 
 //Loads all resources on page load
-window.onload = allResources();
+window.onload = onLoad();
 
+
+function onLoad(){
+  allResources();
+
+};
 
 //clears filters for new input
 function clearResources(){
@@ -161,7 +180,7 @@ function printReviews(input)
   {
     snap.child("reviews").forEach(function(shot)
     {
-      
+
       var user = shot.child("user").val();
       var rating = shot.child("rating").val();
       var rBody = shot.child("text").val();
@@ -194,6 +213,7 @@ function makeReview(input)
 }
 );
 		window.location.reload()
+    auth.signOut();
 };
 
 function calcAggregateRating(input)
