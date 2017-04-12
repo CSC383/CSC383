@@ -69,6 +69,10 @@ function allResources() {
 		var notes = snap.child("notes").val();
 		var url = snap.child("url").val();
 		var nameCoded = encodeApos(name);
+		
+		var aggRate = calcAggregateRating(nameCoded);
+		console.log(aggRate);
+		
 
 		//Creates table with resources pulled from firebase
 		$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
@@ -200,7 +204,8 @@ function calcAggregateRating(input)
 {
   var i = 0;
   var j = 0;
-  rootref.child("Resources").orderByChild("name").equalTo(input).once("child_added", function(snap)
+  inputClean = decodeApos(input);
+  rootref.child("Resources").orderByChild("name").equalTo(inputClean).once("child_added", function(snap)
   {
     snap.child("reviews").forEach(function(shot)
     {
