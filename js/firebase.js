@@ -33,7 +33,7 @@ var geocode;
 	var address = document.getElementById("address");
   var latitude = document.getElementById("latitude");
   var longitude = document.getElementById("longitude");
-
+function codeAddress(){
 geocoder.geocode({address:address.value}, function geocodeResult(results, status) {
      if (status == google.maps.GeocoderStatus.OK){
          var latlng = results[0].geometry.location;
@@ -46,7 +46,7 @@ geocoder.geocode({address:address.value}, function geocodeResult(results, status
          alert("Error calling Google Geocode API.");
      	}
  	
-        addResource ();
+        addResource();
            });
  	
  		
