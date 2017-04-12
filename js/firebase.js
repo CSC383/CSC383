@@ -34,26 +34,25 @@ var geocode;
   var latitude = document.getElementById("latitude");
   var longitude = document.getElementById("longitude");
 
-function codeAddress(){
- -	
- -	geocoder.geocode({address:address.value}, function geocodeResult(results, status) {
- -         if (status == google.maps.GeocoderStatus.OK)
- -    {
- -        var latlng = results[0].geometry.location;
- -		
- -    } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
- -        alert("Bad destination address.");
- -    } else {
- -        alert("Error calling Google Geocode API.");
- -    }
- -	
- -       addResource ();
- -          });
- -	
- -		
- -	}
- -	
- -   }
+geocoder.geocode({address:address.value}, function geocodeResult(results, status) {
+     if (status == google.maps.GeocoderStatus.OK){
+         var latlng = results[0].geometry.location;
+ 		
+     } 
+		else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+         alert("Bad destination address.");
+     	} 
+		else {
+         alert("Error calling Google Geocode API.");
+     	}
+ 	
+        addResource ();
+           });
+ 	
+ 		
+ 	}
+ 	
+    
 
 function addResource () {
 
