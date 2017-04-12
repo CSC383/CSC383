@@ -70,6 +70,8 @@ margin-bottom: 15px;
     padding-left: 4px;
     padding-right: 4px;
     background-image: url("CSC383/img/ratingStar.png");
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
 
 }
 
