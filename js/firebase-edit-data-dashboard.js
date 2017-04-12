@@ -52,8 +52,8 @@ function updateStatistic(statisticID) {
 	var statValue = id + "Value";
 
 	var valueUpdate = document.getElementById(statValue);
-	statRef.ref("data_dashboard").child(id).update({
-		""+ valueUpdate.value +""
+	statRef.ref("data_dashboard").update({
+		""+ id +"": ""+ valueUpdate.value +""
 	});
 };
 
