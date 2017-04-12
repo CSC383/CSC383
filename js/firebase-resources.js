@@ -245,6 +245,7 @@ function calcAggregateRating(input)
   else
   {
     var aggRating = j/(i-1);
+    return aggRating;
   }
 
 
