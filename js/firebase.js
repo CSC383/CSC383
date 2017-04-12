@@ -14,7 +14,7 @@
 
 //reference to firebase database
 var rootref = firebase.database().ref();
-var geocode;
+
 
 //Add resources to database
 	var county = document.getElementById("county");
@@ -30,27 +30,24 @@ var geocode;
 
 
 
-	var address = document.getElementById("address");
+	
   var latitude = document.getElementById("latitude");
   var longitude = document.getElementById("longitude");
-function codeAddress(){
-geocoder.geocode({address:address.value}, function geocodeResult(results, status) {
-     if (status == google.maps.GeocoderStatus.OK){
-         var latlng = results[0].geometry.location;
- 		
-     } 
-		else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-         alert("Bad destination address.");
-     	} 
-		else {
-         alert("Error calling Google Geocode API.");
-     	}
- 	
-        addResource();
-           });
- 	
- 		
- 	}
+var address = document.getElementById("address");
+//function codeAddress(){
+//var geocode;	
+
+   // var address = document.getElementById("address");
+    //geocoder.geocode( { 'address': address}, function(results, status) {
+      //if (status == 'OK') {
+       // var latlng = results[0].geometry.location
+        
+        
+      //} else {
+       // alert('Geocode was not successful for the following reason: ' + status);
+      }
+   // });
+ // }
  	
     
 
