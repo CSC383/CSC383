@@ -65,12 +65,12 @@ margin-bottom: 15px;
 }
 
 .starRating {
-    height: 16px;
-    width: 16px;
+    height: 32px;
+    width: 32px;
     padding-left: 4px;
     padding-right: 4px;
     background-image: url("http://i2.photobucket.com/albums/y5/HauntedRulz/ratingStar_zpsye5prejl.png?t=1491942514");
-    background-size: 16px 16px;
+    background-size: 32px 32px;
     background-repeat: no-repeat;
 
 }
