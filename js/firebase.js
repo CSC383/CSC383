@@ -56,7 +56,14 @@ function addResource () {
       address: ""+ address.value +"",
       phone: ""+ phone +"",
       lat: ""+ latitude.value +"",
-      lng: ""+ longitude.value +""
+      lng: ""+ longitude.value +"",
+      reviews: {
+	         initialReview: {
+			          rating: 0,
+			          user: "blank",
+			          text: "blank"
+		 		}
+      	       }
     });
 	}
 
