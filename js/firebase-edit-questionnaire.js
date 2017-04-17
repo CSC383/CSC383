@@ -529,10 +529,7 @@ function createDocument(keysArray){
                                               deleteOption.setAttribute('value', "delete option");
                                               deleteOption.style.display = "inline-block";
                                               deleteOption.onclick = function deleteOption(){
-                                                var lastElement = this.previousSibling.getAttribute('id');
-                                                var optionRef = firebase.database().ref('questions').child(keysArray[neweditQuestion]).child(lastElement);
-
-                                                optionRef.remove();
+                                              
                                                 this.previousSibling.remove();
                                                 this.remove();
                                               }
