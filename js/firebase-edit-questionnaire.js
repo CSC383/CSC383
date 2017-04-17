@@ -583,7 +583,7 @@ function createDocument(keysArray){
                                           neweditQuestion = neweditQuestion.replace('question','');
                                           neweditQuestion = parseInt(neweditQuestion) - 1;
 
-                                          var deleteRef = firebase.database().ref('questions').child(keysArray[neweditQuestion]).remove();
+                                          var deleteRef = firebase.database().ref('questions').child(keysArray[editQuestion]).remove();
 
                                           var removeSelect = document.getElementById('mySelect');
                                           removeSelect.remove(removeSelect.selectedIndex);
