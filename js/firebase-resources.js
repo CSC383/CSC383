@@ -93,12 +93,6 @@ function allResources() {
 		
 		makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 		
-		
-		
-
-
-
-		
 
 		});
 };
@@ -195,43 +189,32 @@ rootref.child("Resources").on("child_added", function(snap) {
 	var phase = snap.child("phase").val();
 	var service = snap.child("service").val();
 	var nameCoded = encodeApos(name);
+	var aggRate = calcAggregateRating(nameCoded);
+		
+		
 
 //creates table based on user inputs
 if(countyVal == county && phaseVal == phase && serviceVal == service) {
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == county && phaseVal == false && serviceVal == false){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == county && phaseVal == phase && serviceVal == false){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == county && phaseVal == false && serviceVal == service){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == false && phaseVal == phase && serviceVal == false){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == false && phaseVal == phase && serviceVal == service){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 
 else if (countyVal == false && phaseVal == false && serviceVal == service){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 
 
