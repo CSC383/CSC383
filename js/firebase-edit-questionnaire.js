@@ -1,4 +1,3 @@
-
 const auth = firebase.auth();
 const btnLogout = document.getElementById('btnLogout');
 
@@ -529,7 +528,6 @@ function createDocument(keysArray){
                                               deleteOption.setAttribute('value', "delete option");
                                               deleteOption.style.display = "inline-block";
                                               deleteOption.onclick = function deleteOption(){
-                                              
                                                 this.previousSibling.remove();
                                                 this.remove();
                                               }
@@ -558,7 +556,6 @@ function createDocument(keysArray){
 
 
 
-
                                           var inputs = document.getElementById('data').querySelectorAll("input[type=text]");
                                           var textarea = document.getElementById('data').getElementsByTagName('TEXTAREA');
 
@@ -568,13 +565,6 @@ function createDocument(keysArray){
                                           for(i=0;i<inputs.length;i++){
                                             inputs[i].remove();
 
-                                          var removeOption = document.getElementById('questionData');
-                                          var removeElement = removeOption.getElementsByClassName("removable");
-                                          while (removeElement[0]){removeElement[0].parentNode.removeChild(removeElement[0]);}
-
-                                          var removeElement = removeOption.getElementsByClassName("btn btn-success btn");
-                                          while (removeElement[0]){removeElement[0].parentNode.removeChild(removeElement[0]);}
-
                                           }
 
 
@@ -583,10 +573,17 @@ function createDocument(keysArray){
                                           neweditQuestion = neweditQuestion.replace('question','');
                                           neweditQuestion = parseInt(neweditQuestion) - 1;
 
-                                          var deleteRef = firebase.database().ref('questions').child(keysArray[editQuestion]).remove();
+                                          var deleteRef = firebase.database().ref('questions').child(keysArray[neweditQuestion]).remove();
 
                                           var removeSelect = document.getElementById('mySelect');
                                           removeSelect.remove(removeSelect.selectedIndex);
+
+                                          var removeOption = document.getElementById('questionData');
+                                          var removeElement = removeOption.getElementsByClassName("removable");
+                                          while (removeElement[0]){removeElement[0].parentNode.removeChild(removeElement[0]);}
+
+                                          var removeElement = removeOption.getElementsByClassName("btn btn-success btn");
+                                          while (removeElement[0]){removeElement[0].parentNode.removeChild(removeElement[0]);}
 
                                         }
                                         var applyBox = document.createElement('input');
