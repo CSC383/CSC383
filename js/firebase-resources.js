@@ -1,5 +1,11 @@
 //This page handles all resources page content
 
+
+
+function closeWindow(){
+  window.location.reload();
+  auth.signOut();
+}
 //encodes any apostrophes in a string into an escape character
 function encodeApos (input)
 {
@@ -29,11 +35,13 @@ auth.onAuthStateChanged(function(firebaseUser) {
 //defines and appends the submit button for the resource modal
 function makeModal(input, id)
 {
-  firebase.auth().signInAnonymously()
- .catch(function(error) {
-  console.log(error)
- });
+
 var inputClean = decodeApos(input);
+
+firebase.auth().signInAnonymously()
+.catch(function(error) {
+console.log(error)
+});
 
 	$('#modalHeading').html("");
 	$('#myModal').modal('toggle');
@@ -111,31 +119,31 @@ function allResources() {
 		    {
 			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
 							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><div class=\"starRate\"></div></td></tr>");
+							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
 		    }
 		else if (aggRate < 2.5)
 		    {
 			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
 							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><div class=\"starRate\"></div><div class=\"starRate\"></div></td></tr>");
+							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
 		    }
 		else if (aggRate < 3.5)
 		    {
 			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
 							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div></td></tr>");
+							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
 		    }
 		else if (aggRate < 4.5)
 		    {
 			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
 							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div></td></tr>");
+							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
 		    }
 		else if (aggRate >= 4.5)
 		    {
 			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
 							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div></td></tr>");
+							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
 		    }
 
 		});
@@ -171,43 +179,324 @@ rootref.child("Resources").on("child_added", function(snap) {
 	var phase = snap.child("phase").val();
 	var service = snap.child("service").val();
 	var nameCoded = encodeApos(name);
+  var aggRate = calcAggregateRating(nameCoded);
+  var arType = typeof(aggRate);
 
 //creates table based on user inputs
 if(countyVal == county && phaseVal == phase && serviceVal == service) {
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+  //Creates table with resources pulled from firebase
+  if (arType != "number")
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 0.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 1.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate < 2.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 3.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate >= 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
 }
 else if (countyVal == county && phaseVal == false && serviceVal == false){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+  //Creates table with resources pulled from firebase
+  if (arType != "number")
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 0.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 1.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate < 2.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 3.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate >= 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
 }
 else if (countyVal == county && phaseVal == phase && serviceVal == false){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+  //Creates table with resources pulled from firebase
+  if (arType != "number")
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 0.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 1.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate < 2.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 3.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate >= 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
 }
 else if (countyVal == county && phaseVal == false && serviceVal == service){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+  //Creates table with resources pulled from firebase
+  if (arType != "number")
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 0.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 1.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate < 2.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 3.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate >= 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
 }
 else if (countyVal == false && phaseVal == phase && serviceVal == false){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+  //Creates table with resources pulled from firebase
+  if (arType != "number")
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 0.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 1.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate < 2.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 3.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate >= 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
 }
 else if (countyVal == false && phaseVal == phase && serviceVal == service){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+  //Creates table with resources pulled from firebase
+  if (arType != "number")
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 0.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 1.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate < 2.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 3.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate >= 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
 }
-
 else if (countyVal == false && phaseVal == false && serviceVal == service){
-	$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							"</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							"</a></td><td>" + notes + "</td></tr>");
+  //Creates table with resources pulled from firebase
+  if (arType != "number")
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 0.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td></td></tr>");
+      }
+  else if (aggRate < 1.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate < 2.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 3.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
+  else if (aggRate < 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
+      }
+  else if (aggRate >= 4.5)
+      {
+    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
+              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
+              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
+      }
 }
 
 
@@ -231,7 +520,7 @@ function printReviews(input)
       var rBody = shot.child("text").val();
       if (rating != 0)
       {
-	$("#modal_body").append("<tr><td>" + user + "</td><td>" + rating + "</td></tr><tr><td>" + rBody+ "</td></tr>");
+	$("#modal_body").append("<tr><td>" + user + "</td><td>" + rBody + "</td><td>" + rating + "</td></tr>");
       }
     });
   },
