@@ -2,9 +2,9 @@ window.onload = function(){
 
 		firebase.database().ref("data_dashboard").on("value", snap => {	
 			
-			var labor_force_size_value = snap.child("labor_force_size").val();
-			var average_annual_wage_value = snap.child("average_annual_wage").val();
-			var gross_domestic_product_value = snap.child("gross_domestic_product").val();
+			var labor_force_size_value = snap.child("labor_force_size").child("value").val();
+			var average_annual_wage_value = snap.child("average_annual_wage").child("value").val();
+			var gross_domestic_product_value = snap.child("gross_domestic_product").child("value").val();
 			
 			var labor_force_size_element = document.getElementById('labor_force_size')
 			labor_force_size_element.innerText = labor_force_size_value
@@ -51,9 +51,9 @@ window.onload = function(){
 		    		}
 			});
 					
-			var unemployment_rate_value = snap.child("unemployment_rate").val();
-			var poverty_rate_value = snap.child("poverty_rate").val();
-			var closings_value = snap.child("closings").val();
+			var unemployment_rate_value = snap.child("unemployment_rate").child("value").val();
+			var poverty_rate_value = snap.child("poverty_rate").child("value").val();
+			var closings_value = snap.child("closings").child("value").val();
 			
 			var unemployment_rate_element = document.getElementById('unemployment_rate')
 			unemployment_rate_element.innerText = unemployment_rate_value
@@ -100,10 +100,10 @@ window.onload = function(){
 		    		}
 			});
 	
-			var cost_of_living_value = snap.child("cost_of_living").val();
-			var new_housing_costs_value = snap.child("new_housing_costs").val();
-			var average_annual_commute_time_value = snap.child("average_annual_commute_time").val();
-			var jobs_employed_resident_ratio_value = snap.child("jobs_employed_resident_ratio").val();
+			var cost_of_living_value = snap.child("cost_of_living").child("value").val();
+			var new_housing_costs_value = snap.child("new_housing_costs").child("value").val();
+			var average_annual_commute_time_value = snap.child("average_annual_commute_time").child("value").val();
+			var jobs_employed_resident_ratio_value = snap.child("jobs_employed_resident_ratio").child("value").val();
 			
 			var cost_of_living_element = document.getElementById('cost_of_living')
 			cost_of_living_element.innerText = cost_of_living_value
@@ -147,12 +147,12 @@ window.onload = function(){
     				}
 			});
 	
-			var new_business_starts_value = snap.child("new_business_starts").val();
-			var stage_ii_establishments_value = snap.child("stage_ii_establishments").val();
-			var sbir_grants_value = snap.child("sbir_grants").val();
-			var stem_employment_value = snap.child("stem_employment").val();
-			var broadband_access_value = snap.child("broadband_access").val();
-			var churn_rate_value = snap.child("churn_rate").val();
+			var new_business_starts_value = snap.child("new_business_starts").child("value").val();
+			var stage_ii_establishments_value = snap.child("stage_ii_establishments").child("value").val();
+			var sbir_grants_value = snap.child("sbir_grants").child("value").val();
+			var stem_employment_value = snap.child("stem_employment").child("value").val();
+			var broadband_access_value = snap.child("broadband_access").child("value").val();
+			var churn_rate_value = snap.child("churn_rate").child("value").val();
 			
 			var new_business_starts_element = document.getElementById('new_business_starts')
 			new_business_starts_element.innerText = new_business_starts_value
