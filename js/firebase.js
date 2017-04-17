@@ -30,9 +30,24 @@ var rootref = firebase.database().ref();
 
 
 
-	var address = document.getElementById("address");
+
   var latitude = document.getElementById("latitude");
   var longitude = document.getElementById("longitude");
+var address = document.getElementById("address");
+//function codeAddress(){
+//var geocode;
+
+   // var address = document.getElementById("address");
+    //geocoder.geocode( { 'address': address}, function(results, status) {
+      //if (status == 'OK') {
+       // var latlng = results[0].geometry.location
+
+
+      //} else {
+       // alert('Geocode was not successful for the following reason: ' + status);
+      //}
+   // });
+ // }
 
 
 
@@ -56,7 +71,14 @@ function addResource () {
       address: ""+ address.value +"",
       phone: ""+ phone +"",
       lat: ""+ latitude.value +"",
-      lng: ""+ longitude.value +""
+      lng: ""+ longitude.value +"",
+      reviews: {
+	         initialReview: {
+			          rating: 0,
+			          user: "blank",
+			          text: "blank"
+		 		}
+      	       }
     });
 	}
 

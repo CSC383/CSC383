@@ -63,3 +63,13 @@ margin-bottom: 15px;
 .black {
   color: #333;
 }
+
+.starRate {
+    height: 32px;
+    width: 32px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background: url(../img/ratingStar.png) no-repeat center center;
+    background-size: cover;
+}
+

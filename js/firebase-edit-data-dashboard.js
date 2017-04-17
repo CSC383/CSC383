@@ -47,12 +47,14 @@ function showModal(){
 window.onload = allStatistics();
 var statRef = firebase.database();
 
-function updateStatistics(statisticID) {
+function updateStatistic(statisticID) {
 	var id = statisticID;
 	var statValue = id + "Value";
 
 	var valueUpdate = document.getElementById(statValue);
-	statRef.ref("data_dashboard").child(statisticID).update(valueUpdate);
+	statRef.ref("data_dashboard").update({
+		id: ""+ valueUpdate.value +""
+	});
 };
 
 //Filters all statistics
