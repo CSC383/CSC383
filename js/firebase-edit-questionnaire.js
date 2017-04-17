@@ -529,10 +529,7 @@ function createDocument(keysArray){
                                               deleteOption.setAttribute('value', "delete option");
                                               deleteOption.style.display = "inline-block";
                                               deleteOption.onclick = function deleteOption(){
-                                                var lastElement = this.previousSibling.getAttribute('id');
-                                                var optionRef = firebase.database().ref('questions').child(keysArray[editQuestion]).child(lastElement);
-
-                                                optionRef.remove();
+                                              
                                                 this.previousSibling.remove();
                                                 this.remove();
                                               }
@@ -586,7 +583,7 @@ function createDocument(keysArray){
                                           neweditQuestion = neweditQuestion.replace('question','');
                                           neweditQuestion = parseInt(neweditQuestion) - 1;
 
-                                          var deleteRef = firebase.database().ref('questions').child(keysArray[neweditQuestion]).remove();
+                                          var deleteRef = firebase.database().ref('questions').child(keysArray[editQuestion]).remove();
 
                                           var removeSelect = document.getElementById('mySelect');
                                           removeSelect.remove(removeSelect.selectedIndex);
