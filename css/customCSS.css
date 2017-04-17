@@ -71,5 +71,6 @@ margin-bottom: 15px;
     padding-right: 4px;
     background: url(../img/ratingStar.png) no-repeat center center;
     background-size: cover;
+    display: inline-block;
 }
 
