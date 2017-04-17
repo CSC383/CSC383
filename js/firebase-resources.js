@@ -98,56 +98,75 @@ function allResources() {
 		var nameCoded = encodeApos(name);
 
 		var aggRate = calcAggregateRating(nameCoded);
-		var arType = typeof(aggRate);
 
 
+		makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 
-		//Creates table with resources pulled from firebase
-		if (arType != "number")
-		    {
-			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td></td></tr>");
-		    }
-		else if (aggRate < 0.5)
-		    {
-			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td></td></tr>");
-		    }
-		else if (aggRate < 1.5)
-		    {
-			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
-		    }
-		else if (aggRate < 2.5)
-		    {
-			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-		    }
-		else if (aggRate < 3.5)
-		    {
-			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-		    }
-		else if (aggRate < 4.5)
-		    {
-			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
-		    }
-		else if (aggRate >= 4.5)
-		    {
-			$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-							  "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-							  "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-		    }
 
 		});
 };
+
+function makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate){
+
+	var arType = typeof(aggRate);
+
+
+
+	if (arType != "number")
+	    {
+		$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded
+			+"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact
+			+ "</td><td>" + restriction + "</td><td><a href=" + url +">" + url
+			+ "</a></td><td>" + notes + "</td><td><div class=\"starHolder\"> </div></td></tr>");
+	    }
+	else if (aggRate < 0.5)
+	    {
+		$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded
+			+"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact
+			+ "</td><td>" + restriction + "</td><td><a href=" + url +">" + url
+			+ "</a></td><td>" + notes + "</td><td class=\" white-space:nowrap;\"><div class=\"starHolder\"></div></td></tr>");
+	    }
+	else if (aggRate < 1.5)
+	    {
+		$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded
+			+"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact
+			+ "</td><td>" + restriction + "</td><td><a href=" + url +">" + url
+			+ "</a></td><td>" + notes + "</td><td style=\" white-space:nowrap;\"><div class=\"starHolder\"><div class=\"starRate\"></div></div></td></tr>");
+	    }
+	else if (aggRate < 2.5)
+	    {
+		$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded
+			+"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact
+			+ "</td><td>" + restriction + "</td><td><a href=" + url +">" + url
+			+ "</a></td><td>" + notes + "</td><td style=\" white-space:nowrap;\"><div class=\"starHolder\"><div class=\"starRate\"></div><div class=\"starRate\"></div></div></td></tr>");
+	    }
+	else if (aggRate < 3.5)
+	    {
+		$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded
+			+"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact
+			+ "</td><td>" + restriction + "</td><td><a href=" + url +">" + url
+			+ "</a></td><td>" + notes + "</td><td style=\" white-space:nowrap;\"><div class=\"starHolder\"><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div></div></td></tr>");
+	    }
+	else if (aggRate < 4.5)
+	    {
+		$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded
+			+"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact
+			+ "</td><td>" + restriction + "</td><td><a href=" + url +">" + url
+			+ "</a></td><td>" + notes + "</td><td style=\" white-space:nowrap;\"><div class=\"starHolder\"><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div></div></td></tr>");
+	    }
+	else if (aggRate >= 4.5)
+	    {
+		$("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded
+			+"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact
+			+ "</td><td>" + restriction + "</td><td><a href=" + url +">" + url
+			+ "</a></td><td>" + notes + "</td><td style=\" white-space:nowrap;\"><div class=\"starHolder\"><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div><div class=\"starRate\"></div></div></td></tr>");
+	    }
+
+
+
+
+
+}
 
 //Filters resources based on user input
 function filterResources() {
@@ -179,324 +198,32 @@ rootref.child("Resources").on("child_added", function(snap) {
 	var phase = snap.child("phase").val();
 	var service = snap.child("service").val();
 	var nameCoded = encodeApos(name);
-  var aggRate = calcAggregateRating(nameCoded);
-  var arType = typeof(aggRate);
+
+	var aggRate = calcAggregateRating(nameCoded);
+
+
 
 //creates table based on user inputs
 if(countyVal == county && phaseVal == phase && serviceVal == service) {
-  //Creates table with resources pulled from firebase
-  if (arType != "number")
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 0.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 1.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate < 2.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 3.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate >= 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == county && phaseVal == false && serviceVal == false){
-  //Creates table with resources pulled from firebase
-  if (arType != "number")
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 0.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 1.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate < 2.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 3.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate >= 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == county && phaseVal == phase && serviceVal == false){
-  //Creates table with resources pulled from firebase
-  if (arType != "number")
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 0.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 1.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate < 2.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 3.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate >= 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == county && phaseVal == false && serviceVal == service){
-  //Creates table with resources pulled from firebase
-  if (arType != "number")
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 0.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 1.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate < 2.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 3.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate >= 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == false && phaseVal == phase && serviceVal == false){
-  //Creates table with resources pulled from firebase
-  if (arType != "number")
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 0.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 1.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate < 2.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 3.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate >= 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == false && phaseVal == phase && serviceVal == service){
-  //Creates table with resources pulled from firebase
-  if (arType != "number")
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 0.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 1.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate < 2.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 3.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate >= 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 else if (countyVal == false && phaseVal == false && serviceVal == service){
-  //Creates table with resources pulled from firebase
-  if (arType != "number")
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 0.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td></td></tr>");
-      }
-  else if (aggRate < 1.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate < 2.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 3.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
-  else if (aggRate < 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></td></tr>");
-      }
-  else if (aggRate >= 4.5)
-      {
-    $("#table_body").append("<tr><td>"+ county +"</td><td><a class='black' href='#' onClick='makeModal(\""+ nameCoded +"\",\""+ id +"\")'>" + name + "</a></td><td>"+ address +"</td><td>"+ phone +"</td><td>" + contact +
-              "</td><td>" + restriction + "</td><td><a href=" + url +">" + url +
-              "</a></td><td>" + notes + "</td><td><ul class='list-inline'><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li><li><div class=\"starRate\"></div></li></ul></td></tr>");
-      }
+	makeRow(county, nameCoded, id, name, address, phone, contact, restriction, url, notes, aggRate);
 }
 
 

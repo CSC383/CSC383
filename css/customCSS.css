@@ -71,6 +71,7 @@ margin-bottom: 15px;
     padding-right: 4px;
     background: url(../img/ratingStar.png) no-repeat center center;
     background-size: cover;
+    display: inline-block;
 }
 
 .dont-break-out {
@@ -92,3 +93,7 @@ margin-bottom: 15px;
   hyphens: auto;
 
 }
+
+.starHolder {
+    white-space: nowrap;
+    display: inline;
