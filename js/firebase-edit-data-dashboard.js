@@ -73,7 +73,7 @@ function allStatistics() {
 		//store data from firebase to be used in table
 		var id = snap.key;
 		var stringID = id.toString();
-		var statValue = snap.child("value");
+		var statValue = snap.child("value").val();
 
 		//Creates table with statistics pulled from firebase
 		$("#table_body").append("<tr><td><input id='"+id+"Statistic' type='text' value=\""+stringID+"\" ></input></td><td><input id='"+id+"Value' type='text'  value=\""+statValue+"\" ></input></td><td></td><td><input type='submit' class='btn btn-success btn-send' value='Update' onclick='updateStatistic(\""+ stringID + "\")''></input></td></tr>"
