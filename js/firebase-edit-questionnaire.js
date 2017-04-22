@@ -185,12 +185,15 @@ function createDocument(keysArray){
                                 optionBox.style.marginBottom = "2px";
                                 optionBox.style.marginTop = "1px";
                                 optionBox.style.marginRight = "1px";
+				optionBox.style.display = "table";
 
 
-                                var deleteOption = document.createElement('input');
+                                var deleteOption = document.createElement('submit');
                                 deleteOption.setAttribute('class', "btn btn-success btn-send");
-                                deleteOption.setAttribute('type',"submit");
-                                deleteOption.setAttribute('value', "delete");
+				deleteOption.style.width = "100px";
+                                deleteOption.style.height = "35px";
+                                deleteOption.innerText = "Delete";
+                                deleteOption.style.display = "table";
                                 deleteOption.style.display = "inline-block";
                                 deleteOption.onclick = function deleteOption(){
                                   this.previousSibling.remove();
@@ -215,7 +218,7 @@ function createDocument(keysArray){
                           var applyBox = document.createElement('input');
                           applyBox.setAttribute('class', "btn btn-success btn-send");
                           applyBox.setAttribute('type',"button");
-                          applyBox.setAttribute('value',"Apply");
+                          applyBox.setAttribute('value',"Add Question");
                           checkboxForm.appendChild(applyBox);
                           applyBox.onclick = function addToDatabase(){
                             var inputs = document.getElementById('inputs').getElementsByTagName('input');
@@ -286,6 +289,11 @@ function createDocument(keysArray){
 
                           var areaBox = document.createElement('TEXTAREA');
                           questionCreatorForm.appendChild(areaBox);
+	
+			  var optionArea = document.createElement('h5');
+			  var optionTextArea = document.createTextNode("Options");
+			  questionCreatorForm.appendChild(optionArea);
+			  optionArea.appendChild(optionTextArea);
 
 
 
@@ -666,6 +674,11 @@ function createDocument(keysArray){
 
                                         var NewareaBox = document.createElement('TEXTAREA');
                                         NewquestionCreatorForm.appendChild(NewareaBox);
+	
+					var NewoptionArea = document.createElement('h5');
+			  		var NewoptionTextArea = document.createTextNode("Options");
+			  		NewquestionCreatorForm.appendChild(NewoptionArea);
+			  		NewoptionArea.appendChild(NewoptionTextArea);
 
 
 
