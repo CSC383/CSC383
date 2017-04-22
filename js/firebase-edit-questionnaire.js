@@ -194,7 +194,6 @@ function createDocument(keysArray){
                                 deleteOption.style.height = "35px";
                                 deleteOption.innerText = "Delete";
                                 deleteOption.style.display = "table";
-                                deleteOption.style.display = "inline-block";
                                 deleteOption.onclick = function deleteOption(){
                                   this.previousSibling.remove();
                                   this.remove();
@@ -408,6 +407,7 @@ function createDocument(keysArray){
                                             newDataOption.style.marginBottom = "2px";
                                             newDataOption.style.marginTop = "1px";
                                             newDataOption.setAttribute('id',"option"+(i+2));
+					    newDataOption.style.display = "table";
                                             NewquestionCreatorForm.appendChild(newDataOption);
                                             newDataOption.value = dataArray[i];
 
@@ -416,7 +416,7 @@ function createDocument(keysArray){
                                             deleteOption.setAttribute('name', "removable");
                                             deleteOption.setAttribute('type',"submit");
                                             deleteOption.setAttribute('value', "delete option");
-                                            deleteOption.style.display = "inline-block";
+                                            deleteOption.style.display = "table";
                                             deleteOption.onclick = function deleteOption(){
                                               var lastElement = this.previousSibling.getAttribute('id');
                                               var optionRef = firebase.database().ref('questions').child(keysArray[editQuestion]).child(lastElement);
@@ -527,6 +527,7 @@ function createDocument(keysArray){
                                               NewoptionBox.style.marginTop = "1px";
                                               NewoptionBox.style.marginRight = "3px";
                                               NewoptionBox.style.width = "300px";
+					      NewoptionBox.style.display = "table";
 
 
                                               var deleteOption = document.createElement('input');
@@ -534,7 +535,7 @@ function createDocument(keysArray){
                                               deleteOption.setAttribute('type',"submit");
                                               deleteOption.setAttribute('name', "removable");
                                               deleteOption.setAttribute('value', "delete option");
-                                              deleteOption.style.display = "inline-block";
+                                              deleteOption.style.display = "table";
                                               deleteOption.onclick = function deleteOption(){
                                                 this.previousSibling.remove();
                                                 this.remove();
