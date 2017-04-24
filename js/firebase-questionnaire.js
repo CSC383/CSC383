@@ -520,6 +520,7 @@ function createquestion(key){
 									var new_div = document.createElement('div');
 									var text = document.createTextNode(newval);
 									new_div.appendChild(text);
+									new_div.setAttribute('name', name);
 									new_div.style.display = "inline-block";
 									qhead.after(new_div);
 									//creates new input field assigns it a name and type
@@ -649,7 +650,6 @@ function otherchoice(name, new_select, id){
 	manual.setAttribute('type', 'text');
 	manual.setAttribute('name', name);
 	manual.style.display = "inline-block";
-	manual.required = "true";
 	new_div.after(manual);
 
 }
